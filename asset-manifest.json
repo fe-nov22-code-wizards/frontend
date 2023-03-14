@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/frontend/static/css/main.073c9b0a.css",
-    "main.js": "/frontend/static/js/main.5035ce06.js",
-    "static/js/787.cda612ba.chunk.js": "/frontend/static/js/787.cda612ba.chunk.js",
-    "static/media/logo.svg": "/frontend/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/frontend/index.html",
-    "main.073c9b0a.css.map": "/frontend/static/css/main.073c9b0a.css.map",
-    "main.5035ce06.js.map": "/frontend/static/js/main.5035ce06.js.map",
-    "787.cda612ba.chunk.js.map": "/frontend/static/js/787.cda612ba.chunk.js.map"
+    "main.css": "/fe-nov22-code-wizards.github.io/frontend/static/css/main.073c9b0a.css",
+    "main.js": "/fe-nov22-code-wizards.github.io/frontend/static/js/main.89f03138.js",
+    "static/js/787.cda612ba.chunk.js": "/fe-nov22-code-wizards.github.io/frontend/static/js/787.cda612ba.chunk.js",
+    "static/media/logo.svg": "/fe-nov22-code-wizards.github.io/frontend/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/fe-nov22-code-wizards.github.io/frontend/index.html",
+    "main.073c9b0a.css.map": "/fe-nov22-code-wizards.github.io/frontend/static/css/main.073c9b0a.css.map",
+    "main.89f03138.js.map": "/fe-nov22-code-wizards.github.io/frontend/static/js/main.89f03138.js.map",
+    "787.cda612ba.chunk.js.map": "/fe-nov22-code-wizards.github.io/frontend/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.5035ce06.js"
+    "static/js/main.89f03138.js"
   ]
 }
