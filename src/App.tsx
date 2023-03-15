@@ -1,7 +1,7 @@
 import React from 'react';
-import './components/grid/grid.scss';
+import './components/Grid/Grid.scss';
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   return (
     <div className="App grid">
       <h1
@@ -17,5 +17,3 @@ const App: React.FC = () => {
     </div>
   );
 };
-
-export default App;
