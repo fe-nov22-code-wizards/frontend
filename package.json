@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "homepage": "https://github.com/fe-nov22-code-wizards.github.io/frontend",
+  "homepage": "https://fe-nov22-code-wizards.github.io/frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -24,7 +24,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write . --ignore-path .gitignore",
+    "lint": "eslint . --ignore-path .gitignore",
+    "fix-style": "npm run format && npm run lint -- --fix",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{tsx,ts,scss}": "npm run lint"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +52,14 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
+    "eslint": "^8.36.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "gh-pages": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "prettier": "2.8.4"
   }
 }
