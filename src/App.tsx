@@ -1,16 +1,16 @@
 import React from 'react';
-import './components/Grid/Grid.scss';
+import './components/grid/grid.scss';
 
 const App: React.FC = () => {
   return (
-    <div className="App Grid">
+    <div className="App grid">
       <h1
         className="
           App
-          Grid__item
-          Grid__item-1-4
-          Grid__item--tablet-1-12
-          Grid__item--desktop-1-24"
+          grid__item
+          grid__item-1-4
+          grid__item--tablet-1-12
+          grid__item--desktop-1-24"
       >
         Hello, world!
       </h1>
