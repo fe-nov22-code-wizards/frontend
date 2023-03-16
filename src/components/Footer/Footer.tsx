@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
-import toTop from '../../images/Vector.svg';
+import toTop from '../../images/vector.svg';
 import './Footer.scss';
+import '../Grid/Grid.scss';
 
 export const Footer: React.FC = () => {
   const handleScrollToTop = () => {
@@ -14,19 +16,19 @@ export const Footer: React.FC = () => {
         <div className="footer__logo logo">
           <img onClick={handleScrollToTop} src={logo} alt="Logo" />
         </div>
-        <nav className="footer__nav nav">
-          <a
-            className="nav__link"
-            href="https://github.com/fe-nov22-code-wizards/frontend"
+        <nav className="footer__nav navigation">
+          <Link
+            className="navigation__link"
+            to="https://github.com/fe-nov22-code-wizards/frontend"
           >
             GitHub
-          </a>
-          <a className="nav__link" href="#">
+          </Link>
+          <Link className="navigation__link" to="#">
             Contacts
-          </a>
-          <a className="nav__link" href="#">
+          </Link>
+          <Link className="navigation__link" to="#">
             Rights
-          </a>
+          </Link>
         </nav>
         <div className="footer__scroll scroll">
           <p className="scroll__text">Back to top</p>
