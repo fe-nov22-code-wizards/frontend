@@ -2,7 +2,7 @@ import React from 'react';
 import './ProductCardLayout.scss';
 import productPhoto from '../../images/iphone14pro.png';
 
-export const ProductCardLayout = () => (
+export const ProductCardLayout: React.FC = () => (
   <div className="product-card">
     <img src={productPhoto} className="product__image" />
     <h3 className="product__title">Apple iPhone 14 Pro 128GB Silver (MQ023)</h3>

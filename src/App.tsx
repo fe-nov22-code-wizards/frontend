@@ -1,8 +1,10 @@
 import React from 'react';
-import { Header } from './components/Header';
 import './components/Grid/Grid.scss';
 import { PageNotFound } from './components/PageNotFound';
 import { ProductCardLayout } from './components/ProductCardLayout';
+import { Footer } from './components/Footer';
+import './App';
+import { Header } from './components/Header';
 
 export const App: React.FC = () => {
   return (
@@ -13,6 +15,7 @@ export const App: React.FC = () => {
       <ProductCardLayout />
 
       <PageNotFound />
+      <Footer />
     </>
   );
 };
