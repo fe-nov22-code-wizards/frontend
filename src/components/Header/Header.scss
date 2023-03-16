@@ -2,7 +2,7 @@
 
 .head {
   display: flex;
-  background-color: #FFF;
+  background-color: #fff;
 
   &__link {
     display: flex;
@@ -12,7 +12,6 @@
     width: 128px;
     height: 64px;
   }
-
 
   &__logo {
     width: 100%;
@@ -57,12 +56,12 @@
   &__link {
     padding: 23px 0;
     text-decoration: none;
-    color: #89939A;
+    color: #89939a;
     transition: color 0.3s linear;
   }
 
   &__link:hover {
-    color: #0F0F11;
+    color: #0f0f11;
     transition: color 0.3s linear;
   }
 
@@ -90,16 +89,16 @@
 }
 
 .is-active {
-  color: #0F0F11;
+  color: #0f0f11;
   position: relative;
 }
 
 .is-active::after {
-  content: "";
+  content: '';
   display: block;
   height: 4px;
   width: 100%;
-  background-color: #0F0F11;
+  background-color: #0f0f11;
   position: absolute;
   top: 94%;
   animation: scale 0.1s linear;
@@ -107,7 +106,7 @@
 
 @keyframes scale {
   from {
-    transform: scaleX(0%)
+    transform: scaleX(0%);
   }
 
   to {
