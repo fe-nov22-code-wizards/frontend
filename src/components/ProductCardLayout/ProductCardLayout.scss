@@ -57,6 +57,7 @@
 }
 
 .action__cart {
+  cursor: pointer;
   width: 160px;
   font-size: 16px;
   line-height: 21px;
@@ -72,6 +73,7 @@
 }
 
 .action__favorite {
+  cursor: pointer;
   width: 40px;
   height: 40px;
   background-image: url(../../images/addtocart.svg);

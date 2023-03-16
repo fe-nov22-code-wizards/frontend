@@ -32,7 +32,7 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{tsx,ts,css}": "npm run lint"
+    "*.{tsx,ts}": "npm run lint"
   },
   "eslintConfig": {
     "extends": [
