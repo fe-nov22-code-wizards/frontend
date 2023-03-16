@@ -10,30 +10,27 @@ export const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="container footer_container">
-        <div className="logo footer_logo">
+      <div className="footer__container container">
+        <div className="footer__logo logo">
           <img onClick={handleScrollToTop} src={logo} alt="Logo" />
         </div>
-        <nav className="nav footer_nav">
+        <nav className="footer__nav nav">
           <a
-            className="nav_link footer_nav_link"
+            className="nav__link"
             href="https://github.com/fe-nov22-code-wizards/frontend"
           >
             GitHub
           </a>
-          <a className="nav_link footer_nav_link" href="/contacts">
+          <a className="nav__link" href="#">
             Contacts
           </a>
-          <a className="nav_link footer_nav_link" href="/rights">
+          <a className="nav__link" href="#">
             Rights
           </a>
         </nav>
-        <div className="scroll footer_scroll">
-          <p className="scroll_text footer_scroll_text">Back to top</p>
-          <button
-            className="scroll_button button footer_scroll_button"
-            onClick={handleScrollToTop}
-          >
+        <div className="footer__scroll scroll">
+          <p className="scroll__text">Back to top</p>
+          <button className="scroll__button button" onClick={handleScrollToTop}>
             <img src={toTop} alt="Vector" />
           </button>
         </div>
