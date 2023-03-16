@@ -1,6 +1,6 @@
 import React from 'react';
-import { PageNotFound } from './components/PageNotFound';
 import './components/Grid/grid.scss';
+import { PageNotFound } from './components/PageNotFound';
 
 const App: React.FC = () => {
   return (
