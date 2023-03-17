@@ -6,14 +6,9 @@ import { Phone } from '../../types/Phone';
 
 type Props = {
   posts: Phone[];
-  loading: boolean;
 };
 
-export const ProductCardLayout: React.FC<Props> = ({ posts, loading }) => {
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
-
+export const ProductCardLayout: React.FC<Props> = ({ posts }) => {
   return (
     <div className="grid">
       <div className="product-card grid__item--desktop-1-6">

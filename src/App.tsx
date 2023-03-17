@@ -55,7 +55,12 @@ export const App: React.FC = () => {
   return (
     <>
       <Header />
-      <ProductCardLayout posts={currentPosts} loading={loading} />
+      {!loading ? (
+        <ProductCardLayout posts={currentPosts} />
+      ) : (
+        <h2>...Loading</h2>
+      )}
+
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}
