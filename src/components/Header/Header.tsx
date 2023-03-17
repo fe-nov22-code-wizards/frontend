@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import classnames from 'classnames';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 import logo from '../../images/logo.svg';
 import heart from '../../images/heart.svg';
@@ -17,42 +16,35 @@ export const Header: React.FC = () => (
       <nav className="nav">
         <ul className="nav__list">
           <li className="nav__item">
-            <PageNavLink to="/" text="Home" />
+            <PageNavLink type="nav__link" to="/">
+              Home
+            </PageNavLink>
           </li>
           <li className="nav__item">
-            <PageNavLink to="/phones" text="Phones" />
+            <PageNavLink type="nav__link" to="/phones">
+              Phones
+            </PageNavLink>
           </li>
           <li className="nav__item">
-            <PageNavLink to="/tablets" text="Tablets" />
+            <PageNavLink type="nav__link" to="/tablets">
+              Tablets
+            </PageNavLink>
           </li>
           <li className="nav__item">
-            <PageNavLink to="/accessories" text="Accessories" />
+            <PageNavLink type="nav__link" to="/accessories">
+              Accessories
+            </PageNavLink>
           </li>
         </ul>
       </nav>
 
       <nav className="header__icons">
-        <NavLink
-          to="favourites"
-          className={({ isActive }) =>
-            classnames('header__icon', {
-              'is-active': isActive,
-            })
-          }
-        >
+        <PageNavLink type="header__icon" to="/favourites">
           <img src={heart} alt="heart" className="header__picture" />
-        </NavLink>
-
-        <NavLink
-          to="cart"
-          className={({ isActive }) =>
-            classnames('header__icon', {
-              'is-active': isActive,
-            })
-          }
-        >
-          <img src={cart} alt="heart" className="header__picture" />
-        </NavLink>
+        </PageNavLink>
+        <PageNavLink type="header__icon" to="/cart">
+          <img src={cart} alt="cart" className="header__picture" />
+        </PageNavLink>
       </nav>
     </div>
   </header>

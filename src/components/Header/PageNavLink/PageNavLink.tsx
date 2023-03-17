@@ -1,19 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import classNames from 'classnames';
+import cn from 'classnames';
 
 type Props = {
   to: string;
-  text: string;
+  type: string;
+  children: string | JSX.Element;
 };
 
-export const PageNavLink: React.FC<Props> = ({ to, text }) => (
+export const PageNavLink: React.FC<Props> = ({ to, type, children }) => (
   <NavLink
     to={to}
-    className={({ isActive }) =>
-      classNames('nav__link', { 'is-active': isActive })
-    }
+    className={({ isActive }) => cn(type, { 'is-active': isActive })}
   >
-    {text}
+    {children}
   </NavLink>
 );
