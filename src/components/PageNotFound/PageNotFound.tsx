@@ -1,8 +1,8 @@
 import React from 'react';
 import './PageNotFound.scss';
-import '../Grid/grid.scss';
+import '../Grid/Grid.scss';
 
-export const PageNotFound = () => {
+export const PageNotFound: React.FC = () => {
   return (
     <div className="page-not-found">
       <h1 className="title">Oops! 404 Error</h1>

@@ -1,0 +1,146 @@
+@import '../../_utils/mixins';
+
+.head {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  display: flex;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+
+  &__link {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+
+    width: 96px;
+    height: 48px;
+    margin-right: 16px;
+    padding: 13px 16px;
+
+    @include onDesktop {
+      margin-right: 24px;
+      padding: 18px 24px;
+      width: 128px;
+      height: 64px;
+    }
+  }
+
+  &__logo {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.nav {
+  display: none;
+  align-items: center;
+
+  @include onTablet {
+    display: flex;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  &__item {
+    font-weight: bold;
+  }
+
+  &__item:last-of-type {
+    margin-right: 0;
+  }
+
+  &__link {
+    padding: 15px 0;
+    text-decoration: none;
+    color: #89939a;
+    transition: color 0.3s linear;
+  }
+
+  &__link:hover {
+    color: #0f0f11;
+    transition: color 0.3s linear;
+  }
+
+  @include onTablet {
+    &__item {
+      margin-right: 32px;
+    }
+  }
+
+  @include onDesktop {
+    &__item {
+      margin-right: 64px;
+    }
+
+    &__link {
+      padding: 23px 0;
+    }
+  }
+}
+
+.is-active {
+  color: #0f0f11;
+  position: relative;
+}
+
+.is-active::after {
+  content: '';
+  display: block;
+  height: 4px;
+  width: 100%;
+  background-color: #0f0f11;
+  position: absolute;
+  top: 94%;
+  animation: scale 0.1s linear;
+}
+
+@keyframes scale {
+  from {
+    transform: scaleX(0%);
+  }
+
+  to {
+    transform: scaleX(100%);
+  }
+}
+
+.header__icons {
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin-left: auto;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+
+  @include onTablet {
+    display: flex;
+  }
+
+  @include onDesktop {
+    height: 64px;
+  }
+}
+
+.header__icon {
+  width: 48px;
+
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-left: 1px solid #ddd;
+
+  @include onDesktop {
+    width: 64px;
+  }
+}
