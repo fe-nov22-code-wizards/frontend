@@ -23,13 +23,13 @@ export const Pagination: React.FC<Props> = ({
   }
 
   const prevPage = () => {
-    if (currentPage > 1 && loading) {
+    if (currentPage > 1) {
       paginate(currentPage - 1);
     }
   };
 
   const nextPage = () => {
-    if (currentPage < pageNumber.length && loading) {
+    if (currentPage < pageNumber.length) {
       paginate(currentPage + 1);
     }
   };
