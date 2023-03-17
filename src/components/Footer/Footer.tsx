@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
-import toTop from '../../images/vector.svg';
+import toTop from '../../images/Vector.svg';
 import './Footer.scss';
 import '../Grid/Grid.scss';
 
