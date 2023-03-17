@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProductCardLayout.scss';
-import productPhoto from '../../images/iphone14pro.png';
+import productPhoto from '../../images/iphone14pro.svg';
 import '../Grid/Grid.scss';
 
 export const ProductCardLayout: React.FC = () => (
@@ -19,11 +19,11 @@ export const ProductCardLayout: React.FC = () => (
         </div>
         <div className="info__wrapper">
           <p className="info__name">Capacity</p>
-          <p className="info__survey">128GB</p>
+          <p className="info__survey">128 GB</p>
         </div>
         <div className="info__wrapper">
           <p className="info__name">RAM</p>
-          <p className="info__survey">6GB</p>
+          <p className="info__survey">6 GB</p>
         </div>
       </div>
       <div className="product__action">

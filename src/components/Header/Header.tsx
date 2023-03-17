@@ -33,23 +33,23 @@ export const Header: React.FC = () => (
 
       <nav className="header__icons">
         <NavLink
+          to="favourites"
           className={({ isActive }) =>
             classnames('header__icon', {
               'is-active': isActive,
             })
           }
-          to="favourites"
         >
           <img src={heart} alt="heart" className="header__picture" />
         </NavLink>
 
         <NavLink
+          to="cart"
           className={({ isActive }) =>
             classnames('header__icon', {
               'is-active': isActive,
             })
           }
-          to="cart"
         >
           <img src={cart} alt="heart" className="header__picture" />
         </NavLink>
