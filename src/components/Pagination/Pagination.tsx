@@ -7,6 +7,8 @@ type Props = {
   currentPage: number;
   paginate: (arg0: number) => void;
   loading: boolean;
+  prevPage: () => void;
+  nextPage: (num: number) => void;
 };
 
 export const Pagination: React.FC<Props> = ({
@@ -15,24 +17,14 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   paginate,
   loading,
+  prevPage,
+  nextPage,
 }) => {
   const pageNumber = [];
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumber.push(i);
   }
-
-  const prevPage = () => {
-    if (currentPage > 1) {
-      paginate(currentPage - 1);
-    }
-  };
-
-  const nextPage = () => {
-    if (currentPage < pageNumber.length) {
-      paginate(currentPage + 1);
-    }
-  };
 
   if (loading) {
     return null;
@@ -60,7 +52,7 @@ export const Pagination: React.FC<Props> = ({
         <li>
           <button
             disabled={currentPage === pageNumber.length}
-            onClick={nextPage}
+            onClick={() => nextPage(pageNumber.length)}
           >
             &gt;
           </button>

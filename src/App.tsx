@@ -5,7 +5,7 @@ import { ProductCardLayout } from './components/ProductCardLayout';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import './App';
-import { getALLPhones } from './api/phones';
+import { getAllPhones } from './api/phones';
 import { Phone } from './types/Phone';
 import { Pagination } from './components/Pagination';
 
@@ -21,7 +21,7 @@ export const App: React.FC = () => {
       try {
         setLoading(true);
 
-        const res = await getALLPhones();
+        const res = await getAllPhones();
 
         setPost(res);
 
@@ -40,6 +40,18 @@ export const App: React.FC = () => {
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
+  const prevPage = () => {
+    if (currentPage > 1) {
+      paginate(currentPage - 1);
+    }
+  };
+
+  const nextPage = (num: number) => {
+    if (currentPage < num) {
+      paginate(currentPage + 1);
+    }
+  };
+
   return (
     <>
       <Header />
@@ -50,6 +62,8 @@ export const App: React.FC = () => {
         paginate={paginate}
         currentPage={currentPage}
         loading={loading}
+        prevPage={prevPage}
+        nextPage={nextPage}
       />
       <PageNotFound />
       <Footer />
