@@ -6,6 +6,7 @@ import { Header } from './components/Header';
 import './App';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { PhonesPage } from './modules/PhonesPage';
+import { BannerSlider } from './components/BannerSlider';
 
 export const App: React.FC = () => (
   <>
@@ -14,7 +15,7 @@ export const App: React.FC = () => (
     <Routes>
       <Route path="*" element={<PageNotFound />} />
 
-      <Route path="/" element={<h1>Home Page</h1>} />
+      <Route path="/" element={<BannerSlider />} />
 
       <Route path="phones">
         <Route index element={<PhonesPage />} />
