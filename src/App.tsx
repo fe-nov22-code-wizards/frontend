@@ -7,6 +7,7 @@ import './App';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { PhonesPage } from './modules/PhonesPage';
 import { BannerSlider } from './components/BannerSlider';
+import { CartPage } from './pages/CartPage';
 
 export const App: React.FC = () => (
   <>
@@ -28,7 +29,7 @@ export const App: React.FC = () => (
 
       <Route path="favourites" element={<h1>Favourites Page</h1>} />
 
-      <Route path="cart" element={<h1>Cart</h1>} />
+      <Route path="cart" element={<CartPage />} />
 
       <Route path="/home" element={<Navigate to="/" replace />} />
     </Routes>
