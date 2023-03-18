@@ -1,3 +1,5 @@
+@import '../../_utils/mixins.scss';
+
 .cart {
   padding: 40px 0 80px;
 
@@ -24,7 +26,7 @@
     text-decoration: none;
     font-weight: 700;
     font-size: 12px;
-    color: #89939A;
+    color: #89939a;
 
     transition: color 0.5s;
 
@@ -35,17 +37,23 @@
 
   &_title {
     font-weight: 800;
-    font-size: 48px;
-    line-height: 56px;
     letter-spacing: -0.01em;
-    color: #0F0F11;
+    color: #0f0f11;
     margin-bottom: 32px;
+    font-size: 32px;
+    line-height: 41px;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+
   }
 
   &_total {
     box-sizing: border-box;
     padding: 24px;
-    background: #FFFFFF;
+    background: #ffffff;
     border: 1px solid rgba(226, 230, 233, 1);
     border-radius: 16px;
   }
@@ -55,7 +63,7 @@
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
-    color: #0F0F11;
+    color: #0f0f11;
     text-align: center;
   }
 
@@ -64,7 +72,7 @@
     font-size: 14px;
     line-height: 21px;
     text-align: center;
-    color: #89939A;
+    color: #89939a;
     padding-bottom: 25px;
     border-bottom: 1px solid rgba(226, 230, 233, 1);
     margin-bottom: 24px;
@@ -78,8 +86,8 @@
     line-height: 21px;
     letter-spacing: 0.1em;
     text-align: center;
-    color: #FFFFFF;
-    background: #4219D0;
+    color: #ffffff;
+    background: #4219d0;
     border-radius: 48px;
     cursor: pointer;
 
