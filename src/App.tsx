@@ -7,7 +7,7 @@ import './App';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { PhonesPage } from './modules/PhonesPage';
 import { BannerSlider } from './components/BannerSlider';
-import { CartPage } from './pages/CartPage';
+import { CartPage } from './modules/CartPage';
 
 export const App: React.FC = () => (
   <>
