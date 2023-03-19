@@ -1,23 +1,36 @@
 {
   "files": {
-    "main.css": "/frontend/static/css/main.05d6d076.css",
-    "main.js": "/frontend/static/js/main.4f2ad4f1.js",
+    "main.css": "/frontend/static/css/main.0ba4d9f6.css",
+    "main.js": "/frontend/static/js/main.7f89e11c.js",
+    "static/media/bannerslider-tablet.svg": "/frontend/static/media/bannerslider-tablet.bbbb6f9c295f13cb0372.svg",
+    "static/media/bannerslider-desktop.svg": "/frontend/static/media/bannerslider-desktop.19e658112abfd43acf9c.svg",
+    "static/media/bannerslider-mobile.svg": "/frontend/static/media/bannerslider-mobile.88a4f1480a819a019e49.svg",
+    "static/media/iphone14pro.svg": "/frontend/static/media/iphone14pro.fcb910c76517ccdd241ce4d6a70bd761.svg",
     "static/media/logo.svg": "/frontend/static/media/logo.c6f2f3eda1b32d5740ad62b825eab096.svg",
     "static/media/Mont-Regular.ttf": "/frontend/static/media/Mont-Regular.e797167c18f9897bb607.ttf",
     "static/media/Mont-SemiBold.ttf": "/frontend/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
     "static/media/Mont-Bold.ttf": "/frontend/static/media/Mont-Bold.3675b597d3ffb2b75168.ttf",
-    "static/media/iphone14pro.png": "/frontend/static/media/iphone14pro.42674a00198d2106fc10.png",
+    "static/media/slick.svg": "/frontend/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/frontend/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/frontend/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/cart.svg": "/frontend/static/media/cart.f9929c0cbf5f9983c02daa53df3ca330.svg",
     "static/media/addtocart-hover.svg": "/frontend/static/media/addtocart-hover.4ab33b5c639901bbd6cf.svg",
     "static/media/addtocart.svg": "/frontend/static/media/addtocart.5607a15840ea2015031e.svg",
     "static/media/heart.svg": "/frontend/static/media/heart.5798df4d50cb8a9d58a723cad5fbfe00.svg",
+    "static/media/slick.woff": "/frontend/static/media/slick.295183786cd8a1389865.woff",
+    "static/media/home.svg": "/frontend/static/media/home.9a24a70540404ccecd05.svg",
+    "static/media/closer.svg": "/frontend/static/media/closer.176fe32f46d4c434659ecf8f66be17e6.svg",
     "index.html": "/frontend/index.html",
-    "static/media/vector.svg": "/frontend/static/media/vector.15972dbf9b01c331c56443cc760a80c4.svg",
-    "main.05d6d076.css.map": "/frontend/static/css/main.05d6d076.css.map",
-    "main.4f2ad4f1.js.map": "/frontend/static/js/main.4f2ad4f1.js.map"
+    "static/media/burger.svg": "/frontend/static/media/burger.3f3c3f2fcc2d0b60dfa752fd3c1cab9c.svg",
+    "static/media/bannerslider-arrow-next.svg": "/frontend/static/media/bannerslider-arrow-next.becf9c928cb127ddb616.svg",
+    "static/media/Vector.svg": "/frontend/static/media/Vector.15972dbf9b01c331c56443cc760a80c4.svg",
+    "static/media/arrow-right.svg": "/frontend/static/media/arrow-right.e028d3889646e0b5e56cf54f47bb701a.svg",
+    "static/media/bannerslider-arrow-prev.svg": "/frontend/static/media/bannerslider-arrow-prev.b18d031caaaea7e6e0c8.svg",
+    "main.0ba4d9f6.css.map": "/frontend/static/css/main.0ba4d9f6.css.map",
+    "main.7f89e11c.js.map": "/frontend/static/js/main.7f89e11c.js.map"
   },
   "entrypoints": [
-    "static/css/main.05d6d076.css",
-    "static/js/main.4f2ad4f1.js"
+    "static/css/main.0ba4d9f6.css",
+    "static/js/main.7f89e11c.js"
   ]
 }
