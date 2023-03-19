@@ -17,12 +17,24 @@ export const Header: React.FC = () => {
     !isMenuOpen && (document.body.style.overflow = 'unset');
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 640) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleShowMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <div className={classNames({ burger__isOpen: isMenuOpen })}>
+    <div className={classNames('header', { burger__isOpen: isMenuOpen })}>
       <header className="head">
         <Link to="/" className="head__link">
           <img className="head__logo" src={logo} alt="NICE GADGETS logo" />

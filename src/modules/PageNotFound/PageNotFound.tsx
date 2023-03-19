@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './PageNotFound.scss';
 
 export const PageNotFound: React.FC = () => {
@@ -9,7 +10,9 @@ export const PageNotFound: React.FC = () => {
         We are sorry, the page you are looking for can not be found.
       </p>
       <div className="cta-container">
-        <a className="cta-button">Go back home</a>
+        <Link to="/" className="cta-button">
+          Go back home
+        </Link>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
 }
 
 .title {
@@ -33,6 +33,7 @@
   padding: 1rem 2rem;
   border: none;
   border-radius: 0.5rem;
+  text-decoration: none;
   transition: background-color 0.2s ease;
 }
 

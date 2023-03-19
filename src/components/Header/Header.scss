@@ -1,5 +1,9 @@
 @import '../../_utils/mixins';
 
+.header {
+  border-bottom: 1px solid #ddd;
+}
+
 .head {
   position: sticky;
   z-index: 1;
@@ -8,6 +12,11 @@
   background-color: #fff;
   box-sizing: border-box;
   border-bottom: 1px solid #ddd;
+
+  @include onTablet {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
 
   &__link {
     display: flex;
@@ -60,6 +69,10 @@
 
     @include onMobile {
       display: none;
+    }
+
+    &:last-of-type {
+      border-right: 1px solid #ddd;
     }
   }
 }
