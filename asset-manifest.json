@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/frontend/static/css/main.0ba4d9f6.css",
+    "main.css": "/frontend/static/css/main.0ddd190c.css",
     "main.js": "/frontend/static/js/main.7f89e11c.js",
     "static/media/bannerslider-tablet.svg": "/frontend/static/media/bannerslider-tablet.bbbb6f9c295f13cb0372.svg",
     "static/media/bannerslider-desktop.svg": "/frontend/static/media/bannerslider-desktop.19e658112abfd43acf9c.svg",
@@ -26,11 +26,11 @@
     "static/media/Vector.svg": "/frontend/static/media/Vector.15972dbf9b01c331c56443cc760a80c4.svg",
     "static/media/arrow-right.svg": "/frontend/static/media/arrow-right.e028d3889646e0b5e56cf54f47bb701a.svg",
     "static/media/bannerslider-arrow-prev.svg": "/frontend/static/media/bannerslider-arrow-prev.b18d031caaaea7e6e0c8.svg",
-    "main.0ba4d9f6.css.map": "/frontend/static/css/main.0ba4d9f6.css.map",
+    "main.0ddd190c.css.map": "/frontend/static/css/main.0ddd190c.css.map",
     "main.7f89e11c.js.map": "/frontend/static/js/main.7f89e11c.js.map"
   },
   "entrypoints": [
-    "static/css/main.0ba4d9f6.css",
+    "static/css/main.0ddd190c.css",
     "static/js/main.7f89e11c.js"
   ]
 }
