@@ -38,7 +38,10 @@ export const App: React.FC = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    window.history.pushState(null, '', `page${pageNumber}`);
+  };
 
   const prevPage = () => {
     if (currentPage > 1) {

@@ -41,8 +41,11 @@ export const Pagination: React.FC<Props> = ({
         {pageNumber.map((number) => (
           <li key={number}>
             <a
-              href={`page${number}`}
-              onClick={() => paginate(number)}
+              href="#"
+              onClick={(event) => {
+                event.preventDefault();
+                paginate(number);
+              }}
               className={currentPage === number ? 'active' : ''}
             >
               {number}
@@ -52,7 +55,7 @@ export const Pagination: React.FC<Props> = ({
         <li>
           <button
             disabled={currentPage === pageNumber.length}
-            onClick={() => nextPage(pageNumber.length)}
+            onClick={() => nextPage(currentPage + 1)}
           >
             &gt;
           </button>
