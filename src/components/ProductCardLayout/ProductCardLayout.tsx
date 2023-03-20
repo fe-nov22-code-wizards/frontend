@@ -1,25 +1,19 @@
 import React from 'react';
 import { useState } from 'react';
 import './ProductCardLayout.scss';
-import { ReactComponent as Heart } from '../../images/heart.svg';
-import { ReactComponent as HeartYellow } from '../../images/heart-yellow.svg';
+import { ReactComponent as Favorite } from '../../images/favorite.svg';
+// eslint-disable-next-line
+import { ReactComponent as FavoriteYellow } from '../../images/favorite-yellow.svg';
+import { Phone } from '../../types/Phone';
 
-const phone = {
-  image:
-    // eslint-disable-next-line
-    'https://fe-nov22-shd.github.io/image-storage/apple-iphone-11-pro-max/midnightgreen/00.jpg',
-  title: 'Apple iPhone Xs 64GB Silver (iMT9G2FS/A)',
-  price: 899,
-  priceWithdiscount: 799,
-  screen: '5.8” OLED',
-  capacity: '64 GB',
-  ram: '4 GB',
+type Props = {
+  phone: Phone;
 };
 
-export const ProductCardLayout = () => {
-  // eslint-disable-next-line
-  const { image, title, price, priceWithdiscount, screen, capacity, ram } =
-    phone;
+const BASE_URL = 'https://api-gwis.onrender.com/';
+
+export const ProductCardLayout: React.FC<Props> = ({ phone }) => {
+  const { image, name, fullPrice, price, screen, capacity, ram } = phone;
   const [isAdded, setIsAdded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -33,12 +27,16 @@ export const ProductCardLayout = () => {
 
   return (
     <div className="product-card container__width">
-      <img src={image} className="product-card__image" alt={title} />
-      <h1 className="product-card__title">{title}</h1>
+      <img
+        src={`${BASE_URL}/${image}`}
+        className="product-card__image"
+        alt={name}
+      />
+      <h1 className="product-card__title">{name}</h1>
 
       <div className="product-card__price-container">
-        <p className="product-card__price">${priceWithdiscount}</p>
-        <p className="product-card__price--crossed">${price}</p>
+        <p className="product-card__price">${price}</p>
+        <p className="product-card__price--crossed">${fullPrice}</p>
       </div>
       <hr className="product-card__divider" />
 
@@ -86,7 +84,7 @@ export const ProductCardLayout = () => {
           className="product-card__button-favorite"
           onClick={handleClickLiked}
         >
-          {isLiked ? <HeartYellow /> : <Heart />}
+          {isLiked ? <FavoriteYellow /> : <Favorite />}
         </button>
       </div>
     </div>

@@ -1,0 +1,118 @@
+@import '~slick-carousel/slick/slick.scss';
+@import '~slick-carousel/slick/slick-theme.scss';
+
+@import '../../_utils/mixins';
+
+* {
+  box-sizing: border-box;
+}
+
+.banner-slider {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin: 40px 0 90px;
+}
+
+.slick-slider {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  @include onTablet {
+    padding: 0 24px;
+  }
+}
+
+.slick-arrow {
+  position: relative;
+  width: 32px;
+  display: none;
+  height: 100%;
+  border: 1px solid #b4bdc4;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 400px;
+  transform: translateY(0);
+  border-radius: 50px;
+  border: 1px solid #b4bdc4;
+
+  @include onTablet {
+    display: block;
+    height: auto;
+    width: 32px;
+  }
+
+  @include onDesktop {
+    height: 400px;
+    width: 48px;
+  }
+}
+
+.slick-arrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateY(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slick-arrow:hover {
+  border-color: #313237;
+  transition: all 0.5s;
+}
+
+.slick-prev::before {
+  content: '';
+  background-image: url('../../images/bannerslider-arrow-prev.svg');
+}
+
+.slick-next::before {
+  content: '';
+  background-image: url('../../images/bannerslider-arrow-next.svg');
+}
+
+.slick-slide {
+  background-image: url('../../images/bannerslider-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 15px;
+
+  height: 400px;
+
+  @include onTablet {
+    background-image: url('../../images/bannerslider-tablet.svg');
+  }
+  @include onDesktop {
+    height: 400px;
+    width: auto;
+    background-image: url('../../images/bannerslider-desktop.svg');
+  }
+}
+.slick-list {
+  width: 100vw;
+}
+
+.slick-dots {
+  bottom: -40px;
+  right: 0;
+}
+
+.slick-dots li button:before {
+  content: '';
+  width: 14px;
+  height: 4px;
+  opacity: 0.25;
+  background-color: #313237;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 0.75;
+  background-color: #313237;
+}

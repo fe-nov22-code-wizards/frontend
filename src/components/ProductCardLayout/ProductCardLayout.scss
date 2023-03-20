@@ -51,17 +51,20 @@ $elements-c: #e2e6e9;
   }
 
   &__title {
+    height: 35px;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    align-self: start;
   }
 
   &__price-container {
     display: flex;
     align-self: start;
     width: 100%;
-
+    align-items: center;
+    
     margin-bottom: 8px;
   }
 

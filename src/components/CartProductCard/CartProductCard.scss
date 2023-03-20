@@ -1,0 +1,99 @@
+@import '../../_utils/mixins';
+
+.cart {
+  &_card {
+    padding: 24px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid rgba(226, 230, 233, 1);
+    border-radius: 16px;
+    margin-bottom: 15px;
+
+    &:last-child {
+      margin-bottom: 30px;
+    }
+
+    @include onTablet {
+      display: flex;
+    }
+
+    @include onDesktop {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &_card-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &_card-btn-delete-svg {
+    transition: 0.5s;
+  }
+
+  &_card-btn-delete {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:hover {
+      .cart_card-btn-delete-svg path {
+        fill: black;
+      }
+    }
+  }
+
+  &_card-product-photo {
+    padding: 15px;
+    height: 65px;
+  }
+
+  &__card-product-title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(15, 15, 17, 1);
+    margin-right: 24px;
+  }
+
+  &_options-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_options {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-right: 24px;
+  }
+
+  &_card-btn-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(226, 230, 233, 1);
+    cursor: pointer;
+  }
+
+  &_card-price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}

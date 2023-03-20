@@ -1,0 +1,91 @@
+@import '../_utils/mixins';
+
+.main-page {
+  margin: 0 16px;
+
+  @include onTablet {
+    margin: 0 24px;
+  }
+
+  @include onDesktop {
+    margin: 0 auto;
+    max-width: 1136px;
+  }
+}
+
+.text__item {
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+  display: inline;
+}
+
+.back-menu {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+
+  &__item {
+    margin-right: 8px;
+  }
+
+  &__icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../src/images/home.svg');
+    background-size: cover;
+    margin-left: 8px;
+  }
+}
+
+.menu-title {
+  margin: 24px 0 8px;
+  font-weight: 800;
+  font-size: 32px;
+
+  @include onTablet {
+    margin-top: 40px;
+    font-size: 48px;
+  }
+}
+
+.select__name {
+  margin: 40px 0 4px;
+  display: block;
+}
+
+select {
+  padding: 8px;
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #0f0f11;
+  font-family: 'Mont';
+  width: 100%;
+}
+
+option {
+  background-color: #fff;
+  color: #0f0f11;
+  font-family: 'Mont';
+}
+
+select:focus {
+  outline: none;
+  border-color: #6b38d0;
+  box-shadow: 0 0 0 2px rgba(0, 119, 204, 0.2);
+}
+
+select option:checked {
+  background-color: #6b38d0;
+  color: #fff;
+}
+
+.phones-cards {
+  display: grid;
+  margin: 16px auto;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 272px);
+  gap: 40px 16px;
+}

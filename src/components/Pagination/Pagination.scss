@@ -1,0 +1,83 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 26px 0;
+
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-right: 10px;
+
+      button {
+        font-family: 'Mont', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        display: block;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        color: #0f0f11;
+        text-decoration: none;
+        border: 1px solid #e2e6e9;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background: #0f0f11;
+          color: #ffffff;
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+
+      a {
+        font-family: 'Mont', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        display: block;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        color: #0f0f11;
+        text-decoration: none;
+        border: 1px solid #e2e6e9;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+
+        &.active,
+        &:hover {
+          background: #0f0f11;
+          color: #ffffff;
+        }
+      }
+
+      &:first-child button {
+        margin-right: 10px;
+      }
+
+      &:last-child button {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.ellipse {
+  height: 4px;
+  width: 4px;
+  background-color: #0f0f11;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 3px;
+}
