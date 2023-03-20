@@ -7,7 +7,6 @@ import closer from '../../images/closer.svg';
 import { LinkList } from './LinkList';
 import { SideIcons } from './SideIcons';
 import { BurgerList } from './BurgerList';
-import classNames from 'classnames';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
