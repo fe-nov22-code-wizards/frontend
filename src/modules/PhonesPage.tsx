@@ -15,7 +15,7 @@ export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(71);
+  const [postsPerPage] = useState(16);
   const sort = searchParams.get('sort') || '';
   const perPage = searchParams.get('perPage') || '';
 
