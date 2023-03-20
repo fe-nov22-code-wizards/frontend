@@ -1,11 +1,10 @@
 {
   "files": {
-    "main.css": "/frontend/static/css/main.4b3025f0.css",
-    "main.js": "/frontend/static/js/main.940c0fe2.js",
+    "main.css": "/frontend/static/css/main.30af5957.css",
+    "main.js": "/frontend/static/js/main.74e88c2e.js",
     "static/media/bannerslider-tablet.svg": "/frontend/static/media/bannerslider-tablet.bbbb6f9c295f13cb0372.svg",
     "static/media/bannerslider-desktop.svg": "/frontend/static/media/bannerslider-desktop.19e658112abfd43acf9c.svg",
     "static/media/bannerslider-mobile.svg": "/frontend/static/media/bannerslider-mobile.88a4f1480a819a019e49.svg",
-    "static/media/iphone14pro.svg": "/frontend/static/media/iphone14pro.fcb910c76517ccdd241ce4d6a70bd761.svg",
     "static/media/logo.svg": "/frontend/static/media/logo.c6f2f3eda1b32d5740ad62b825eab096.svg",
     "static/media/Mont-Regular.ttf": "/frontend/static/media/Mont-Regular.e797167c18f9897bb607.ttf",
     "static/media/Mont-SemiBold.ttf": "/frontend/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
@@ -19,18 +18,18 @@
     "static/media/heart.svg": "/frontend/static/media/heart.5798df4d50cb8a9d58a723cad5fbfe00.svg",
     "static/media/slick.woff": "/frontend/static/media/slick.295183786cd8a1389865.woff",
     "static/media/home.svg": "/frontend/static/media/home.9a24a70540404ccecd05.svg",
-    "static/media/closer.svg": "/frontend/static/media/closer.176fe32f46d4c434659ecf8f66be17e6.svg",
     "index.html": "/frontend/index.html",
+    "static/media/closer.svg": "/frontend/static/media/closer.176fe32f46d4c434659ecf8f66be17e6.svg",
     "static/media/burger.svg": "/frontend/static/media/burger.3f3c3f2fcc2d0b60dfa752fd3c1cab9c.svg",
     "static/media/bannerslider-arrow-next.svg": "/frontend/static/media/bannerslider-arrow-next.becf9c928cb127ddb616.svg",
     "static/media/Vector.svg": "/frontend/static/media/Vector.15972dbf9b01c331c56443cc760a80c4.svg",
     "static/media/arrow-right.svg": "/frontend/static/media/arrow-right.e028d3889646e0b5e56cf54f47bb701a.svg",
     "static/media/bannerslider-arrow-prev.svg": "/frontend/static/media/bannerslider-arrow-prev.b18d031caaaea7e6e0c8.svg",
-    "main.4b3025f0.css.map": "/frontend/static/css/main.4b3025f0.css.map",
-    "main.940c0fe2.js.map": "/frontend/static/js/main.940c0fe2.js.map"
+    "main.30af5957.css.map": "/frontend/static/css/main.30af5957.css.map",
+    "main.74e88c2e.js.map": "/frontend/static/js/main.74e88c2e.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b3025f0.css",
-    "static/js/main.940c0fe2.js"
+    "static/css/main.30af5957.css",
+    "static/js/main.74e88c2e.js"
   ]
 }
