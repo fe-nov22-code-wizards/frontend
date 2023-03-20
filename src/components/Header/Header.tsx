@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 import logo from '../../images/logo.svg';
@@ -29,12 +29,16 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleShowMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const handleShowMenu = useCallback(() => {
+    setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
+  }, [setIsMenuOpen]);
+
+  const handleCloseMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, [setIsMenuOpen]);
 
   return (
-    <div className={classNames('header', { burger__isOpen: isMenuOpen })}>
+    <div className={classNames('header')}>
       <header className="head">
         <Link to="/" className="head__link">
           <img className="head__logo" src={logo} alt="NICE GADGETS logo" />
@@ -60,7 +64,7 @@ export const Header: React.FC = () => {
         </div>
       </header>
 
-      {isMenuOpen && <BurgerList />}
+      <BurgerList handleCloseMenu={handleCloseMenu} isMenuOpen={isMenuOpen} />
     </div>
   );
 };

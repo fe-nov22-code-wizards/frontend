@@ -1,7 +1,7 @@
 @import '../../_utils/mixins';
 
 .header {
-  border-bottom: 1px solid #ddd;
+  position: relative;
 }
 
 .head {
@@ -170,7 +170,20 @@
   &__isOpen {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: calc(100vh - 49px);
+    width: 100%;
+    background-color: #fff;
+  }
+
+  &__slideOut {
+    position: absolute;
+    transform: translateY(calc((-49px) - (100%)));
+    transition: transform 0.3s linear;
+  }
+
+  &__slideIn {
+    transform: translateY(0%);
+    transition: transform 0.3s linear;
   }
 
   &__list {
