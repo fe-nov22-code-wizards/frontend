@@ -9,13 +9,14 @@ import { PageNotFound } from './PageNotFound';
 import { getAllPhones } from '../api/getAllPhones';
 import { Loader } from '../components/Loader';
 import { Pagination } from '../components/Pagination';
+import { getPreparedPhones } from '../helpers/getPreparedPhones';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(0);
+  const [postsPerPage, setPostsPerPage] = useState(16);
   const sort = searchParams.get('sort') || '';
   const perPage = searchParams.get('perPage') || '';
 
@@ -54,19 +55,26 @@ export const PhonesPage: React.FC = () => {
   };
 
   const onPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    if (!event.target.value) {
+      setCurrentPage(1);
+      updateSearch({ page: null });
+    }
+
     setPostsPerPage(+event.target.value || phones.length);
     updateSearch({ perPage: event.target.value || null });
   };
 
+  const visiblePhones = getPreparedPhones(phones, sort);
+
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPhones = phones.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPhones = visiblePhones.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
 
     updateSearch({
-      page: pageNumber === 1 ? null : pageNumber.toString(),
+      page: pageNumber === 1 ? null : String(pageNumber),
     });
   };
 
