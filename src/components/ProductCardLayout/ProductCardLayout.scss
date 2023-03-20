@@ -12,6 +12,10 @@
 }
 
 .product__image {
+  align-self: center;
+  height: 196px;
+  object-fit: contain;
+  width: 206px;
   margin-bottom: 16px;
 }
 
