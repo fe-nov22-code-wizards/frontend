@@ -163,7 +163,9 @@ export const PhonesPage: React.FC = () => {
         <Loader />
       ) : (
         <div className="phones-cards">
-          <ProductCardLayout phones={currentPhones} />
+          {currentPhones.map((phone) => (
+            <ProductCardLayout phone={phone} key={phone.id} />
+          ))}
         </div>
       )}
 

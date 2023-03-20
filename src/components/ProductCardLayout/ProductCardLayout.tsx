@@ -1,48 +1,92 @@
 import React from 'react';
+import { useState } from 'react';
 import './ProductCardLayout.scss';
-// import productPhoto from '../../images/iphone14pro.svg';
-import '../Grid/Grid.scss';
+import { ReactComponent as Favorite } from '../../images/favorite.svg';
+// eslint-disable-next-line
+import { ReactComponent as FavoriteYellow } from '../../images/favorite-yellow.svg';
 import { Phone } from '../../types/Phone';
 
 type Props = {
-  phones: Phone[];
+  phone: Phone;
 };
 
-const BASE_URL = 'https://api-gwis.onrender.com';
+const BASE_URL = 'https://api-gwis.onrender.com/';
 
-export const ProductCardLayout: React.FC<Props> = ({ phones }) => {
+export const ProductCardLayout: React.FC<Props> = ({ phone }) => {
+  const { image, name, fullPrice, price, screen, capacity, ram } = phone;
+  const [isAdded, setIsAdded] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleClickAdded = (): void => {
+    setIsAdded(!isAdded);
+  };
+
+  const handleClickLiked = (): void => {
+    setIsLiked(!isLiked);
+  };
+
   return (
-    <>
-      {phones.map((phone) => {
-        const { id, name, price, screen, capacity, ram, image } = phone;
+    <div className="product-card container__width">
+      <img
+        src={`${BASE_URL}/${image}`}
+        className="product-card__image"
+        alt={name}
+      />
+      <h1 className="product-card__title">{name}</h1>
 
-        return (
-          <div key={id} className="product-card">
-            <img src={`${BASE_URL}/${image}`} className="product__image" />
-            <h3 className="product__title">{name}</h3>
-            <p className="product__price">{`$${price}`}</p>
-            <div className="product__divider"></div>
-            <div className="product__info">
-              <div className="info__wrapper">
-                <p className="info__name">Screen</p>
-                <p className="info__survey">{screen}</p>
-              </div>
-              <div className="info__wrapper">
-                <p className="info__name">Capacity</p>
-                <p className="info__survey">{capacity}</p>
-              </div>
-              <div className="info__wrapper">
-                <p className="info__name">RAM</p>
-                <p className="info__survey">{ram}</p>
-              </div>
-            </div>
-            <div className="product__action">
-              <button className="action__cart">Add to cart</button>
-              <div className="action__favorite"></div>
-            </div>
-          </div>
-        );
-      })}
-    </>
+      <div className="product-card__price-container">
+        <p className="product-card__price">${price}</p>
+        <p className="product-card__price--crossed">${fullPrice}</p>
+      </div>
+      <hr className="product-card__divider" />
+
+      <div className="product-card__details-container">
+        <div className="product-card__details">
+          <p className="product-card__details__title">Screen</p>
+          <p>{screen}</p>
+        </div>
+
+        <div className="product-card__details">
+          <p className="product-card__details__title">Capacity</p>
+          <p>{capacity}</p>
+        </div>
+
+        <div className="product-card__details">
+          <p className="product-card__details__title">RAM</p>
+          <p>{ram}</p>
+        </div>
+      </div>
+
+      <div className="product-card__button-container">
+        {isAdded ? (
+          <button
+            type="button"
+            className="
+              product-card__button--added
+              product-card__button
+              "
+            onClick={handleClickAdded}
+          >
+            Added
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="product-card__button"
+            onClick={handleClickAdded}
+          >
+            Add to cart
+          </button>
+        )}
+
+        <button
+          type="button"
+          className="product-card__button-favorite"
+          onClick={handleClickLiked}
+        >
+          {isLiked ? <FavoriteYellow /> : <Favorite />}
+        </button>
+      </div>
+    </div>
   );
 };
