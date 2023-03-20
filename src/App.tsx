@@ -6,7 +6,9 @@ import { Header } from './components/Header';
 import './App';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { PhonesPage } from './modules/PhonesPage';
+import { CartPage } from './modules/CartPage';
 import { HomePage } from './modules/HomePage';
+
 
 export const App: React.FC = () => {
   return (
@@ -29,7 +31,7 @@ export const App: React.FC = () => {
 
         <Route path="favourites" element={<h1>Favourites Page</h1>} />
 
-        <Route path="cart" element={<h1>Cart</h1>} />
+        <Route path="cart" element={<CartPage />} />
 
         <Route path="/home" element={<Navigate to="/" replace />} />
       </Routes>
