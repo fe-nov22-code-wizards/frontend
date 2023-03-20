@@ -1,6 +1,6 @@
 import React from 'react';
 import './PageNotFound.scss';
-import '../Grid/grid.scss';
+import '../Grid/Grid.scss';
 
 export const PageNotFound = () => {
   return (

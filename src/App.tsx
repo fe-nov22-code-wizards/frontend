@@ -1,5 +1,5 @@
 import React from 'react';
-import './components/Grid/grid.scss';
+import './components/Grid/Grid.scss';
 import { PageNotFound } from './components/PageNotFound';
 import { ProductCardLayout } from './components/ProductCardLayout';
 
