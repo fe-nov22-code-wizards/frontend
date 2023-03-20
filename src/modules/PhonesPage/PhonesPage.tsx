@@ -163,7 +163,9 @@ export const PhonesPage: React.FC = () => {
         <Loader />
       ) : (
         <div className="phones-cards">
-          <ProductCardLayout phones={currentPhones} />
+          {currentPhones.map((phone) => (
+            <ProductCardLayout phone={phone} key={phone.id} />
+          ))}
         </div>
       )}
 
@@ -172,7 +174,6 @@ export const PhonesPage: React.FC = () => {
         totalPosts={phones.length}
         paginate={paginate}
         currentPage={currentPage}
-        isLoading={isLoading}
         prevPage={prevPage}
         nextPage={nextPage}
       />

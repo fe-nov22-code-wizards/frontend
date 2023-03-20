@@ -1,92 +1,171 @@
 @import url('../../reset.scss');
 @import url('../../index.scss');
 
-.product-card {
-  max-width: 272px;
-  display: flex;
-  flex-direction: column;
-  padding: 32px;
-  border: 1px solid #e2e6e9;
-  border-radius: 8px;
-  gap: 8px;
+@font-face {
+  font-family: 'Mont';
+  src: url('../../fonts/Mont-Regular.ttf') format('opentype');
 }
 
-.product__image {
-  align-self: center;
-  height: 196px;
-  object-fit: contain;
-  width: 206px;
-  margin-bottom: 16px;
+@font-face {
+  font-family: 'Mont';
+  src: url('../../fonts/Mont-SemiBold.ttf') format('opentype');
+  font-weight: 700;
 }
 
-.product__title {
-  font-size: 14px;
-  line-height: 21px;
-  font-weight: 600;
-  display: flex;
-  height: 42px;
-}
-
-.product__price {
-  position: relative;
-  font-size: 22px;
+@font-face {
+  font-family: 'Mont';
+  src: url('../../fonts/Mont-Bold.ttf') format('opentype');
   font-weight: 800;
 }
 
-.product__divider {
-  position: relative;
-  width: 100%;
-  border-bottom: 1px solid #e2e6e9;
-  margin-bottom: 8px;
+$primary-c: #4219d0;
+$secondary-c: #89939a;
+$green-c: #27ae60;
+$red-c: #eb5757;
+$elements-c: #e2e6e9;
+
+.container__width {
+  width: 272px;
+  border: #89939a;
+  box-sizing: border-box;
 }
 
-.info__wrapper {
+.product-card {
+  font-family: 'Mont', Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  border: 1px solid #f3f3f3;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
 
-.info__name {
-  font-weight: 600;
-  font-size: 12px;
-  color: #89939a;
-}
+  &__image {
+    height: 208px;
+    margin-bottom: 24px;
+    transition: transform 0.4s;
 
-.info__survey {
-  font-weight: 700;
-  font-size: 12px;
-  color: #0f0f11;
-}
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 
-.product__action {
-  display: flex;
-  justify-content: space-between;
-}
+  &__title {
+    height: 35px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 12px;
+    align-self: start;
+  }
 
-.action__cart {
-  cursor: pointer;
-  width: 160px;
-  font-size: 16px;
-  line-height: 21px;
-  font-weight: 700;
-  background: #4219d0;
-  border-radius: 48px;
-  color: #fff;
-}
+  &__price-container {
+    display: flex;
+    align-self: start;
+    width: 100%;
+    align-items: center;
 
-.action__cart:hover {
-  box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
-  transition: all 0.4s;
-}
+    margin-bottom: 8px;
+  }
 
-.action__favorite {
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  background-image: url(../../images/addtocart.svg);
-}
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
 
-.action__favorite:hover {
-  background-image: url(../../images/addtocart-hover.svg);
-  transition: all 0.5s;
+    &--crossed {
+      margin-left: 8px;
+      text-decoration-line: line-through;
+      font-size: 22px;
+      font-weight: 700;
+      color: $secondary-c;
+    }
+  }
+
+  &__divider {
+    border: none;
+    background-color: $elements-c;
+
+    display: block;
+    height: 1px;
+    width: 100%;
+  }
+
+  &__details-container {
+    width: 100%;
+    margin: 16px 0;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    margin-bottom: 8px;
+
+    &__title {
+      color: $secondary-c;
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__button-container {
+    display: flex;
+    width: 100%;
+  }
+
+  &__button {
+    flex-grow: 1;
+    height: 40px;
+    background-color: $primary-c;
+    border: 1px solid $primary-c;
+    border-radius: 48px;
+    cursor: pointer;
+
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration: none;
+
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+      transition: background-color 0.3s ease;
+    }
+
+    &--added {
+      flex-grow: 1;
+      color: $green-c;
+      background-color: white;
+      border: 1px solid #e2e6e9;
+
+      &:hover {
+        color: $green-c;
+        border: 1px solid #e2e6e9;
+      }
+    }
+  }
+
+  &__button-favorite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    background-color: #fff;
+    border: 1px solid $elements-c;
+    border-radius: 48px;
+    margin-left: 8px;
+
+    &:hover {
+      background-color: white;
+      border: 1px solid $primary-c;
+      box-shadow: rgba(184, 187, 190, 0.1) 0px 4px 5px;
+      transition: background-color 0.3s ease;
+    }
+  }
 }

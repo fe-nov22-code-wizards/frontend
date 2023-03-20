@@ -40,7 +40,9 @@ export const FavouritesPage: React.FC = () => {
       <p className="text__item">{`${firstFive.length} models`}</p>
 
       <div className="phones-cards">
-        <ProductCardLayout phones={firstFive} />
+        {phones.map((phone) => (
+          <ProductCardLayout phone={phone} key={phone.id} />
+        ))}
       </div>
     </div>
   );
