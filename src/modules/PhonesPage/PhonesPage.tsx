@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { ProductCardLayout } from '../components/ProductCardLayout';
+import { ProductCardLayout } from '../../components/ProductCardLayout';
 import './PhonesPage.scss';
-import '../components/Grid/Grid.scss';
-import arrowRight from '../images/arrow-right.svg';
+import '../../components/Grid/Grid.scss';
+import arrowRight from '../../images/arrow-right.svg';
 import { Link, useSearchParams } from 'react-router-dom';
-import { Phone } from '../types/Phone';
-import { PageNotFound } from './PageNotFound';
-import { getAllPhones } from '../api/getAllPhones';
-import { Loader } from '../components/Loader';
-import { Pagination } from '../components/Pagination';
-import { getPreparedPhones } from '../helpers/getPreparedPhones';
+import { Phone } from '../../types/Phone';
+import { PageNotFound } from '../PageNotFound';
+import { getAllPhones } from '../../api/getAllPhones';
+import { Loader } from '../../components/Loader';
+import { Pagination } from '../../components/Pagination';
+import { getPreparedPhones } from '../../helpers/getPreparedPhones';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();

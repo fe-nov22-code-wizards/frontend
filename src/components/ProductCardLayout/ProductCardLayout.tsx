@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import './ProductCardLayout.scss';
+import '../Grid/Grid.scss';
 import { ReactComponent as Favorite } from '../../images/favorite.svg';
 // eslint-disable-next-line
 import { ReactComponent as FavoriteYellow } from '../../images/favorite-yellow.svg';
