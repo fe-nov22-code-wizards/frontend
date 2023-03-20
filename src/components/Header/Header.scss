@@ -2,16 +2,16 @@
 
 .header {
   position: relative;
+  border-bottom: 1px solid #ddd;
 }
 
 .head {
+  z-index: 5;
   position: sticky;
-  z-index: 1;
   top: 0;
   display: flex;
   background-color: #fff;
   box-sizing: border-box;
-  border-bottom: 1px solid #ddd;
 
   @include onTablet {
     max-width: 1440px;
@@ -168,6 +168,8 @@
   cursor: pointer;
 
   &__isOpen {
+    z-index: 1;
+    position: relative;
     display: flex;
     flex-direction: column;
     height: calc(100vh - 49px);
@@ -177,7 +179,7 @@
 
   &__slideOut {
     position: absolute;
-    transform: translateY(calc((-49px) - (100%)));
+    transform: translateY(-120%);
     transition: transform 0.3s linear;
   }
 

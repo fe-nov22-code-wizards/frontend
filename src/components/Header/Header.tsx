@@ -38,7 +38,7 @@ export const Header: React.FC = () => {
   }, [setIsMenuOpen]);
 
   return (
-    <div className={classNames('header')}>
+    <div className="header">
       <header className="head">
         <Link to="/" className="head__link">
           <img className="head__logo" src={logo} alt="NICE GADGETS logo" />
