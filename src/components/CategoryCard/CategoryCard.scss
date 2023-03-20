@@ -1,0 +1,78 @@
+@import '../../_utils/mixins';
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include onTablet {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+  &_image-link {
+    width: 287px;
+    height: 287px;
+    background-color: #89939A;
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 24px;
+
+    @include onTablet {
+      width: 187px;
+      height: 187px;
+    }
+
+    @include onDesktop {
+      width: 368px;
+      height: 368px;
+    }
+  }
+
+  &_image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+    object-position: 0 5px;
+    border-radius: 0 0 8px;
+
+    @include onTablet {
+      object-position: 0 7px;
+    }
+
+    @include onDesktop {
+      object-position: 0 10px;
+    }
+  }
+
+  &_title-link {
+    margin-bottom: 4px;
+    color: #0F0F11;
+    text-decoration: none;
+  }
+
+  &_subtitle {
+    font-family: 'Mont', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939A;
+  }
+}
+
+.card-1 {
+  background: #6D6474;
+}
+
+.card-2 {
+  background: #8D8D92;
+}
+
+.card-3 {
+  background: #973D5F;
+}
