@@ -5,9 +5,10 @@ import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import './App';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { PhonesPage } from './modules/PhonesPage';
+import { PhonesPage } from './modules/PhonesPage/PhonesPage';
 import { CartPage } from './modules/CartPage';
 import { HomePage } from './modules/HomePage';
+import { FavouritesPage } from './modules/FavouritesPage';
 
 export const App: React.FC = () => {
   return (
@@ -28,7 +29,7 @@ export const App: React.FC = () => {
 
         <Route path="accessories" element={<h1>Accessories Page</h1>} />
 
-        <Route path="favourites" element={<h1>Favourites Page</h1>} />
+        <Route path="favourites" element={<FavouritesPage />} />
 
         <Route path="cart" element={<CartPage />} />
 

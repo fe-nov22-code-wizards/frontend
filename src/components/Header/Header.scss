@@ -1,7 +1,5 @@
 @import '../../_utils/mixins';
-
 .header {
-  position: relative;
   border-bottom: 1px solid #ddd;
 }
 
@@ -12,11 +10,14 @@
   display: flex;
   background-color: #fff;
   box-sizing: border-box;
+  max-width: 1440px;
+  margin: 0 auto;
 
   @include onTablet {
     max-width: 1440px;
     margin: 0 auto;
   }
+
 
   &__link {
     display: flex;
@@ -168,8 +169,6 @@
   cursor: pointer;
 
   &__isOpen {
-    z-index: 1;
-    position: relative;
     display: flex;
     flex-direction: column;
     height: calc(100vh - 49px);

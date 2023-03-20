@@ -5,7 +5,7 @@ type Props = {
   navListClass: string;
   navItemClass: string;
   navLinkClass: string;
-  handleCloseMenu?: () => void;
+  handleCloseMenu?: (e: React.MouseEvent) => void;
 };
 
 export const LinkList: React.FC<Props> = ({
@@ -14,23 +14,23 @@ export const LinkList: React.FC<Props> = ({
   navLinkClass,
   handleCloseMenu,
 }) => (
-  <ul className={navListClass} onClick={handleCloseMenu}>
-    <li className={navItemClass}>
+  <ul className={navListClass}>
+    <li className={navItemClass} onClick={handleCloseMenu}>
       <PageNavLink type={navLinkClass} to="/">
         Home
       </PageNavLink>
     </li>
-    <li className={navItemClass}>
+    <li className={navItemClass} onClick={handleCloseMenu}>
       <PageNavLink type={navLinkClass} to="/phones">
         Phones
       </PageNavLink>
     </li>
-    <li className={navItemClass}>
+    <li className={navItemClass} onClick={handleCloseMenu}>
       <PageNavLink type={navLinkClass} to="/tablets">
         Tablets
       </PageNavLink>
     </li>
-    <li className={navItemClass}>
+    <li className={navItemClass} onClick={handleCloseMenu}>
       <PageNavLink type={navLinkClass} to="/accessories">
         Accessories
       </PageNavLink>

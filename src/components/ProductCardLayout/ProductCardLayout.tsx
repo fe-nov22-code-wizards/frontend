@@ -1,6 +1,5 @@
 import React from 'react';
 import './ProductCardLayout.scss';
-// import productPhoto from '../../images/iphone14pro.svg';
 import '../Grid/Grid.scss';
 import { Phone } from '../../types/Phone';
 
