@@ -9,7 +9,6 @@ import { PhonesPage } from './modules/PhonesPage';
 import { CartPage } from './modules/CartPage';
 import { HomePage } from './modules/HomePage';
 
-
 export const App: React.FC = () => {
   return (
     <>

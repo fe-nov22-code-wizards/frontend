@@ -15,7 +15,7 @@ export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(16);
+  const [postsPerPage, setPostsPerPage] = useState(0);
   const sort = searchParams.get('sort') || '';
   const perPage = searchParams.get('perPage') || '';
 
@@ -27,6 +27,7 @@ export const PhonesPage: React.FC = () => {
         const res = await getAllPhones();
 
         setPhones(res);
+        setPostsPerPage(res.length);
       } catch (error) {
         <PageNotFound />;
       } finally {
@@ -53,6 +54,7 @@ export const PhonesPage: React.FC = () => {
   };
 
   const onPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setPostsPerPage(+event.target.value || phones.length);
     updateSearch({ perPage: event.target.value || null });
   };
 
@@ -62,7 +64,10 @@ export const PhonesPage: React.FC = () => {
 
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    window.history.pushState(null, '', `?page=${pageNumber}`);
+
+    updateSearch({
+      page: pageNumber === 1 ? null : pageNumber.toString(),
+    });
   };
 
   const prevPage = () => {
