@@ -44,6 +44,7 @@ export const HomePage: React.FC = () => {
               img={category.img}
               path={category.path}
               key={category.id}
+              id={category.id}
             />
           ))}
         </div>
