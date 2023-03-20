@@ -5,8 +5,9 @@ import { ReactComponent as Heart } from '../../images/heart.svg';
 import { ReactComponent as HeartYellow } from '../../images/heart-yellow.svg';
 
 const phone = {
-  // eslint-disable-next-line
-  image: 'https://fe-nov22-shd.github.io/image-storage/apple-iphone-11-pro-max/midnightgreen/00.jpg',
+  image:
+    // eslint-disable-next-line
+    'https://fe-nov22-shd.github.io/image-storage/apple-iphone-11-pro-max/midnightgreen/00.jpg',
   title: 'Apple iPhone Xs 64GB Silver (iMT9G2FS/A)',
   price: 899,
   priceWithdiscount: 799,
@@ -17,7 +18,8 @@ const phone = {
 
 export const ProductCardLayout = () => {
   // eslint-disable-next-line
-  const { image, title, price, priceWithdiscount, screen, capacity, ram } = phone;
+  const { image, title, price, priceWithdiscount, screen, capacity, ram } =
+    phone;
   const [isAdded, setIsAdded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 

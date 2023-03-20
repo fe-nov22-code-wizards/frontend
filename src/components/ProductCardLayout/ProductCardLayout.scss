@@ -2,36 +2,36 @@
 @import url('../../index.scss');
 
 @font-face {
-  font-family: "Mont";
-  src: url("../../fonts/Mont-Regular.ttf") format("opentype"),
- }
+  font-family: 'Mont';
+  src: url('../../fonts/Mont-Regular.ttf') format('opentype');
+}
 
- @font-face {
-  font-family: "Mont";
-  src: url("../../fonts/Mont-SemiBold.ttf") format("opentype");
+@font-face {
+  font-family: 'Mont';
+  src: url('../../fonts/Mont-SemiBold.ttf') format('opentype');
   font-weight: 700;
- }
+}
 
- @font-face {
-  font-family: "Mont";
-  src: url("../../fonts/Mont-Bold.ttf") format("opentype");
+@font-face {
+  font-family: 'Mont';
+  src: url('../../fonts/Mont-Bold.ttf') format('opentype');
   font-weight: 800;
- }
+}
 
- $primary-c: #4219D0;;
- $secondary-c: #89939a;
- $green-c: #27ae60;
- $red-c: #eb5757;
- $elements-c: #e2e6e9;
+$primary-c: #4219d0;
+$secondary-c: #89939a;
+$green-c: #27ae60;
+$red-c: #eb5757;
+$elements-c: #e2e6e9;
 
- .container__width {
+.container__width {
   width: 272px;
   border: #89939a;
   box-sizing: border-box;
 }
 
 .product-card {
-  font-family: "Mont", Arial, Helvetica, sans-serif;
+  font-family: 'Mont', Arial, Helvetica, sans-serif;
   box-sizing: border-box;
   border: 1px solid #f3f3f3;
 
@@ -42,8 +42,8 @@
 
   &__image {
     height: 208px;
-    margin-bottom:  24px;
-    transition: transform .4s;
+    margin-bottom: 24px;
+    transition: transform 0.4s;
 
     &:hover {
       transform: scale(1.1);
@@ -62,7 +62,7 @@
     align-self: start;
     width: 100%;
 
-    margin-bottom:  8px;
+    margin-bottom: 8px;
   }
 
   &__price {
@@ -91,7 +91,6 @@
   &__details-container {
     width: 100%;
     margin: 16px 0;
-
   }
 
   &__details {
@@ -115,29 +114,29 @@
   }
 
   &__button-container {
-    display: flex;;
+    display: flex;
     width: 100%;
   }
 
   &__button {
-  flex-grow: 1;
+    flex-grow: 1;
 
-  height: 40px;
-  background-color: $primary-c;
-  border: 1px solid $primary-c;
-  border-radius: 48px;
-  cursor: pointer;
+    height: 40px;
+    background-color: $primary-c;
+    border: 1px solid $primary-c;
+    border-radius: 48px;
+    cursor: pointer;
 
-  color: #fff;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
-  text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration: none;
 
-  &:hover {
-    box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
-    transition: background-color .3s ease;
-  }
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+      transition: background-color 0.3s ease;
+    }
 
     &--added {
       flex-grow: 1;
@@ -170,7 +169,7 @@
       background-color: white;
       border: 1px solid $primary-c;
       box-shadow: rgba(184, 187, 190, 0.1) 0px 4px 5px;
-      transition: background-color .3s ease;
+      transition: background-color 0.3s ease;
     }
   }
 }
