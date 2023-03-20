@@ -34,7 +34,6 @@ $elements-c: #e2e6e9;
   font-family: 'Mont', Arial, Helvetica, sans-serif;
   box-sizing: border-box;
   border: 1px solid #f3f3f3;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,7 +63,7 @@ $elements-c: #e2e6e9;
     align-self: start;
     width: 100%;
     align-items: center;
-    
+
     margin-bottom: 8px;
   }
 
@@ -99,12 +98,10 @@ $elements-c: #e2e6e9;
   &__details {
     display: flex;
     justify-content: space-between;
-
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
     text-align: right;
-
     margin-bottom: 8px;
 
     &__title {
@@ -123,7 +120,6 @@ $elements-c: #e2e6e9;
 
   &__button {
     flex-grow: 1;
-
     height: 40px;
     background-color: $primary-c;
     border: 1px solid $primary-c;
@@ -158,14 +154,11 @@ $elements-c: #e2e6e9;
     display: flex;
     justify-content: center;
     align-items: center;
-
     height: 40px;
     width: 40px;
-
     background-color: #fff;
     border: 1px solid $elements-c;
     border-radius: 48px;
-
     margin-left: 8px;
 
     &:hover {
