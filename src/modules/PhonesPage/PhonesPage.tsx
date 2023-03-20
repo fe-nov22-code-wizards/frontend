@@ -39,6 +39,25 @@ export const PhonesPage: React.FC = () => {
     fetchPosts();
   }, []);
 
+  const cart: Phone[] = JSON.parse(window.localStorage.getItem('cart') || '');
+
+  const [cartPhones, setCartPhones] = useState<Phone[]>(cart);
+  const handleOnAddToCart = (phone: Phone) => {
+    const cartPhonesId = cartPhones.map((phoneCart) => phoneCart.phoneId);
+
+    if (!cartPhonesId.includes(phone.phoneId)) {
+      setCartPhones((previousCartPhones) => [...previousCartPhones, phone]);
+    } else {
+      setCartPhones((previousCartPhones) =>
+        previousCartPhones.filter(
+          (cartPhone: Phone) => cartPhone.phoneId !== phone.phoneId,
+        ),
+      );
+    }
+  };
+
+  window.localStorage.setItem('cart', JSON.stringify(cartPhones));
+
   const updateSearch = (params: { [key: string]: string | null }) => {
     Object.entries(params).forEach(([key, value]) => {
       if (value === null) {
@@ -163,9 +182,20 @@ export const PhonesPage: React.FC = () => {
         <Loader />
       ) : (
         <div className="phones-cards">
-          {currentPhones.map((phone) => (
-            <ProductCardLayout phone={phone} key={phone.id} />
-          ))}
+          {currentPhones.map((phone) => {
+            const isInCart = cartPhones
+              .map((phonesInCart) => phonesInCart.phoneId)
+              .includes(phone.phoneId);
+
+            return (
+              <ProductCardLayout
+                phone={phone}
+                key={phone.id}
+                handleOnAddToCart={handleOnAddToCart}
+                isInCart={isInCart}
+              />
+            );
+          })}
         </div>
       )}
 

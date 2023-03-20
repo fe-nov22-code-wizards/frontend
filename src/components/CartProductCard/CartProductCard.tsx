@@ -1,14 +1,61 @@
-import React from 'react';
-import productPhoto from '../../images/iphone14pro.svg';
+import React, { useState } from 'react';
 import minus from '../../images/minus.svg';
 import plus from '../../images/plus.svg';
+import { Phone, PhoneWithQuantity } from '../../types/Phone';
 import './CartProductCard.scss';
 
-export const CartProductCard: React.FC = () => {
+const BASE_URL = 'https://api-gwis.onrender.com';
+
+type Props = {
+  phone: PhoneWithQuantity;
+  handleDeleteFromCart: (phoneToDelete: Phone) => void;
+  handleAddToTotalPrice: (price: number) => void;
+  handleMinusTotalPrice: (price: number) => void;
+  handleAddToTotalQuantity: () => void;
+  handleMinusTotalQuantity: () => void;
+};
+
+export const CartProductCard: React.FC<Props> = ({
+  phone,
+  handleDeleteFromCart,
+  handleAddToTotalPrice,
+  handleMinusTotalPrice,
+  handleAddToTotalQuantity,
+  handleMinusTotalQuantity,
+}) => {
+  window.localStorage.setItem(`quantity${phone.phoneId}`, '1');
+
+  const quantitFromLocalStorage =
+    window.localStorage.getItem(`quantity${phone.phoneId}`) || '';
+  const [quantity, setQuantity] = useState(+quantitFromLocalStorage);
+
+  const handleMinusQuantity = () => {
+    if (+quantity === 1) {
+      handleDeleteFromCart(phone);
+
+      return;
+    }
+
+    setQuantity((prevQuantity: number) => prevQuantity - 1);
+    window.localStorage.setItem(`quantity${phone.phoneId}`, `${quantity}`);
+    handleMinusTotalPrice(+phone.price);
+    handleMinusTotalQuantity();
+  };
+
+  const handlePlusQuantity = () => {
+    setQuantity((prevQuantity: number) => prevQuantity + 1);
+    window.localStorage.setItem(`quantity${phone.phoneId}`, `${quantity}`);
+    handleAddToTotalPrice(+phone.price);
+    handleAddToTotalQuantity();
+  };
+
   return (
     <div className="cart_card grid__item--desktop-1-16">
       <div className="cart_card-info">
-        <button className="cart_card-btn-delete">
+        <button
+          className="cart_card-btn-delete"
+          onClick={() => handleDeleteFromCart(phone)}
+        >
           <svg
             width="10"
             height="10"
@@ -27,30 +74,34 @@ export const CartProductCard: React.FC = () => {
           </svg>
         </button>
         <img
-          src={productPhoto}
+          src={`${BASE_URL}/${phone.image}`}
           alt="Phone photo"
           className="cart_card-product-photo"
         />
-        <p className="cart_card-product-title">
-          Apple iPhone 14 Pro 128GB Silver (MQ023)
-        </p>
+        <p className="cart_card-product-title">{phone.name}</p>
       </div>
 
       <div className="cart_options-wrapper">
         <div className="cart_options">
-          <button className="cart_card-btn-options">
+          <button
+            className="cart_card-btn-options"
+            onClick={handleMinusQuantity}
+          >
             <img
               src={minus}
               alt="Minus an item from cart"
               className="cart_card-btn-options-icon"
             />
           </button>
-          <p className="cart_card-options-info">1</p>
-          <button className="cart_card-btn-options">
+          <p className="cart_card-options-info">{quantity}</p>
+          <button
+            className="cart_card-btn-options"
+            onClick={handlePlusQuantity}
+          >
             <img src={plus} alt="Plus an item from cart" />
           </button>
         </div>
-        <p className="cart_card-price">$999</p>
+        <p className="cart_card-price">${phone.price}</p>
       </div>
     </div>
   );

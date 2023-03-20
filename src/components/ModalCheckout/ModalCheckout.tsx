@@ -5,9 +5,13 @@ import './ModalCheckout.scss';
 
 type Props = {
   handleCloseModal: () => void;
+  handleClearCart: () => void;
 };
 
-export const ModalCheckout: React.FC<Props> = ({ handleCloseModal }) => {
+export const ModalCheckout: React.FC<Props> = ({
+  handleCloseModal,
+  handleClearCart,
+}) => {
   return (
     <div className="modal">
       <div className="modal_wrapper">
@@ -37,7 +41,9 @@ export const ModalCheckout: React.FC<Props> = ({ handleCloseModal }) => {
           <Link to={'/'} className="modal_btn">
             Go back home
           </Link>
-          <button className="modal_btn">Clear cart</button>
+          <button className="modal_btn" onClick={handleClearCart}>
+            Clear cart
+          </button>
         </div>
       </div>
     </div>

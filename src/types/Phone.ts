@@ -1,4 +1,4 @@
-export type Phone = {
+export interface Phone {
   id: number;
   category: string;
   phoneId: string;
@@ -12,4 +12,8 @@ export type Phone = {
   ram: string;
   year: number;
   image: string;
-};
+}
+
+export interface PhoneWithQuantity extends Phone {
+  quantity: number;
+}
