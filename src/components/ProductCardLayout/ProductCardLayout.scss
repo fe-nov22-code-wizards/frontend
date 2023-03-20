@@ -2,7 +2,7 @@
 @import url('../../index.scss');
 
 .product-card {
-  max-width: 208px;
+  max-width: 272px;
   display: flex;
   flex-direction: column;
   padding: 32px;
@@ -12,6 +12,10 @@
 }
 
 .product__image {
+  align-self: center;
+  height: 196px;
+  object-fit: contain;
+  width: 206px;
   margin-bottom: 16px;
 }
 
@@ -20,6 +24,7 @@
   line-height: 21px;
   font-weight: 600;
   display: flex;
+  height: 42px;
 }
 
 .product__price {

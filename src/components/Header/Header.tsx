@@ -1,51 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 import logo from '../../images/logo.svg';
-import heart from '../../images/heart.svg';
-import cart from '../../images/cart.svg';
-import { PageNavLink } from './PageNavLink';
-import '../Grid/Grid.scss';
+import burgerMenu from '../../images/burger.svg';
+import closer from '../../images/closer.svg';
+import { LinkList } from './LinkList';
+import { SideIcons } from './SideIcons';
+import { BurgerList } from './BurgerList';
+import classNames from 'classnames';
 
-export const Header: React.FC = () => (
-  <header className="head">
-    <div className="head">
-      <Link to="/" className="head__link">
-        <img className="head__logo" src={logo} alt="NICE GADGETS logo" />
-      </Link>
-      <nav className="nav">
-        <ul className="nav__list">
-          <li className="nav__item">
-            <PageNavLink type="nav__link" to="/">
-              Home
-            </PageNavLink>
-          </li>
-          <li className="nav__item">
-            <PageNavLink type="nav__link" to="/phones">
-              Phones
-            </PageNavLink>
-          </li>
-          <li className="nav__item">
-            <PageNavLink type="nav__link" to="/tablets">
-              Tablets
-            </PageNavLink>
-          </li>
-          <li className="nav__item">
-            <PageNavLink type="nav__link" to="/accessories">
-              Accessories
-            </PageNavLink>
-          </li>
-        </ul>
-      </nav>
+export const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-      <nav className="header__icons">
-        <PageNavLink type="header__icon" to="/favourites">
-          <img src={heart} alt="heart" className="header__picture" />
-        </PageNavLink>
-        <PageNavLink type="header__icon" to="/cart">
-          <img src={cart} alt="cart" className="header__picture" />
-        </PageNavLink>
-      </nav>
+  useEffect(() => {
+    isMenuOpen && (document.body.style.overflow = 'hidden');
+    !isMenuOpen && (document.body.style.overflow = 'unset');
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 640) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleShowMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <div className={classNames('header', { burger__isOpen: isMenuOpen })}>
+      <header className="head">
+        <Link to="/" className="head__link">
+          <img className="head__logo" src={logo} alt="NICE GADGETS logo" />
+        </Link>
+
+        <nav className="nav">
+          <LinkList
+            navListClass="nav__list"
+            navItemClass="nav__item"
+            navLinkClass="nav__link"
+          />
+        </nav>
+
+        <div className="head__icons">
+          <SideIcons headLinkClass="head__icon" />
+          <button className="head__icon burger " onClick={handleShowMenu}>
+            <img
+              src={isMenuOpen ? closer : burgerMenu}
+              alt="burgerMenu"
+              className="picture-anim"
+            />
+          </button>
+        </div>
+      </header>
+
+      {isMenuOpen && <BurgerList />}
     </div>
-  </header>
-);
+  );
+};

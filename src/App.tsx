@@ -8,32 +8,36 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { PhonesPage } from './modules/PhonesPage';
 import { BannerSlider } from './components/BannerSlider';
 import { CartPage } from './modules/CartPage';
+import { HomePage } from './modules/HomePage';
 
-export const App: React.FC = () => (
-  <>
-    <Header />
 
-    <Routes>
-      <Route path="*" element={<PageNotFound />} />
+export const App: React.FC = () => {
+  return (
+    <>
+      <Header />
 
-      <Route path="/" element={<BannerSlider />} />
+      <Routes>
+        <Route path="*" element={<PageNotFound />} />
 
-      <Route path="phones">
-        <Route index element={<PhonesPage />} />
-        <Route path=":phoneId" element={<PhonesPage />} />
-      </Route>
+        <Route path="/" element={<HomePage />} />
 
-      <Route path="tablets" element={<h1>Tablets Page</h1>} />
+        <Route path="phones">
+          <Route index element={<PhonesPage />} />
+          <Route path=":phoneId" element={<PhonesPage />} />
+        </Route>
 
-      <Route path="accessories" element={<h1>Accessories Page</h1>} />
+        <Route path="tablets" element={<h1>Tablets Page</h1>} />
 
-      <Route path="favourites" element={<h1>Favourites Page</h1>} />
+        <Route path="accessories" element={<h1>Accessories Page</h1>} />
 
-      <Route path="cart" element={<CartPage />} />
+        <Route path="favourites" element={<h1>Favourites Page</h1>} />
 
-      <Route path="/home" element={<Navigate to="/" replace />} />
-    </Routes>
+        <Route path="cart" element={<CartPage />} />
 
-    <Footer />
-  </>
-);
+        <Route path="/home" element={<Navigate to="/" replace />} />
+      </Routes>
+
+      <Footer />
+    </>
+  );
+};
