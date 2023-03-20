@@ -6,7 +6,6 @@ type Props = {
   totalPosts: number;
   currentPage: number;
   paginate: (arg0: number) => void;
-  isLoading: boolean;
   prevPage: () => void;
   nextPage: (num: number) => void;
 };
@@ -16,7 +15,6 @@ export const Pagination: React.FC<Props> = ({
   totalPosts,
   currentPage,
   paginate,
-  isLoading,
   prevPage,
   nextPage,
 }) => {
@@ -26,8 +24,17 @@ export const Pagination: React.FC<Props> = ({
     pageNumber.push(i);
   }
 
-  if (isLoading) {
+  if (totalPosts <= postsPerPage) {
     return null;
+  }
+
+  const maxPageNumbers = 4;
+  const halfMaxPageNumbers = Math.floor(maxPageNumbers / 2);
+  let startPage = Math.max(currentPage - halfMaxPageNumbers, 1);
+  const endPage = Math.min(startPage + maxPageNumbers - 1, pageNumber.length);
+
+  if (endPage - startPage < maxPageNumbers - 1) {
+    startPage = Math.max(endPage - maxPageNumbers + 1, 1);
   }
 
   return (
@@ -38,7 +45,27 @@ export const Pagination: React.FC<Props> = ({
             &lt;
           </button>
         </li>
-        {pageNumber.map((number) => (
+        {startPage > 1 && (
+          <li>
+            <a
+              href="#"
+              onClick={(event) => {
+                event.preventDefault();
+                paginate(1);
+              }}
+            >
+              1
+            </a>
+          </li>
+        )}
+        {startPage > 2 && (
+          <li>
+            <span className="ellipse"></span>
+            <span className="ellipse"></span>
+            <span className="ellipse"></span>
+          </li>
+        )}
+        {pageNumber.slice(startPage - 1, endPage).map((number) => (
           <li key={number}>
             <a
               href="#"
@@ -52,6 +79,26 @@ export const Pagination: React.FC<Props> = ({
             </a>
           </li>
         ))}
+        {endPage < pageNumber.length - 1 && (
+          <li>
+            <span className="ellipse"></span>
+            <span className="ellipse"></span>
+            <span className="ellipse"></span>
+          </li>
+        )}
+        {endPage < pageNumber.length && (
+          <li>
+            <a
+              href="#"
+              onClick={(event) => {
+                event.preventDefault();
+                paginate(pageNumber.length);
+              }}
+            >
+              {pageNumber.length}
+            </a>
+          </li>
+        )}
         <li>
           <button
             disabled={currentPage === pageNumber.length}

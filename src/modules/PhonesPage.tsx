@@ -172,7 +172,6 @@ export const PhonesPage: React.FC = () => {
         totalPosts={phones.length}
         paginate={paginate}
         currentPage={currentPage}
-        isLoading={isLoading}
         prevPage={prevPage}
         nextPage={nextPage}
       />
