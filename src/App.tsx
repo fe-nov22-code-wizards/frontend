@@ -6,7 +6,6 @@ import { Header } from './components/Header';
 import './App';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { PhonesPage } from './modules/PhonesPage';
-import { BannerSlider } from './components/BannerSlider';
 import { CartPage } from './modules/CartPage';
 import { HomePage } from './modules/HomePage';
 
