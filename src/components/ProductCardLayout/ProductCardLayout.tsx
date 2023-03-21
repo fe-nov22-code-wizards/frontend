@@ -26,8 +26,6 @@ export const ProductCardLayout: React.FC<Props> = ({
     useContext(FavouritesContext);
   const isFavourite = favouritesPhones.some((p) => p.id === phone.id);
   const [isAdded, setIsAdded] = useState(isInCart);
-  
-
 
   const handleClickAdded = (): void => {
     setIsAdded(!isAdded);
