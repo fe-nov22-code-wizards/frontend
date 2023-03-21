@@ -5,7 +5,7 @@ import cn from 'classnames';
 type Props = {
   to: string;
   type: string;
-  children: string | JSX.Element;
+  children: string | React.ReactNode;
 };
 
 export const PageNavLink: React.FC<Props> = ({ to, type, children }) => (

@@ -18,15 +18,15 @@ export const BurgerList: React.FC<Props> = ({
         burger__slideOut: !isMenuOpen,
         burger__slideIn: isMenuOpen,
       })}
+      onClick={handleCloseMenu}
     >
       <LinkList
         navListClass="nav__list burger__list"
         navItemClass="nav__item burger__item"
         navLinkClass="nav__link burger__link"
-        handleCloseMenu={handleCloseMenu}
       />
 
-      <div onClick={handleCloseMenu}>
+      <div>
         <SideIcons headLinkClass="burger__icon" />
       </div>
     </div>
