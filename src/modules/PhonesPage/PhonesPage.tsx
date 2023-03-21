@@ -39,8 +39,6 @@ export const PhonesPage: React.FC = () => {
     fetchPosts();
   }, []);
 
-  window.localStorage.setItem('cart', '[]');
-
   const cartString = window.localStorage.getItem('cart');
   const cart: Phone[] = cartString ? JSON.parse(cartString) : [];
 
