@@ -1,11 +1,12 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import './ProductCardLayout.scss';
 import '../Grid/Grid.scss';
 import { ReactComponent as Favorite } from '../../images/favorite.svg';
 // eslint-disable-next-line
 import { ReactComponent as FavoriteYellow } from '../../images/favorite-yellow.svg';
 import { Phone } from '../../types/Phone';
+import { FavouritesContext } from '../FavouritesContext';
 
 type Props = {
   phone: Phone;
@@ -23,8 +24,10 @@ export const ProductCardLayout: React.FC<Props> = ({
   isInCart,
 }) => {
   const { image, name, fullPrice, price, screen, capacity, ram } = phone;
+  const { addFavouritePhone, removeFavouritePhone, favouritesPhones } =
+    useContext(FavouritesContext);
+  const isFavourite = favouritesPhones.some((p) => p.id === phone.id);
   const [isAdded, setIsAdded] = useState(isInCart);
-  const [isLiked, setIsLiked] = useState(false);
 
   const handleClickAdded = (): void => {
     setIsAdded(!isAdded);
@@ -32,7 +35,11 @@ export const ProductCardLayout: React.FC<Props> = ({
   };
 
   const handleClickLiked = (): void => {
-    setIsLiked(!isLiked);
+    if (isFavourite) {
+      removeFavouritePhone(phone);
+    } else {
+      addFavouritePhone(phone);
+    }
   };
 
   return (
@@ -96,7 +103,7 @@ export const ProductCardLayout: React.FC<Props> = ({
           className="product-card__button-favorite"
           onClick={handleClickLiked}
         >
-          {isLiked ? <FavoriteYellow /> : <Favorite />}
+          {isFavourite ? <FavoriteYellow /> : <Favorite />}
         </button>
       </div>
     </div>

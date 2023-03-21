@@ -32,9 +32,16 @@ export const Header: React.FC = () => {
     setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
   }, [setIsMenuOpen]);
 
-  const handleCloseMenu = useCallback(() => {
-    setIsMenuOpen(false);
-  }, [setIsMenuOpen]);
+  const handleCloseMenu = useCallback(
+    (e: React.MouseEvent) => {
+      if (e.target instanceof Element && e.target.tagName !== 'A') {
+        return;
+      }
+
+      setIsMenuOpen(false);
+    },
+    [setIsMenuOpen],
+  );
 
   return (
     <div className="header">

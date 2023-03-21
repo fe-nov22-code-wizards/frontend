@@ -1,38 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllPhones } from '../../api/getAllPhones';
+import { FavouritesContext } from '../../components/FavouritesContext';
 import { ProductCardLayout } from '../../components/ProductCardLayout';
 import arrowRight from '../../images/arrow-right.svg';
 import { Phone } from '../../types/Phone';
-import { PageNotFound } from '../PageNotFound';
 import './FavouritesPage.scss';
 
 export const FavouritesPage: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const { favouritesPhones } = useContext(FavouritesContext);
   const [cart, setCart] = useState<Phone[]>([]);
-
-  // eslint-disable-next-line space-before-function-paren
-  const fetchPhones = async () => {
-    try {
-      const res = await getAllPhones();
-
-      setPhones(res);
-    } catch (e) {
-      <PageNotFound />;
-    }
-  };
-
-  useEffect(() => {
-    fetchPhones();
-  }, []);
 
   const handleAddToCart = (phone: Phone) => {
     if (!cart.includes(phone)) {
       setCart([...cart, phone]);
     }
   };
-
-  const firstFive = phones.slice(0, 5);
 
   return (
     <div className="main-page">
@@ -44,18 +26,22 @@ export const FavouritesPage: React.FC = () => {
 
       <h1 className="menu-title">Favourites</h1>
 
-      <p className="text__item">{`${firstFive.length} models`}</p>
+      <p className="text__item">{`${favouritesPhones.length} models`}</p>
 
-      <div className="phones-cards">
-        {phones.map((phone) => (
-          <ProductCardLayout
-            phone={phone}
-            key={phone.id}
-            handleOnAddToCart={handleAddToCart}
-            isInCart={cart.includes(phone)}
-          />
-        ))}
-      </div>
+      {favouritesPhones.length ? (
+        <div className="phones-cards">
+          {favouritesPhones.map((phone: Phone) => (
+            <ProductCardLayout
+              phone={phone}
+              key={phone.id}
+              handleOnAddToCart={handleAddToCart}
+              isInCart={cart.includes(phone)}
+            />
+          ))}
+        </div>
+      ) : (
+        <p>No favourites have been found</p>
+      )}
     </div>
   );
 };

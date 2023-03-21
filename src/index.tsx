@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import { App } from './App';
 import './index.scss';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { FavouritesProvider } from './components/FavouritesContext';
 
 const Root = () => (
-  <Router>
-    <App />
-  </Router>
+  <FavouritesProvider>
+    <Router>
+      <App />
+    </Router>
+  </FavouritesProvider>
 );
 
 const root = ReactDOM.createRoot(
