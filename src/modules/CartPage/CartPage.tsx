@@ -95,6 +95,8 @@ export const CartPage: React.FC = () => {
             <p>There is no items in the cart</p>
           ) : (
             phones.map((cartPhone: PhoneWithQuantity) => {
+              window.localStorage.setItem(`quantity${cartPhone.phoneId}`, '1');
+
               return (
                 <CartProductCard
                   key={cartPhone.phoneId}

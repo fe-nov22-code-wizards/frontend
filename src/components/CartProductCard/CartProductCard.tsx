@@ -23,8 +23,6 @@ export const CartProductCard: React.FC<Props> = ({
   handleAddToTotalQuantity,
   handleMinusTotalQuantity,
 }) => {
-  window.localStorage.setItem(`quantity${phone.phoneId}`, '1');
-
   const quantitFromLocalStorage =
     window.localStorage.getItem(`quantity${phone.phoneId}`) || '';
   const [quantity, setQuantity] = useState(+quantitFromLocalStorage);
@@ -32,6 +30,7 @@ export const CartProductCard: React.FC<Props> = ({
   const handleMinusQuantity = () => {
     if (+quantity === 1) {
       handleDeleteFromCart(phone);
+      window.localStorage.removeItem(`quantity${phone.phoneId}`);
 
       return;
     }
