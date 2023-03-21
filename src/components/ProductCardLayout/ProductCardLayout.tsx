@@ -9,6 +9,7 @@ import { Phone } from '../../types/Phone';
 
 type Props = {
   phone: Phone;
+  hidden?: boolean;
   handleOnAddToCart: (phone: Phone) => void;
   isInCart: boolean;
 };
@@ -17,6 +18,7 @@ const BASE_URL = 'https://api-gwis.onrender.com/';
 
 export const ProductCardLayout: React.FC<Props> = ({
   phone,
+  hidden,
   handleOnAddToCart,
   isInCart,
 }) => {
@@ -44,7 +46,9 @@ export const ProductCardLayout: React.FC<Props> = ({
 
       <div className="product-card__price-container">
         <p className="product-card__price">${price}</p>
-        <p className="product-card__price--crossed">${fullPrice}</p>
+        <p className="product-card__price--crossed" hidden={hidden}>
+          ${fullPrice}
+        </p>
       </div>
       <hr className="product-card__divider" />
 
