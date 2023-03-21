@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FavouritesContext } from '../../components/FavouritesContext';
 import { ProductCardLayout } from '../../components/ProductCardLayout';
@@ -26,14 +26,13 @@ export const FavouritesPage: React.FC = () => {
 
       <h1 className="menu-title">Favourites</h1>
 
-
       <p className="text__item">{`${favouritesPhones.length} models`}</p>
 
       {favouritesPhones.length ? (
         <div className="phones-cards">
           {favouritesPhones.map((phone: Phone) => (
-            <ProductCardLayout 
-              phone={phone} 
+            <ProductCardLayout
+              phone={phone}
               key={phone.id}
               handleOnAddToCart={handleAddToCart}
               isInCart={cart.includes(phone)}
