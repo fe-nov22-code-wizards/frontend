@@ -9,11 +9,12 @@ import { Phone } from '../../types/Phone';
 
 type Props = {
   phone: Phone;
+  hidden?: boolean;
 };
 
 const BASE_URL = 'https://api-gwis.onrender.com/';
 
-export const ProductCardLayout: React.FC<Props> = ({ phone }) => {
+export const ProductCardLayout: React.FC<Props> = ({ phone, hidden }) => {
   const { image, name, fullPrice, price, screen, capacity, ram } = phone;
   const [isAdded, setIsAdded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -37,7 +38,9 @@ export const ProductCardLayout: React.FC<Props> = ({ phone }) => {
 
       <div className="product-card__price-container">
         <p className="product-card__price">${price}</p>
-        <p className="product-card__price--crossed">${fullPrice}</p>
+        <p className="product-card__price--crossed" hidden={hidden}>
+          ${fullPrice}
+        </p>
       </div>
       <hr className="product-card__divider" />
 
