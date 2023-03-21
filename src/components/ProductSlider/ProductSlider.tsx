@@ -22,6 +22,26 @@ export const ProductSlider: React.FC<Props> = ({ title, category }) => {
   const isFirst = position === 0;
   const isLast = position === phones.length - 1;
 
+  const cartString = window.localStorage.getItem('cart');
+  const cart: Phone[] = cartString ? JSON.parse(cartString) : [];
+
+  const [cartPhones, setCartPhones] = useState<Phone[]>(cart);
+  const handleOnAddToCart = (phone: Phone) => {
+    const cartPhonesId = cartPhones.map((phoneCart) => phoneCart.phoneId);
+
+    if (!cartPhonesId.includes(phone.phoneId)) {
+      setCartPhones((previousCartPhones) => [...previousCartPhones, phone]);
+    } else {
+      setCartPhones((previousCartPhones) =>
+        previousCartPhones.filter(
+          (cartPhone: Phone) => cartPhone.phoneId !== phone.phoneId,
+        ),
+      );
+    }
+  };
+
+  window.localStorage.setItem('cart', JSON.stringify(cartPhones));
+
   useEffect(() => {
     async function fetchPosts() {
       try {
@@ -75,15 +95,26 @@ export const ProductSlider: React.FC<Props> = ({ title, category }) => {
         <Loader />
       ) : (
         <div className="products-slider__cards">
-          {phones.map((phone) => (
-            <div
-              key={phone.id}
-              className="products-slider__card"
-              style={{ transform: `translateX(-${movingCardSize}px)` }}
-            >
-              <ProductCardLayout phone={phone} hidden={hidden} />
-            </div>
-          ))}
+          {phones.map((phone) => {
+            const isInCart = cartPhones
+              .map((phonesInCart) => phonesInCart.phoneId)
+              .includes(phone.phoneId);
+
+            return (
+              <div
+                key={phone.id}
+                className="products-slider__card"
+                style={{ transform: `translateX(-${movingCardSize}px)` }}
+              >
+                <ProductCardLayout
+                  phone={phone}
+                  hidden={hidden}
+                  handleOnAddToCart={handleOnAddToCart}
+                  isInCart={isInCart}
+                />
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
