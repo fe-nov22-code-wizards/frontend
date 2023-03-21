@@ -16,7 +16,7 @@ export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(16);
+  const [postsPerPage, setPostsPerPage] = useState(24);
   const sort = searchParams.get('sort') || '';
   const perPage = searchParams.get('perPage') || '';
 
@@ -28,7 +28,7 @@ export const PhonesPage: React.FC = () => {
         const res = await getAllPhones();
 
         setPhones(res);
-        setPostsPerPage(res.length);
+        setPostsPerPage(24);
       } catch (error) {
         <PageNotFound />;
       } finally {
@@ -38,6 +38,26 @@ export const PhonesPage: React.FC = () => {
 
     fetchPosts();
   }, []);
+
+  const cartString = window.localStorage.getItem('cart');
+  const cart: Phone[] = cartString ? JSON.parse(cartString) : [];
+
+  const [cartPhones, setCartPhones] = useState<Phone[]>(cart);
+  const handleOnAddToCart = (phone: Phone) => {
+    const cartPhonesId = cartPhones.map((phoneCart) => phoneCart.phoneId);
+
+    if (!cartPhonesId.includes(phone.phoneId)) {
+      setCartPhones((previousCartPhones) => [...previousCartPhones, phone]);
+    } else {
+      setCartPhones((previousCartPhones) =>
+        previousCartPhones.filter(
+          (cartPhone: Phone) => cartPhone.phoneId !== phone.phoneId,
+        ),
+      );
+    }
+  };
+
+  window.localStorage.setItem('cart', JSON.stringify(cartPhones));
 
   const updateSearch = (params: { [key: string]: string | null }) => {
     Object.entries(params).forEach(([key, value]) => {
@@ -60,7 +80,7 @@ export const PhonesPage: React.FC = () => {
       updateSearch({ page: null });
     }
 
-    setPostsPerPage(+event.target.value || phones.length);
+    setPostsPerPage(+event.target.value || 24);
     updateSearch({ perPage: event.target.value || null });
   };
 
@@ -163,9 +183,20 @@ export const PhonesPage: React.FC = () => {
         <Loader />
       ) : (
         <div className="phones-cards">
-          {currentPhones.map((phone) => (
-            <ProductCardLayout phone={phone} key={phone.id} />
-          ))}
+          {currentPhones.map((phone) => {
+            const isInCart = cartPhones
+              .map((phonesInCart) => phonesInCart.phoneId)
+              .includes(phone.phoneId);
+
+            return (
+              <ProductCardLayout
+                phone={phone}
+                key={phone.id}
+                handleOnAddToCart={handleOnAddToCart}
+                isInCart={isInCart}
+              />
+            );
+          })}
         </div>
       )}
 

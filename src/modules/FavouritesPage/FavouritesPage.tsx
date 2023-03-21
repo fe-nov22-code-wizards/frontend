@@ -9,6 +9,7 @@ import './FavouritesPage.scss';
 
 export const FavouritesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
+  const [cart, setCart] = useState<Phone[]>([]);
 
   // eslint-disable-next-line space-before-function-paren
   const fetchPhones = async () => {
@@ -24,6 +25,12 @@ export const FavouritesPage: React.FC = () => {
   useEffect(() => {
     fetchPhones();
   }, []);
+
+  const handleAddToCart = (phone: Phone) => {
+    if (!cart.includes(phone)) {
+      setCart([...cart, phone]);
+    }
+  };
 
   const firstFive = phones.slice(0, 5);
 
@@ -41,7 +48,12 @@ export const FavouritesPage: React.FC = () => {
 
       <div className="phones-cards">
         {phones.map((phone) => (
-          <ProductCardLayout phone={phone} key={phone.id} />
+          <ProductCardLayout
+            phone={phone}
+            key={phone.id}
+            handleOnAddToCart={handleAddToCart}
+            isInCart={cart.includes(phone)}
+          />
         ))}
       </div>
     </div>

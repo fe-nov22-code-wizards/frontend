@@ -10,17 +10,25 @@ import { Phone } from '../../types/Phone';
 type Props = {
   phone: Phone;
   hidden?: boolean;
+  handleOnAddToCart: (phone: Phone) => void;
+  isInCart: boolean;
 };
 
 const BASE_URL = 'https://api-gwis.onrender.com/';
 
-export const ProductCardLayout: React.FC<Props> = ({ phone, hidden }) => {
+export const ProductCardLayout: React.FC<Props> = ({
+  phone,
+  hidden,
+  handleOnAddToCart,
+  isInCart,
+}) => {
   const { image, name, fullPrice, price, screen, capacity, ram } = phone;
-  const [isAdded, setIsAdded] = useState(false);
+  const [isAdded, setIsAdded] = useState(isInCart);
   const [isLiked, setIsLiked] = useState(false);
 
   const handleClickAdded = (): void => {
     setIsAdded(!isAdded);
+    handleOnAddToCart(phone);
   };
 
   const handleClickLiked = (): void => {
