@@ -10,21 +10,28 @@ import { FavouritesContext } from '../FavouritesContext';
 
 type Props = {
   phone: Phone;
+  handleOnAddToCart: (phone: Phone) => void;
+  isInCart: boolean;
 };
 
 const BASE_URL = 'https://api-gwis.onrender.com/';
 
-export const ProductCardLayout: React.FC<Props> = ({ phone }) => {
+export const ProductCardLayout: React.FC<Props> = ({
+  phone,
+  handleOnAddToCart,
+  isInCart,
+}) => {
   const { image, name, fullPrice, price, screen, capacity, ram } = phone;
-  const [isAdded, setIsAdded] = useState(false);
-
   const { addFavouritePhone, removeFavouritePhone, favouritesPhones } =
     useContext(FavouritesContext);
-
   const isFavourite = favouritesPhones.some((p) => p.id === phone.id);
+  const [isAdded, setIsAdded] = useState(isInCart);
+  
+
 
   const handleClickAdded = (): void => {
     setIsAdded(!isAdded);
+    handleOnAddToCart(phone);
   };
 
   const handleClickLiked = (): void => {
