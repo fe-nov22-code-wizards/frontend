@@ -16,7 +16,7 @@ export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(16);
+  const [postsPerPage, setPostsPerPage] = useState(24);
   const sort = searchParams.get('sort') || '';
   const perPage = searchParams.get('perPage') || '';
 
@@ -28,7 +28,7 @@ export const PhonesPage: React.FC = () => {
         const res = await getAllPhones();
 
         setPhones(res);
-        setPostsPerPage(res.length);
+        setPostsPerPage(24);
       } catch (error) {
         <PageNotFound />;
       } finally {
@@ -39,7 +39,8 @@ export const PhonesPage: React.FC = () => {
     fetchPosts();
   }, []);
 
-  const cart: Phone[] = JSON.parse(window.localStorage.getItem('cart') || '');
+  const cart: Phone[] =
+    JSON.parse(window.localStorage.getItem('cart') || '') || [];
 
   const [cartPhones, setCartPhones] = useState<Phone[]>(cart);
   const handleOnAddToCart = (phone: Phone) => {
@@ -79,7 +80,7 @@ export const PhonesPage: React.FC = () => {
       updateSearch({ page: null });
     }
 
-    setPostsPerPage(+event.target.value || phones.length);
+    setPostsPerPage(+event.target.value || 24);
     updateSearch({ perPage: event.target.value || null });
   };
 
