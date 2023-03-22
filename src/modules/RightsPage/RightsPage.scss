@@ -1,0 +1,33 @@
+.gadget-store-rights {
+  font-family: 'Mont', sans-serif;
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  &__heading {
+    text-align: center;
+    margin-bottom: 5px;
+    margin-top: 30px;
+  }
+
+  &__text {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  &__gif {
+    background-image: url(../../images/heart.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 35px;
+    height: 35px;
+    margin: 0 auto;
+  }
+}
+
+.first {
+  margin-top: 10px;
+}
