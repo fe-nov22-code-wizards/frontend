@@ -1,12 +1,12 @@
 @import '../../_utils/mixins';
 .header {
   border-bottom: 1px solid #ddd;
+  z-index: 9;
 }
 
 .head {
   z-index: 5;
-  position: sticky;
-  top: 0;
+  position: relative;
   display: flex;
   background-color: #fff;
   box-sizing: border-box;
@@ -168,16 +168,14 @@
   display: none;
   cursor: pointer;
 
-  &__isOpen {
+  &__container {
+    z-index: 4;
+    position: absolute;
     display: flex;
     flex-direction: column;
     height: calc(100vh - 49px);
     width: 100%;
     background-color: #fff;
-  }
-
-  &__slideOut {
-    position: absolute;
     transform: translateY(-120%);
     transition: transform 0.3s linear;
   }
@@ -224,6 +222,7 @@
 }
 
 .fav__quantity {
+  animation: appear 0.3s linear;
   z-index: -1;
   position: absolute;
   top: 46%;
@@ -260,5 +259,15 @@
 
   to {
     transform: scaleX(100%);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;;
+  }
+
+  to {
+    opacity: 1;
   }
 }
