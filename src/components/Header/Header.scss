@@ -5,9 +5,9 @@
 
 .head {
   z-index: 5;
+  display: flex;
   position: sticky;
   top: 0;
-  display: flex;
   background-color: #fff;
   box-sizing: border-box;
   max-width: 1440px;
@@ -168,16 +168,14 @@
   display: none;
   cursor: pointer;
 
-  &__isOpen {
+  &__container {
+    z-index: 5;
+    position: absolute;
     display: flex;
     flex-direction: column;
     height: calc(100vh - 49px);
     width: 100%;
     background-color: #fff;
-  }
-
-  &__slideOut {
-    position: absolute;
     transform: translateY(-120%);
     transition: transform 0.3s linear;
   }

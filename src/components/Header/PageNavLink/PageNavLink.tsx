@@ -6,12 +6,19 @@ type Props = {
   to: string;
   type: string;
   children: string | React.ReactNode;
+  myTabIndex?: number;
 };
 
-export const PageNavLink: React.FC<Props> = ({ to, type, children }) => (
+export const PageNavLink: React.FC<Props> = ({
+  to,
+  type,
+  children,
+  myTabIndex,
+}) => (
   <NavLink
     to={to}
     className={({ isActive }) => cn(type, { 'is-active': isActive })}
+    tabIndex={myTabIndex}
   >
     {children}
   </NavLink>
