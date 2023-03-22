@@ -20,9 +20,9 @@ export const CartProductCard: React.FC<Props> = ({ phone }) => {
 
   const quantity = cartPhones.filter((p) => p === phone.phoneId).length;
 
-  if (quantity + 1 > 10) {
-    toast.warn("You can't add more than 10 phones of one model");
-  }
+  const handleWarning = () => {
+    toast.error("You can't add more than 10 phones of one model");
+  };
 
   const isAddBtnDisabled = quantity >= 10;
 
@@ -33,7 +33,6 @@ export const CartProductCard: React.FC<Props> = ({ phone }) => {
           className="cart_card-btn-delete"
           onClick={() => {
             removeAllItemsByOneType(phone.phoneId);
-            // handleChangeTotalPrice(phone.price, quantity, 'minus');
           }}
         >
           <svg
@@ -80,9 +79,13 @@ export const CartProductCard: React.FC<Props> = ({ phone }) => {
           <button
             className="cart_card-btn-options"
             onClick={() => {
-              addToCart(phone.phoneId);
+              if (!isAddBtnDisabled) {
+                addToCart(phone.phoneId);
+              } else {
+                handleWarning();
+              }
             }}
-            disabled={isAddBtnDisabled}
+            // disabled={isAddBtnDisabled}
           >
             <img src={plus} alt="Plus an item from cart" />
           </button>
