@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React, { createContext, useState, useEffect } from 'react';
+import { getAllPhones } from '../../api/getAllPhones';
 import { Phone } from '../../types/Phone';
 
 type FavouritesContextType = {
   favouritesPhones: Phone[];
+  phones: Phone[];
   addFavouritePhone: (phone: Phone) => void;
   removeFavouritePhone: (phone: Phone) => void;
 
@@ -16,6 +18,7 @@ type FavouritesContextType = {
 
 export const FavouritesContext = createContext<FavouritesContextType>({
   favouritesPhones: [],
+  phones: [],
   addFavouritePhone: () => {},
   removeFavouritePhone: () => {},
 
@@ -42,6 +45,22 @@ export const FavouritesProvider: React.FC<Props> = ({ children }) => {
 
     return currentCartPhones ? JSON.parse(currentCartPhones) : [];
   });
+
+  const [phones, setPhones] = useState<Phone[]>([]);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const res = await getAllPhones(1, 71, '');
+
+        setPhones(res.phones);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    fetchPosts();
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('favouritesPhones', JSON.stringify(favouritesPhones));
@@ -98,6 +117,7 @@ export const FavouritesProvider: React.FC<Props> = ({ children }) => {
         addFavouritePhone,
         removeFavouritePhone,
         favouritesPhones,
+        phones,
 
         addToCart,
         removeOneFromCart,
