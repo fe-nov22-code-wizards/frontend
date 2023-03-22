@@ -31,8 +31,9 @@ export const CartPage: React.FC = () => {
     try {
       setIsLoading(true);
 
-      const allPhones = await getAllPhones();
-      const neededPhones = allPhones.filter((phone) =>
+      const { phones } = await getAllPhones(1, 71, '');
+
+      const neededPhones = phones.filter((phone: Phone) =>
         cartPhones.includes(phone.phoneId),
       );
 

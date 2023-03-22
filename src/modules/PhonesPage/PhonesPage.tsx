@@ -182,7 +182,7 @@ export const PhonesPage: React.FC = () => {
               return <ProductCardLayout phone={phone} key={phone.id} />;
             })}
           </div>
-        
+
           <Pagination
             postsPerPage={perPage}
             totalPosts={totalPhones}
