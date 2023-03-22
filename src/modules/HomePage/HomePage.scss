@@ -1,0 +1,54 @@
+@import '../../_utils/mixins';
+
+.home-page_categories {
+  margin-top: 70px;
+}
+
+.categories-container {
+  margin-top: 24px;
+}
+
+.category-card {
+  margin-bottom: 32px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include onTablet {
+    margin-bottom: 0;
+  }
+
+  &_image-link {
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  &_image {
+    aspect-ratio: 1;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  &_title-link {
+    margin-bottom: 4px;
+    color: #0F0F11;
+    text-decoration: none;
+  }
+
+  &_subtitle {
+    font-family: 'Mont', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939A;
+  }
+}

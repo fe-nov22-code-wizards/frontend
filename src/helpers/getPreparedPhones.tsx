@@ -6,7 +6,7 @@ export const getPreparedPhones = (phones: Phone[], sortBy: string) => {
 
   preparedPhones.sort((p1, p2) => {
     switch (sortBy) {
-      case 'age':
+      case 'year':
         return p2.year - p1.year;
 
       case 'price':
