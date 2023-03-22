@@ -9,6 +9,7 @@ import { PhonesPage } from './modules/PhonesPage/PhonesPage';
 import { CartPage } from './modules/CartPage';
 import { HomePage } from './modules/HomePage';
 import { FavouritesPage } from './modules/FavouritesPage';
+import { PhoneItemPage } from './modules/PhoneItemPage';
 
 export const App: React.FC = () => {
   return (
@@ -22,7 +23,7 @@ export const App: React.FC = () => {
 
         <Route path="phones">
           <Route index element={<PhonesPage />} />
-          <Route path=":phoneId" element={<PhonesPage />} />
+          <Route path=":phoneId" element={<PhoneItemPage />} />
         </Route>
 
         <Route path="tablets" element={<h1>Tablets Page</h1>} />

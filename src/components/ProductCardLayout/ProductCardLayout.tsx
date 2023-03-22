@@ -6,6 +6,7 @@ import { ReactComponent as Favorite } from '../../images/favorite.svg';
 // eslint-disable-next-line
 import { ReactComponent as FavoriteYellow } from '../../images/favorite-yellow.svg';
 import { Phone } from '../../types/Phone';
+import { NavLink } from 'react-router-dom';
 
 type Props = {
   phone: Phone;
@@ -20,7 +21,8 @@ export const ProductCardLayout: React.FC<Props> = ({
   handleOnAddToCart,
   isInCart,
 }) => {
-  const { image, name, fullPrice, price, screen, capacity, ram } = phone;
+  const { image, name, fullPrice, price, screen, capacity, ram, phoneId } =
+    phone;
   const [isAdded, setIsAdded] = useState(isInCart);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -40,7 +42,10 @@ export const ProductCardLayout: React.FC<Props> = ({
         className="product-card__image"
         alt={name}
       />
-      <h1 className="product-card__title">{name}</h1>
+      {/* <h1 className="product-card__title">{name}</h1> */}
+      <NavLink to={phoneId} className="product-card__title">
+        {name}
+      </NavLink>
 
       <div className="product-card__price-container">
         <p className="product-card__price">${price}</p>
