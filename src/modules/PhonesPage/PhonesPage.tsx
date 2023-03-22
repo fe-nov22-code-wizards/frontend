@@ -10,15 +10,15 @@ import { getAllPhones } from '../../api/getAllPhones';
 import { Loader } from '../../components/Loader';
 import { Pagination } from '../../components/Pagination';
 import { getPreparedPhones } from '../../helpers/getPreparedPhones';
+// import { getPaginationPhones } from '../../api/getPaginationPhones';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(24);
   const sort = searchParams.get('sort') || '';
-  const perPage = searchParams.get('perPage') || '';
+  const perPage = Number(searchParams.get('perPage') || '24');
+  const page = Number(searchParams.get('page') || '1');
 
   useEffect(() => {
     async function fetchPosts() {
@@ -28,7 +28,6 @@ export const PhonesPage: React.FC = () => {
         const res = await getAllPhones();
 
         setPhones(res);
-        setPostsPerPage(24);
       } catch (error) {
         <PageNotFound />;
       } finally {
@@ -38,6 +37,24 @@ export const PhonesPage: React.FC = () => {
 
     fetchPosts();
   }, []);
+
+  // useEffect(() => {
+  //   async function fetchPosts() {
+  //     try {
+  //       setIsLoading(true);
+
+  //       const res = await getPaginationPhones(page, perPage);
+
+  //       setPhones(res);
+  //     } catch (error) {
+  //       <PageNotFound />;
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+
+  //   fetchPosts();
+  // }, [page, perPage]);
 
   const cartString = window.localStorage.getItem('cart');
   const cart: Phone[] = cartString ? JSON.parse(cartString) : [];
@@ -76,37 +93,33 @@ export const PhonesPage: React.FC = () => {
 
   const onPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (!event.target.value) {
-      setCurrentPage(1);
       updateSearch({ page: null });
     }
 
-    setPostsPerPage(+event.target.value || 24);
     updateSearch({ perPage: event.target.value || null });
   };
 
   const visiblePhones = getPreparedPhones(phones, sort);
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const indexOfLastPost = page * perPage;
+  const indexOfFirstPost = indexOfLastPost - perPage;
   const currentPhones = visiblePhones.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-
     updateSearch({
       page: pageNumber === 1 ? null : String(pageNumber),
     });
   };
 
   const prevPage = () => {
-    if (currentPage > 1) {
-      paginate(currentPage - 1);
+    if (page > 1) {
+      paginate(page - 1);
     }
   };
 
   const nextPage = (num: number) => {
-    if (currentPage < num) {
-      paginate(currentPage + 1);
+    if (page < num) {
+      paginate(page + 1);
     }
   };
 
@@ -145,7 +158,7 @@ export const PhonesPage: React.FC = () => {
           <select value={sort} onChange={onSortChange}>
             <option value="">No sort</option>
             {[
-              { sortBy: 'age', title: 'Newest' },
+              { sortBy: 'year', title: 'Newest' },
               { sortBy: 'title', title: 'Alphabetically' },
               { sortBy: 'price', title: 'Cheapest' },
             ].map((sortParam) => (
@@ -201,10 +214,10 @@ export const PhonesPage: React.FC = () => {
       )}
 
       <Pagination
-        postsPerPage={postsPerPage}
+        postsPerPage={perPage}
         totalPosts={phones.length}
         paginate={paginate}
-        currentPage={currentPage}
+        currentPage={page}
         prevPage={prevPage}
         nextPage={nextPage}
       />

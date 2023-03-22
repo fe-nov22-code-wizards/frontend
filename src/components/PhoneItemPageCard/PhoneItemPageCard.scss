@@ -1,0 +1,264 @@
+@import '../../_utils/mixins.scss';
+
+.card {
+  &_main-info {
+    margin: 0;
+  }
+
+  &_title {
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #0F0F11;
+    font-size: 22px;
+    line-height: 140%;
+    margin-bottom: 32px;
+
+    @include onTablet {
+      font-size: 32px;
+      line-height: 41px;
+      margin-bottom: 40px;
+    }
+  }
+
+  &_images {
+    display: flex;
+    margin-bottom: 40px;
+    flex-direction: column-reverse;
+
+    @include onTablet {
+      margin-bottom: 80px;
+      flex-direction: row;
+    }
+  }
+
+  &_images-array {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    @include onTablet {
+      display: block;
+      margin-right: 16px;
+    }
+  }
+
+  &_image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    border: 1px solid rgba(226, 230, 233, 1);
+    border-radius: 4px;
+    cursor: pointer;
+    height: 49px;
+    width: 49px;
+
+    @include onTablet {
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+    }
+
+    @include onDesktop {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &_image-item {
+    height: 40px;
+
+    @include onTablet {
+      height: 35px;
+    }
+
+    @include onDesktop {
+      height: 65px;
+    }
+  }
+
+  &_selected-img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      width: 285px;
+      height: 285px;
+    }
+
+    @include onDesktop {
+      width: 465px;
+      height: 465px;
+    }
+  }
+
+  &_colors-title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939A;
+    margin-bottom: 8px;
+  }
+
+  &_colors-wrapper {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(226, 230, 233, 1);
+  }
+
+  &_color {
+    border: 1px solid rgba(226, 230, 233, 1);
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+  }
+
+  &__color-filling {
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+  }
+
+  &_capacities-wrapper {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(226, 230, 233, 1);
+    margin-bottom: 32px;
+  }
+
+  &_capacity {
+    border: 1px solid rgba(180, 189, 195, 1);
+    border-radius: 4px;
+    padding: 7px;
+    text-decoration: none;
+  }
+
+  &_capacity-text {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #0F0F11;
+  }
+
+  &_prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &_discount {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #0F0F11;
+  }
+
+  &_regular {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: #89939A;
+    text-decoration: line-through;
+  }
+
+  &_actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &_buy {
+    width: 238px;
+    height: 48px;
+    background: #4219D0;
+    border-radius: 48px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+    }
+
+    @include onDesktop {
+      width: 265px;
+    }
+  }
+
+  &_favorite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    background-color: #fff;
+    border: 1px solid #e2e6e9;
+    border-radius: 48px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: white;
+      border: 1px solid #4219d0;
+      box-shadow: rgba(184, 187, 190, 0.1) 0px 4px 5px;
+    }
+  }
+
+  &_information {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 56px;
+  }
+
+  &_information-title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939A;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &_information-value {
+    text-align: right;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: #0F0F11;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.selected-img {
+  border: 1px solid rgba(15, 15, 17, 1)
+}
+
+.selected-capacity {
+  background: #0F0F11;
+}
+
+.selected-capacity-text {
+  color: white;
+}
