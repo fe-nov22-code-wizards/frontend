@@ -53,7 +53,7 @@ export const ProductCardLayout: React.FC<Props> = ({ phone, hidden }) => {
         className="product-card__image"
         alt={name}
       />
-      <NavLink to={phoneId} className="product-card__title">
+      <NavLink to={`/phones/${phoneId}`} className="product-card__title">
         {name}
       </NavLink>
 
