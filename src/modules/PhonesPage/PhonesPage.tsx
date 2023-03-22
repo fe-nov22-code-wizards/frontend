@@ -39,25 +39,25 @@ export const PhonesPage: React.FC = () => {
     fetchPosts();
   }, [page, perPage, sort]);
 
-  const cartString = window.localStorage.getItem('cart');
-  const cart: Phone[] = cartString ? JSON.parse(cartString) : [];
+  // const cartString = window.localStorage.getItem('cart');
+  // const cart: Phone[] = cartString ? JSON.parse(cartString) : [];
 
-  const [cartPhones, setCartPhones] = useState<Phone[]>(cart);
-  const handleOnAddToCart = (phone: Phone) => {
-    const cartPhonesId = cartPhones.map((phoneCart) => phoneCart.phoneId);
+  // const [cartPhones, setCartPhones] = useState<Phone[]>(cart);
+  // const handleOnAddToCart = (phone: Phone) => {
+  //   const cartPhonesId = cartPhones.map((phoneCart) => phoneCart.phoneId);
 
-    if (!cartPhonesId.includes(phone.phoneId)) {
-      setCartPhones((previousCartPhones) => [...previousCartPhones, phone]);
-    } else {
-      setCartPhones((previousCartPhones) =>
-        previousCartPhones.filter(
-          (cartPhone: Phone) => cartPhone.phoneId !== phone.phoneId,
-        ),
-      );
-    }
-  };
+  //   if (!cartPhonesId.includes(phone.phoneId)) {
+  //     setCartPhones((previousCartPhones) => [...previousCartPhones, phone]);
+  //   } else {
+  //     setCartPhones((previousCartPhones) =>
+  //       previousCartPhones.filter(
+  //         (cartPhone: Phone) => cartPhone.phoneId !== phone.phoneId,
+  //       ),
+  //     );
+  //   }
+  // };
 
-  window.localStorage.setItem('cart', JSON.stringify(cartPhones));
+  // window.localStorage.setItem('cart', JSON.stringify(cartPhones));
 
   const updateSearch = (params: { [key: string]: string | null }) => {
     Object.entries(params).forEach(([key, value]) => {
@@ -179,21 +179,10 @@ export const PhonesPage: React.FC = () => {
         <>
           <div className="phones-cards">
             {currentPhones.map((phone) => {
-              const isInCart = cartPhones
-                .map((phonesInCart) => phonesInCart.phoneId)
-                .includes(phone.phoneId);
-
-              return (
-                <ProductCardLayout
-                  phone={phone}
-                  key={phone.id}
-                  handleOnAddToCart={handleOnAddToCart}
-                  isInCart={isInCart}
-                />
-              );
+              return <ProductCardLayout phone={phone} key={phone.id} />;
             })}
           </div>
-
+        
           <Pagination
             postsPerPage={perPage}
             totalPosts={totalPhones}
