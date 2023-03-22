@@ -9,14 +9,15 @@ import './PhoneItemPage.scss';
 import '../../components/Grid/Grid.scss';
 import { PhoneItemPageCard } from '../../components/PhoneItemPageCard';
 import { getOne } from '../../api/getAllPhones';
-import { PageNotFound } from '../PageNotFound';
 import { PhoneItem } from '../../types/PhoneItem';
 import { Loader } from '../../components/Loader';
 import { PhoneItemPageDescription } from '../../components/PhoneItemPageDescription';
+import { ErrorMessage } from '../../components/ErrorMessage';
 
 export const PhoneItemPage: React.FC = () => {
   const { phoneId = '' } = useParams();
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [phone, setPhone] = useState<PhoneItem | null>(null);
 
   //eslint-disable-next-line space-before-function-paren
@@ -27,8 +28,9 @@ export const PhoneItemPage: React.FC = () => {
       const currentPhone = await getOne(phoneId);
 
       setPhone(currentPhone);
-    } catch (error) {
-      <PageNotFound />;
+    } catch (e) {
+      console.log(e);
+      setIsError(true);
     } finally {
       setIsLoading(false);
     }
@@ -40,6 +42,7 @@ export const PhoneItemPage: React.FC = () => {
 
   return (
     <section className="phoneItem_section">
+      {isError && <ErrorMessage />}
       {isLoading ? (
         <Loader />
       ) : (

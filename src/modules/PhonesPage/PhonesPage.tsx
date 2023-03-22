@@ -5,16 +5,17 @@ import '../../components/Grid/Grid.scss';
 import arrowRight from '../../images/arrow-right.svg';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Phone } from '../../types/Phone';
-import { PageNotFound } from '../PageNotFound';
 import { Loader } from '../../components/Loader';
 import { Pagination } from '../../components/Pagination';
 import { getAllPhones } from '../../api/getAllPhones';
+import { ErrorMessage } from '../../components/ErrorMessage';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [phones, setPhones] = useState<Phone[]>([]);
   const [totalPhones, setTotalPhones] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const sort = searchParams.get('sort') || '';
   const perPage = Number(searchParams.get('perPage') || '24');
@@ -29,8 +30,9 @@ export const PhonesPage: React.FC = () => {
 
         setPhones(res.phones);
         setTotalPhones(res.info.total);
-      } catch (error) {
-        <PageNotFound />;
+      } catch (e) {
+        console.log(e);
+        setIsError(true);
       } finally {
         setIsLoading(false);
       }
@@ -173,6 +175,7 @@ export const PhonesPage: React.FC = () => {
         </div>
       </div>
 
+      {isError && <ErrorMessage />}
       {isLoading ? (
         <Loader />
       ) : (
