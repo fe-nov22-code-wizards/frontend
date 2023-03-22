@@ -1,13 +1,17 @@
 @import '../../_utils/mixins';
 .header {
   border-bottom: 1px solid #ddd;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9;
 }
 
 .head {
   z-index: 5;
+  position: relative;
   display: flex;
-  position: sticky;
-  top: 0;
   background-color: #fff;
   box-sizing: border-box;
   max-width: 1440px;
@@ -222,6 +226,7 @@
 }
 
 .fav__quantity {
+  animation: appear 0.3s linear;
   z-index: -1;
   position: absolute;
   top: 46%;
@@ -258,5 +263,15 @@
 
   to {
     transform: scaleX(100%);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;;
+  }
+
+  to {
+    opacity: 1;
   }
 }
