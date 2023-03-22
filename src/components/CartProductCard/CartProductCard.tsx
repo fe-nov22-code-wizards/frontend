@@ -9,17 +9,9 @@ const BASE_URL = 'https://api-gwis.onrender.com';
 
 type Props = {
   phone: Phone;
-  handleChangeTotalPrice: (
-    phonePrice: number,
-    phoneQuantity: number,
-    action: string,
-  ) => void;
 };
 
-export const CartProductCard: React.FC<Props> = ({
-  phone,
-  handleChangeTotalPrice,
-}) => {
+export const CartProductCard: React.FC<Props> = ({ phone }) => {
   const { cartPhones, addToCart, removeAllItemsByOneType, removeOneFromCart } =
     useContext(FavouritesContext);
 
@@ -34,7 +26,7 @@ export const CartProductCard: React.FC<Props> = ({
           className="cart_card-btn-delete"
           onClick={() => {
             removeAllItemsByOneType(phone.phoneId);
-            handleChangeTotalPrice(phone.price, quantity, 'minus');
+            // handleChangeTotalPrice(phone.price, quantity, 'minus');
           }}
         >
           <svg
@@ -68,7 +60,6 @@ export const CartProductCard: React.FC<Props> = ({
             className="cart_card-btn-options"
             onClick={() => {
               removeOneFromCart(phone.phoneId);
-              handleChangeTotalPrice(phone.price, 1, 'minus');
             }}
           >
             <img
@@ -82,7 +73,6 @@ export const CartProductCard: React.FC<Props> = ({
             className="cart_card-btn-options"
             onClick={() => {
               addToCart(phone.phoneId);
-              handleChangeTotalPrice(phone.price, 1, 'plus');
             }}
             disabled={isAddBtnDisabled}
           >

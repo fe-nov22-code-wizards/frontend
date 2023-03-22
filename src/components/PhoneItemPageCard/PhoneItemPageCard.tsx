@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
-import React, { useState, useContext } from 'react';
+
+import React, { useContext, useState } from 'react';
 import './PhoneItemPageCard.scss';
 import '../Grid/Grid.scss';
 import { PhoneItem } from '../../types/PhoneItem';
@@ -88,6 +89,17 @@ export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
     return foundUrl;
   };
 
+  const { cartPhones, removeAllItemsByOneType, addToCart } =
+    useContext(FavouritesContext);
+  const isAdded = cartPhones.some((p) => p === id);
+  const handleClickAdded = (): void => {
+    if (isAdded) {
+      removeAllItemsByOneType(id);
+    } else {
+      addToCart(id);
+    }
+  };
+
   return (
     <div className="card grid__item--desktop-1-24 grid__item--tablet-1-12 grid__item-1-4">
       <h1 className="card_title grid__item--desktop-1-17 grid__item--tablet-1-12 grid__item-1-4">
@@ -172,9 +184,26 @@ export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
               <p className="card_regular">${priceRegular}</p>
             </div>
             <div className="card_actions">
-              <button type="button" className="card_buy">
+              {/* <button type="button" className="card_buy">
                 Add to cart
-              </button>
+              </button> */}
+              {isAdded ? (
+                <button
+                  type="button"
+                  className="card_buy product-card__button--added product-card__button"
+                  onClick={handleClickAdded}
+                >
+                  Added
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="card_buy product-card__button"
+                  onClick={handleClickAdded}
+                >
+                  Add to cart
+                </button>
+              )}
               <button
                 type="button"
                 className="card_favorite"

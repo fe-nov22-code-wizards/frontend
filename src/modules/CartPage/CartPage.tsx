@@ -15,7 +15,7 @@ import { PageNotFound } from '../PageNotFound';
 export const CartPage: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [phoneFromCart, setPhoneFromCart] = useState<Phone[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [, setIsLoading] = useState(false);
   const { cartPhones, removeAllFromCart } = useContext(FavouritesContext);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -37,6 +37,22 @@ export const CartPage: React.FC = () => {
         cartPhones.includes(phone.phoneId),
       );
 
+      const phoneForTotalPrice = [];
+
+      for (let i = 0; i < cartPhones.length; i++) {
+        const foundPhone = phones.find(
+          (p: Phone) => p.phoneId === cartPhones[i],
+        );
+
+        phoneForTotalPrice.push(foundPhone);
+      }
+
+      const firstTotalPrice = phoneForTotalPrice
+        .map((p) => p.price)
+        .map(Number)
+        .reduce((price, total) => price + total, 0);
+
+      setTotalPrice(firstTotalPrice);
       setPhoneFromCart(neededPhones);
     } catch {
       <PageNotFound />;
@@ -45,61 +61,14 @@ export const CartPage: React.FC = () => {
     }
   };
 
-  // eslint-disable-next-line prettier/prettier
-  // const loadPhonesWithPrice = async() => {
-  //   try {
-  //     setIsLoading(true);
-
-  //     const allPhones = await getAllPhones();
-  //     const neededPhones = allPhones.filter((phone) =>
-  //       cartPhones.includes(phone.phoneId),
-  //     );
-
-  //     setPhoneFromCart(neededPhones);
-
-  //     const primaryTotalPrice = neededPhones
-  //       .map((phone) => phone.price)
-  //       .map(Number)
-  //       .reduce((price, total) => price + total, 0);
-
-  //     setTotalPrice(primaryTotalPrice);
-  //   } catch {
-  //     <PageNotFound />;
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-
   useEffect(() => {
     loadPhones();
     console.log('loaded');
   }, [cartPhones]);
 
-  // useEffect(() => {
-  //   loadPhonesWithPrice();
-  // }, []);
-
   const handleClearCart = () => {
     removeAllFromCart();
     setPhoneFromCart([]);
-  };
-
-  const handleChangeTotalPrice = (
-    phonePrice: number,
-    phoneQuantity: number,
-    action: string,
-  ) => {
-    if (action === 'plus') {
-      setTotalPrice(
-        (prevTotalPrice) => prevTotalPrice + phonePrice * phoneQuantity,
-      );
-    }
-
-    if (action === 'minus') {
-      setTotalPrice(
-        (prevTotalPrice) => prevTotalPrice - phonePrice * phoneQuantity,
-      );
-    }
   };
 
   return (
@@ -130,11 +99,7 @@ export const CartPage: React.FC = () => {
           ) : (
             phoneFromCart.map((cartPhone: Phone) => {
               return (
-                <CartProductCard
-                  key={cartPhone.phoneId}
-                  phone={cartPhone}
-                  handleChangeTotalPrice={handleChangeTotalPrice}
-                />
+                <CartProductCard key={cartPhone.phoneId} phone={cartPhone} />
               );
             })
           )}
