@@ -28,6 +28,12 @@ export const Pagination: React.FC<Props> = ({
     return null;
   }
 
+  if (currentPage > pageNumber.length) {
+    paginate(1);
+
+    return null;
+  }
+
   const maxPageNumbers = 4;
   const halfMaxPageNumbers = Math.floor(maxPageNumbers / 2);
   let startPage = Math.max(currentPage - halfMaxPageNumbers, 1);
@@ -81,9 +87,11 @@ export const Pagination: React.FC<Props> = ({
         ))}
         {endPage < pageNumber.length - 1 && (
           <li>
-            <span className="ellipse"></span>
-            <span className="ellipse"></span>
-            <span className="ellipse"></span>
+            <div className="ellipse_dots">
+              <span className="ellipse"></span>
+              <span className="ellipse"></span>
+              <span className="ellipse"></span>
+            </div>
           </li>
         )}
         {endPage < pageNumber.length && (

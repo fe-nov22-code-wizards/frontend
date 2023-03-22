@@ -1,0 +1,66 @@
+@import '../../_utils/mixins';
+
+.main-page {
+  margin: 0 16px;
+
+  @include onTablet {
+    margin: 0 24px;
+  }
+
+  @include onDesktop {
+    margin: 0 auto;
+    max-width: 1136px;
+    width: 100%;
+  }
+}
+
+.text__item {
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+  display: inline;
+}
+
+.back-menu {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+
+  &__item {
+    margin-right: 8px;
+  }
+
+  &__icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../images/home.svg');
+    background-size: cover;
+    margin-left: 8px;
+  }
+}
+
+.service {
+  &-title {
+    margin-top: 20px;
+  }
+
+  &-img {
+    @include onMobile {
+      width: 200px;
+      height: 20px;
+    }
+  }
+
+  &-link {
+    text-decoration: none;
+    font-weight: bold;
+    color: #0f0f11;
+  }
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+}

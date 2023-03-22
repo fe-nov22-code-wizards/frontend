@@ -1,7 +1,12 @@
 import React from 'react';
 import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
 
 import './BannerSlider.scss';
+
+import banner__promo from '../../images/banner-promo.svg';
+import banner__tablets from '../../images/banner-tablets.jpg';
+import banner__phones from '../../images/banner-phones.jpg';
 
 type Props = {
   className: string;
@@ -34,9 +39,27 @@ export const BannerSlider: React.FC = () => {
   return (
     <div className="banner-slider">
       <Slider {...configs}>
-        <div className="slick-slide"></div>
-        <div className="slick-slide"></div>
-        <div className="slick-slide"></div>
+        <div className="slick-slide">
+          <Link to="/">
+            <picture>
+              <img src={banner__promo} />
+            </picture>
+          </Link>
+        </div>
+        <div className="slick-slide">
+          <Link to="/phones">
+            <picture>
+              <img src={banner__phones} />
+            </picture>
+          </Link>
+        </div>
+        <div className="slick-slide">
+          <Link to="/tablets">
+            <picture>
+              <img src={banner__tablets} />
+            </picture>
+          </Link>
+        </div>
       </Slider>
     </div>
   );

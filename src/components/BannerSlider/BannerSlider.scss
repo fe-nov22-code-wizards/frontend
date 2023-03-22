@@ -79,20 +79,16 @@
 }
 
 .slick-slide {
-  background-image: url('../../images/bannerslider-mobile.svg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   border-radius: 15px;
 
   height: 400px;
 
-  @include onTablet {
-    background-image: url('../../images/bannerslider-tablet.svg');
-  }
   @include onDesktop {
     height: 400px;
     width: auto;
-    background-image: url('../../images/bannerslider-desktop.svg');
   }
 }
 .slick-list {

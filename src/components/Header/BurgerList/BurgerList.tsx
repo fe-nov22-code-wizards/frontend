@@ -14,8 +14,7 @@ export const BurgerList: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className={classNames('burger__isOpen', {
-        burger__slideOut: !isMenuOpen,
+      className={classNames('burger__container', {
         burger__slideIn: isMenuOpen,
       })}
       onClick={handleCloseMenu}
@@ -24,10 +23,14 @@ export const BurgerList: React.FC<Props> = ({
         navListClass="nav__list burger__list"
         navItemClass="nav__item burger__item"
         navLinkClass="nav__link burger__link"
+        myTabIndex={!isMenuOpen ? -1 : 0}
       />
 
       <div>
-        <SideIcons headLinkClass="burger__icon" />
+        <SideIcons
+          headLinkClass="burger__icon"
+          myTabIndex={!isMenuOpen ? -1 : 0}
+        />
       </div>
     </div>
   );
