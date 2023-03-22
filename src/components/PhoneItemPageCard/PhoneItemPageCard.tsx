@@ -5,8 +5,10 @@ import '../Grid/Grid.scss';
 import { PhoneItem } from '../../types/PhoneItem';
 import classNames from 'classnames';
 import { ReactComponent as Favorite } from '../../images/favorite.svg';
+// eslint-disable-next-line
 import { ReactComponent as FavoriteYellow } from '../../images/favorite-yellow.svg';
 import { Link } from 'react-router-dom';
+import { Phone } from '../../types/Phone';
 
 type Props = {
   phone: PhoneItem;

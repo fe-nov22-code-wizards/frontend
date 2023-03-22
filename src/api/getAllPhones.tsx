@@ -20,3 +20,10 @@ export async function getOne(phoneId: string) {
 
   return dataValues;
 }
+
+export async function getOne(phoneId: string) {
+  const response = await fetch(`${BASE_URL}/phones/${phoneId}`);
+  const { dataValues } = await response.json();
+
+  return dataValues;
+}

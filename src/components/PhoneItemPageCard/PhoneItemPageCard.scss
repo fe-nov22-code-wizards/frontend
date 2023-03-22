@@ -8,7 +8,7 @@
   &_title {
     font-weight: 800;
     letter-spacing: -0.01em;
-    color: #0f0f11;
+    color: #0F0F11;
     font-size: 22px;
     line-height: 140%;
     margin-bottom: 32px;
@@ -98,7 +98,7 @@
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
-    color: #89939a;
+    color: #89939A;
     margin-bottom: 8px;
   }
 
@@ -144,7 +144,7 @@
     font-size: 14px;
     line-height: 21px;
     text-align: center;
-    color: #0f0f11;
+    color: #0F0F11;
   }
 
   &_prices {
@@ -159,7 +159,7 @@
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
-    color: #0f0f11;
+    color: #0F0F11;
   }
 
   &_regular {
@@ -167,7 +167,7 @@
     font-size: 22px;
     line-height: 28px;
     text-decoration-line: line-through;
-    color: #89939a;
+    color: #89939A;
     text-decoration: line-through;
   }
 
@@ -181,13 +181,13 @@
   &_buy {
     width: 238px;
     height: 48px;
-    background: #4219d0;
+    background: #4219D0;
     border-radius: 48px;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
     text-align: center;
-    color: #ffffff;
+    color: #FFFFFF;
     transition: all 0.3s ease;
     cursor: pointer;
 
@@ -230,7 +230,7 @@
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
-    color: #89939a;
+    color: #89939A;
 
     &:not(:last-child) {
       margin-bottom: 8px;
@@ -243,7 +243,7 @@
     font-size: 12px;
     line-height: 15px;
     text-align: right;
-    color: #0f0f11;
+    color: #0F0F11;
 
     &:not(:last-child) {
       margin-bottom: 8px;
@@ -251,12 +251,11 @@
   }
 }
 
-.selected-img {
-  border: 1px solid rgba(15, 15, 17, 1);
+  border: 1px solid rgba(15, 15, 17, 1)
 }
 
 .selected-capacity {
-  background: #0f0f11;
+  background: #0F0F11;
 }
 
 .selected-capacity-text {

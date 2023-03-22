@@ -53,7 +53,6 @@ export const ProductCardLayout: React.FC<Props> = ({
           alt={name}
         />
       </NavLink>
-
       <NavLink to={`/phones/${phoneId}`} className="product-card__title">
         {name}
       </NavLink>
