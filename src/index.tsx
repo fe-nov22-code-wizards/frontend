@@ -7,7 +7,7 @@ import { FavouritesProvider } from './components/FavouritesContext';
 
 const Root = () => (
   <FavouritesProvider>
-    <Router>
+    <Router basename="/frontend">
       <App />
     </Router>
   </FavouritesProvider>
