@@ -44,50 +44,53 @@ export const PhoneItemPage: React.FC = () => {
         <Loader />
       ) : (
         <>
-          <div className="grid">
-            <div className="phoneItem_breadcrumbs grid__item--desktop-1-10 grid__item--tablet-1-11 grid__item-1-4">
-              <Link to="/" className="phoneItem_home">
-                <img src={home} alt="home" className="phoneItem_home-img" />
-              </Link>
-              <img
-                src={arrowRight}
-                alt="arrow-icon"
-                className="phoneItem_arrow"
-              />
-              <Link to="/phones" className="phoneItem_phones-link">
-                Phones
-              </Link>
-              <img
-                src={arrowRight}
-                alt="arrow-icon"
-                className="phoneItem_arrow"
-              />
-              <p className="phoneItem_link-name">{phone?.name}</p>
-            </div>
-            <div className="phoneItem_navigate-wrapper grid__item--desktop-1-2 grid__item--tablet-1-2">
-              <div className="phoneItem_navigate">
-                <Link
-                  to="#"
-                  onClick={() => window.history.back()}
-                  className="phoneItem_link"
-                >
-                  <img
-                    src={arrowBackIcon}
-                    alt="GoBack"
-                    className="phoneItem_back-icon"
-                  />
+          <div className="phoneItem_section-upper">
+            <div className="grid">
+              <div className="phoneItem_breadcrumbs grid__item--desktop-1-10 grid__item--tablet-1-11 grid__item-1-4">
+                <Link to="/" className="phoneItem_home">
+                  <img src={home} alt="home" className="phoneItem_home-img" />
                 </Link>
-                <Link
-                  to="#"
-                  onClick={() => window.history.back()}
-                  className="phoneItem_link phoneItem_back-title"
-                >
-                  Back
+                <img
+                  src={arrowRight}
+                  alt="arrow-icon"
+                  className="phoneItem_arrow"
+                />
+                <Link to="/phones" className="phoneItem_phones-link">
+                  Phones
                 </Link>
+                <img
+                  src={arrowRight}
+                  alt="arrow-icon"
+                  className="phoneItem_arrow"
+                />
+                <p className="phoneItem_link-name">{phone?.name}</p>
               </div>
+              <div className="phoneItem_navigate-wrapper grid__item--desktop-1-2 grid__item--tablet-1-2">
+                <div className="phoneItem_navigate">
+                  <Link
+                    to="#"
+                    onClick={() => window.history.back()}
+                    className="phoneItem_link"
+                  >
+                    <img
+                      src={arrowBackIcon}
+                      alt="GoBack"
+                      className="phoneItem_back-icon"
+                    />
+                  </Link>
+                  <Link
+                    to="#"
+                    onClick={() => window.history.back()}
+                    className="phoneItem_link phoneItem_back-title"
+                  >
+                    Back
+                  </Link>
+                </div>
+              </div>
+              {phone && <PhoneItemPageCard phone={phone} />}
             </div>
-            {phone && <PhoneItemPageCard phone={phone} />}
           </div>
+
           {phone && <PhoneItemPageDescription phone={phone} />}
         </>
       )}

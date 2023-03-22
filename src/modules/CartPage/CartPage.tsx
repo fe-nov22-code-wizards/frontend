@@ -1,4 +1,3 @@
-/* eslint-disable no-mixed-operators */
 /* eslint-disable max-len */
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';

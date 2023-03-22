@@ -5,6 +5,14 @@
     padding-top: 25px;
   }
 
+  &_section-upper {
+    padding: 0 16px;
+
+    @include onDesktop {
+      padding: 0;
+    }
+  }
+
   &_breadcrumbs {
     display: flex;
     align-items: center;
@@ -22,12 +30,10 @@
     height: 16px;
     padding: 2px;
     margin-right: 8px;
-    // margin-right: 14px;
   }
 
   &_arrow {
     margin-right: 8px;
-    // margin-right: 14px;
   }
 
   &_phones-link {
@@ -38,7 +44,6 @@
     color: #0f0f11;
     text-decoration: none;
     margin-right: 8px;
-    // margin-right: 14px;
   }
 
   &_link-name {
