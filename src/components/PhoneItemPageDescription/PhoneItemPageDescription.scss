@@ -1,0 +1,83 @@
+@import '../../_utils/_mixins.scss';
+
+.phone-description {
+  margin: 0 auto;
+  flex-wrap: wrap;
+
+  @include onDesktop {
+    max-width: 1260px;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}
+
+.block {
+  padding: 10px 30px;
+  margin: 0;
+}
+
+.about-block {
+  width: 100%;
+
+  @include onDesktop {
+    width: 50%;
+    margin: 0;
+  }
+}
+
+.block-name {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 30px;
+  padding-bottom: 16px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #e2e6e9;
+}
+
+.about-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.item-title {
+  font-size: 20px;
+  line-height: 26px;
+  color: #0f0f11;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.item-text {
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+  margin-bottom: 32px;
+}
+
+.tech-specs-block {
+  width: 100%;
+
+  @include onDesktop {
+    width: 50%;
+  }
+}
+
+.characteristic {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  &-title {
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+
+  &-value {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #0f0f11;
+  }
+}
