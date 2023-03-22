@@ -18,7 +18,7 @@ export const PageNavLink: React.FC<Props> = ({
   <NavLink
     to={to}
     className={({ isActive }) => cn(type, { 'is-active': isActive })}
-    tabIndex={myTabIndex}
+    tabIndex={myTabIndex || 0}
   >
     {children}
   </NavLink>

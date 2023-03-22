@@ -3,6 +3,8 @@
 .header {
   border-bottom: 1px solid #ddd;
   z-index: 9;
+  position: sticky;
+  top: 0;
 }
 
 .head {
@@ -84,7 +86,7 @@
     box-sizing: border-box;
     transform: scale(1);
     transition: transform 0.3s linear;
-    padding: 16px 18px;
+    padding: 16px 0;
   }
 
   &:hover {
@@ -174,7 +176,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 49px);
+    height: calc(100vh - 48px);
     width: 100%;
     background-color: #fff;
     transform: translateY(-120%);
