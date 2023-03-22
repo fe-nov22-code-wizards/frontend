@@ -1,59 +1,41 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import minus from '../../images/minus.svg';
 import plus from '../../images/plus.svg';
-import { Phone, PhoneWithQuantity } from '../../types/Phone';
+import { Phone } from '../../types/Phone';
+import { FavouritesContext } from '../FavouritesContext';
 import './CartProductCard.scss';
 
 const BASE_URL = 'https://api-gwis.onrender.com';
 
 type Props = {
-  phone: PhoneWithQuantity;
-  handleDeleteFromCart: (phoneToDelete: Phone) => void;
-  handleAddToTotalPrice: (price: number) => void;
-  handleMinusTotalPrice: (price: number) => void;
-  handleAddToTotalQuantity: () => void;
-  handleMinusTotalQuantity: () => void;
+  phone: Phone;
+  handleChangeTotalPrice: (
+    phonePrice: number,
+    phoneQuantity: number,
+    action: string,
+  ) => void;
 };
 
 export const CartProductCard: React.FC<Props> = ({
   phone,
-  handleDeleteFromCart,
-  handleAddToTotalPrice,
-  handleMinusTotalPrice,
-  handleAddToTotalQuantity,
-  handleMinusTotalQuantity,
+  handleChangeTotalPrice,
 }) => {
-  const quantitFromLocalStorage =
-    window.localStorage.getItem(`quantity${phone.phoneId}`) || '';
-  const [quantity, setQuantity] = useState(+quantitFromLocalStorage);
+  const { cartPhones, addToCart, removeAllItemsByOneType, removeOneFromCart } =
+    useContext(FavouritesContext);
 
-  const handleMinusQuantity = () => {
-    if (+quantity === 1) {
-      handleDeleteFromCart(phone);
-      window.localStorage.removeItem(`quantity${phone.phoneId}`);
+  const quantity = cartPhones.filter((p) => p === phone.phoneId).length;
 
-      return;
-    }
-
-    setQuantity((prevQuantity: number) => prevQuantity - 1);
-    window.localStorage.setItem(`quantity${phone.phoneId}`, `${quantity}`);
-    handleMinusTotalPrice(+phone.price);
-    handleMinusTotalQuantity();
-  };
-
-  const handlePlusQuantity = () => {
-    setQuantity((prevQuantity: number) => prevQuantity + 1);
-    window.localStorage.setItem(`quantity${phone.phoneId}`, `${quantity}`);
-    handleAddToTotalPrice(+phone.price);
-    handleAddToTotalQuantity();
-  };
+  const isAddBtnDisabled = quantity >= 10;
 
   return (
     <div className="cart_card grid__item--desktop-1-16">
       <div className="cart_card-info">
         <button
           className="cart_card-btn-delete"
-          onClick={() => handleDeleteFromCart(phone)}
+          onClick={() => {
+            removeAllItemsByOneType(phone.phoneId);
+            handleChangeTotalPrice(phone.price, quantity, 'minus');
+          }}
         >
           <svg
             width="10"
@@ -84,7 +66,10 @@ export const CartProductCard: React.FC<Props> = ({
         <div className="cart_options">
           <button
             className="cart_card-btn-options"
-            onClick={handleMinusQuantity}
+            onClick={() => {
+              removeOneFromCart(phone.phoneId);
+              handleChangeTotalPrice(phone.price, 1, 'minus');
+            }}
           >
             <img
               src={minus}
@@ -95,7 +80,11 @@ export const CartProductCard: React.FC<Props> = ({
           <p className="cart_card-options-info">{quantity}</p>
           <button
             className="cart_card-btn-options"
-            onClick={handlePlusQuantity}
+            onClick={() => {
+              addToCart(phone.phoneId);
+              handleChangeTotalPrice(phone.price, 1, 'plus');
+            }}
+            disabled={isAddBtnDisabled}
           >
             <img src={plus} alt="Plus an item from cart" />
           </button>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import './ProductCardLayout.scss';
 import '../Grid/Grid.scss';
 import { ReactComponent as Favorite } from '../../images/favorite.svg';
@@ -12,28 +12,30 @@ import { FavouritesContext } from '../FavouritesContext';
 type Props = {
   phone: Phone;
   hidden?: boolean;
-  handleOnAddToCart: (phone: Phone) => void;
-  isInCart: boolean;
 };
 
 const BASE_URL = 'https://api-gwis.onrender.com/';
 
-export const ProductCardLayout: React.FC<Props> = ({
-  phone,
-  hidden,
-  handleOnAddToCart,
-  isInCart,
-}) => {
+export const ProductCardLayout: React.FC<Props> = ({ phone, hidden }) => {
   const { image, name, fullPrice, price, screen, capacity, ram, phoneId } =
     phone;
-  const { addFavouritePhone, removeFavouritePhone, favouritesPhones } =
-    useContext(FavouritesContext);
+  const {
+    addFavouritePhone,
+    removeFavouritePhone,
+    favouritesPhones,
+    addToCart,
+    removeAllItemsByOneType,
+    cartPhones,
+  } = useContext(FavouritesContext);
   const isFavourite = favouritesPhones.some((p) => p.id === phone.id);
-  const [isAdded, setIsAdded] = useState(isInCart);
+  const isAdded = cartPhones.some((p) => p === phone.phoneId);
 
   const handleClickAdded = (): void => {
-    setIsAdded(!isAdded);
-    handleOnAddToCart(phone);
+    if (isAdded) {
+      removeAllItemsByOneType(phone.phoneId);
+    } else {
+      addToCart(phone.phoneId);
+    }
   };
 
   const handleClickLiked = (): void => {
@@ -51,7 +53,6 @@ export const ProductCardLayout: React.FC<Props> = ({
         className="product-card__image"
         alt={name}
       />
-      {/* <h1 className="product-card__title">{name}</h1> */}
       <NavLink to={phoneId} className="product-card__title">
         {name}
       </NavLink>
