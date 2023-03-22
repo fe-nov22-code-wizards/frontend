@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './PhoneItemPageCard.scss';
 import '../Grid/Grid.scss';
 import { PhoneItem } from '../../types/PhoneItem';
@@ -8,7 +8,7 @@ import { ReactComponent as Favorite } from '../../images/favorite.svg';
 // eslint-disable-next-line
 import { ReactComponent as FavoriteYellow } from '../../images/favorite-yellow.svg';
 import { Link } from 'react-router-dom';
-import { Phone } from '../../types/Phone';
+import { FavouritesContext } from '../FavouritesContext';
 
 type Props = {
   phone: PhoneItem;
@@ -74,6 +74,17 @@ export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
     const foundUrl = [mainModel, model, num, normalizeCapacity, col].join('-');
 
     return foundUrl;
+  };
+
+  const { cartPhones, removeAllItemsByOneType, addToCart } =
+    useContext(FavouritesContext);
+  const isAdded = cartPhones.some((p) => p === id);
+  const handleClickAdded = (): void => {
+    if (isAdded) {
+      removeAllItemsByOneType(id);
+    } else {
+      addToCart(id);
+    }
   };
 
   return (
@@ -162,9 +173,26 @@ export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
               <p className="card_regular">${priceRegular}</p>
             </div>
             <div className="card_actions">
-              <button type="button" className="card_buy">
+              {/* <button type="button" className="card_buy">
                 Add to cart
-              </button>
+              </button> */}
+              {isAdded ? (
+                <button
+                  type="button"
+                  className="card_buy product-card__button--added product-card__button"
+                  onClick={handleClickAdded}
+                >
+                  Added
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="card_buy product-card__button"
+                  onClick={handleClickAdded}
+                >
+                  Add to cart
+                </button>
+              )}
               <button
                 type="button"
                 className="card_favorite"
