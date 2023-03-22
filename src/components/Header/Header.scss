@@ -241,11 +241,12 @@
   @include onMobile {
     top: 36%;
     left: 51%;
-    transform: translate(-13%, -13%);
+    transform: translate(-19%, -13%);
   }
 
   @include onTablet {
     left: 61%;
+    top: 43%;
   }
 
   @include onDesktop {
