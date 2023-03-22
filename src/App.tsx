@@ -10,6 +10,10 @@ import { CartPage } from './modules/CartPage';
 import { HomePage } from './modules/HomePage';
 import { FavouritesPage } from './modules/FavouritesPage';
 import { ContactPage } from './modules/ContactPage';
+import { PhoneItemPage } from './modules/PhoneItemPage';
+import { TabletsPage } from './modules/TabletsPage';
+import { AccessoriesPage } from './modules/AccessoriesPage';
+
 
 export const App: React.FC = () => {
   return (
@@ -23,12 +27,12 @@ export const App: React.FC = () => {
 
         <Route path="phones">
           <Route index element={<PhonesPage />} />
-          <Route path=":phoneId" element={<PhonesPage />} />
+          <Route path=":phoneId" element={<PhoneItemPage />} />
         </Route>
 
-        <Route path="tablets" element={<h1>Tablets Page</h1>} />
+        <Route path="tablets" element={<TabletsPage />} />
 
-        <Route path="accessories" element={<h1>Accessories Page</h1>} />
+        <Route path="accessories" element={<AccessoriesPage />} />
 
         <Route path="favourites" element={<FavouritesPage />} />
 

@@ -56,6 +56,8 @@ $elements-c: #e2e6e9;
     line-height: 21px;
     margin-bottom: 12px;
     align-self: start;
+    text-decoration: none;
+    color: black;
   }
 
   &__price-container {
@@ -131,10 +133,11 @@ $elements-c: #e2e6e9;
     font-size: 14px;
     line-height: 16px;
     text-decoration: none;
+    transition: all 0.5s ease-out;
 
     &:hover {
       box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
-      transition: background-color 0.3s ease;
+      transition: all 0.7s ease-out;
     }
 
     &--added {
@@ -146,6 +149,7 @@ $elements-c: #e2e6e9;
       &:hover {
         color: $green-c;
         border: 1px solid #e2e6e9;
+        transition: all 0.5s ease-in;
       }
     }
   }
@@ -161,12 +165,13 @@ $elements-c: #e2e6e9;
     border-radius: 48px;
     margin-left: 8px;
     cursor: pointer;
+    transition: all 0.5s ease-out;
 
     &:hover {
       background-color: white;
       border: 1px solid $primary-c;
       box-shadow: rgba(184, 187, 190, 0.1) 0px 4px 5px;
-      transition: background-color 0.3s ease;
+      transition: all 0.5s ease-in;
     }
   }
 }

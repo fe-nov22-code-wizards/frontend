@@ -6,16 +6,16 @@ import arrowRight from '../../images/arrow-right.svg';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Phone } from '../../types/Phone';
 import { PageNotFound } from '../PageNotFound';
-import { getAllPhones } from '../../api/getAllPhones';
 import { Loader } from '../../components/Loader';
 import { Pagination } from '../../components/Pagination';
-import { getPreparedPhones } from '../../helpers/getPreparedPhones';
-// import { getPaginationPhones } from '../../api/getPaginationPhones';
+import { getAllPhones } from '../../api/getAllPhones';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [phones, setPhones] = useState<Phone[]>([]);
+  const [totalPhones, setTotalPhones] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+
   const sort = searchParams.get('sort') || '';
   const perPage = Number(searchParams.get('perPage') || '24');
   const page = Number(searchParams.get('page') || '1');
@@ -25,9 +25,10 @@ export const PhonesPage: React.FC = () => {
       try {
         setIsLoading(true);
 
-        const res = await getAllPhones();
+        const res = await getAllPhones(page, perPage, sort);
 
-        setPhones(res);
+        setPhones(res.phones);
+        setTotalPhones(res.info.total);
       } catch (error) {
         <PageNotFound />;
       } finally {
@@ -36,45 +37,27 @@ export const PhonesPage: React.FC = () => {
     }
 
     fetchPosts();
-  }, []);
+  }, [page, perPage, sort]);
 
-  // useEffect(() => {
-  //   async function fetchPosts() {
-  //     try {
-  //       setIsLoading(true);
+  // const cartString = window.localStorage.getItem('cart');
+  // const cart: Phone[] = cartString ? JSON.parse(cartString) : [];
 
-  //       const res = await getPaginationPhones(page, perPage);
+  // const [cartPhones, setCartPhones] = useState<Phone[]>(cart);
+  // const handleOnAddToCart = (phone: Phone) => {
+  //   const cartPhonesId = cartPhones.map((phoneCart) => phoneCart.phoneId);
 
-  //       setPhones(res);
-  //     } catch (error) {
-  //       <PageNotFound />;
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
+  //   if (!cartPhonesId.includes(phone.phoneId)) {
+  //     setCartPhones((previousCartPhones) => [...previousCartPhones, phone]);
+  //   } else {
+  //     setCartPhones((previousCartPhones) =>
+  //       previousCartPhones.filter(
+  //         (cartPhone: Phone) => cartPhone.phoneId !== phone.phoneId,
+  //       ),
+  //     );
   //   }
+  // };
 
-  //   fetchPosts();
-  // }, [page, perPage]);
-
-  const cartString = window.localStorage.getItem('cart');
-  const cart: Phone[] = cartString ? JSON.parse(cartString) : [];
-
-  const [cartPhones, setCartPhones] = useState<Phone[]>(cart);
-  const handleOnAddToCart = (phone: Phone) => {
-    const cartPhonesId = cartPhones.map((phoneCart) => phoneCart.phoneId);
-
-    if (!cartPhonesId.includes(phone.phoneId)) {
-      setCartPhones((previousCartPhones) => [...previousCartPhones, phone]);
-    } else {
-      setCartPhones((previousCartPhones) =>
-        previousCartPhones.filter(
-          (cartPhone: Phone) => cartPhone.phoneId !== phone.phoneId,
-        ),
-      );
-    }
-  };
-
-  window.localStorage.setItem('cart', JSON.stringify(cartPhones));
+  // window.localStorage.setItem('cart', JSON.stringify(cartPhones));
 
   const updateSearch = (params: { [key: string]: string | null }) => {
     Object.entries(params).forEach(([key, value]) => {
@@ -99,11 +82,9 @@ export const PhonesPage: React.FC = () => {
     updateSearch({ perPage: event.target.value || null });
   };
 
-  const visiblePhones = getPreparedPhones(phones, sort);
-
   const indexOfLastPost = page * perPage;
   const indexOfFirstPost = indexOfLastPost - perPage;
-  const currentPhones = visiblePhones.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPhones = phones.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber: number) => {
     updateSearch({
@@ -136,7 +117,7 @@ export const PhonesPage: React.FC = () => {
       </div>
 
       <div className="visible__phones">
-        <p className="text__item">{`${phones.length} models`}</p>
+        <p className="text__item">{`${totalPhones} models`}</p>
       </div>
 
       <div className="dropdowns grid">
@@ -159,7 +140,7 @@ export const PhonesPage: React.FC = () => {
             <option value="">No sort</option>
             {[
               { sortBy: 'year', title: 'Newest' },
-              { sortBy: 'title', title: 'Alphabetically' },
+              { sortBy: 'name', title: 'Alphabetically' },
               { sortBy: 'price', title: 'Cheapest' },
             ].map((sortParam) => (
               <option key={sortParam.sortBy} value={sortParam.sortBy}>
@@ -195,32 +176,23 @@ export const PhonesPage: React.FC = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="phones-cards">
-          {currentPhones.map((phone) => {
-            const isInCart = cartPhones
-              .map((phonesInCart) => phonesInCart.phoneId)
-              .includes(phone.phoneId);
+        <>
+          <div className="phones-cards">
+            {currentPhones.map((phone) => {
+              return <ProductCardLayout phone={phone} key={phone.id} />;
+            })}
+          </div>
 
-            return (
-              <ProductCardLayout
-                phone={phone}
-                key={phone.id}
-                handleOnAddToCart={handleOnAddToCart}
-                isInCart={isInCart}
-              />
-            );
-          })}
-        </div>
+          <Pagination
+            postsPerPage={perPage}
+            totalPosts={totalPhones}
+            paginate={paginate}
+            currentPage={page}
+            prevPage={prevPage}
+            nextPage={nextPage}
+          />
+        </>
       )}
-
-      <Pagination
-        postsPerPage={perPage}
-        totalPosts={phones.length}
-        paginate={paginate}
-        currentPage={page}
-        prevPage={prevPage}
-        nextPage={nextPage}
-      />
     </div>
   );
 };

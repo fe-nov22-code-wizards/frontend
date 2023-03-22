@@ -8,13 +8,6 @@ import './FavouritesPage.scss';
 
 export const FavouritesPage: React.FC = () => {
   const { favouritesPhones } = useContext(FavouritesContext);
-  const [cart, setCart] = useState<Phone[]>([]);
-
-  const handleAddToCart = (phone: Phone) => {
-    if (!cart.includes(phone)) {
-      setCart([...cart, phone]);
-    }
-  };
 
   return (
     <div className="main-page">
@@ -31,12 +24,7 @@ export const FavouritesPage: React.FC = () => {
       {favouritesPhones.length ? (
         <div className="phones-cards">
           {favouritesPhones.map((phone: Phone) => (
-            <ProductCardLayout
-              phone={phone}
-              key={phone.id}
-              handleOnAddToCart={handleAddToCart}
-              isInCart={cart.includes(phone)}
-            />
+            <ProductCardLayout phone={phone} key={phone.id} />
           ))}
         </div>
       ) : (
