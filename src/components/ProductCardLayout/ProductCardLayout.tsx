@@ -48,11 +48,13 @@ export const ProductCardLayout: React.FC<Props> = ({ phone, hidden }) => {
 
   return (
     <div className="product-card container__width">
-      <img
-        src={`${BASE_URL}/${image}`}
-        className="product-card__image"
-        alt={name}
-      />
+      <NavLink to={`/phones/${phoneId}`}>
+        <img
+          src={`${BASE_URL}/${image}`}
+          className="product-card__image"
+          alt={name}
+        />
+      </NavLink>
       <NavLink to={`/phones/${phoneId}`} className="product-card__title">
         {name}
       </NavLink>

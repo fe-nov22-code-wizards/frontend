@@ -14,6 +14,15 @@ type Props = {
   phone: PhoneItem;
 };
 
+type ColorName = 'midnightgreen' | 'spacegray';
+
+type ColorValue = string;
+
+const colorMap: Record<ColorName, ColorValue> = {
+  midnightgreen: '#145A32',
+  spacegray: 'rgb(114, 114, 114)',
+};
+
 const BASE_URL = 'https://api-gwis.onrender.com/';
 
 export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
@@ -102,10 +111,14 @@ export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
           <div className="card_colors">
             <p className="card_colors-title">Avaible colors</p>
             <div className="card_colors-wrapper">
-              {colorsAvailable.map((colorAvaible) => {
+              {colorsAvailable.map((colorAvaible: ColorName | string) => {
+                const colorValue =
+                  colorMap[colorAvaible as ColorName] || colorAvaible;
                 const styles = {
-                  backgroundColor: colorAvaible,
+                  backgroundColor: colorValue,
                 };
+
+                console.log(colorAvaible);
 
                 return (
                   <Link

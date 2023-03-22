@@ -1,9 +1,15 @@
+@import '../../_utils/mixins';
+
 .loader {
   display: block;
   position: relative;
   width: 80px;
   height: 80px;
-  margin: 100px auto 0;
+  margin: 60px auto;
+
+  @include onDesktop {
+    margin: 120px auto;
+  }
 }
 
 .loader div {
