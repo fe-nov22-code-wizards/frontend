@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getPhonesByCategory } from '../../api/getPhonesByCategory';
 import { Phone } from '../../types/Phone';
+import { ErrorMessage } from '../ErrorMessage';
 import { Loader } from '../Loader';
 import { ProductCardLayout } from '../ProductCardLayout';
 import './ProductSlider.scss';
@@ -39,7 +40,8 @@ export const ProductSlider: React.FC<Props> = ({ title, category }) => {
         const res = await getPhonesByCategory(category);
 
         setPhones(res);
-      } catch (error) {
+      } catch (e) {
+        console.log(e);
         setIsError(true);
       } finally {
         setIsLoading(false);
@@ -74,12 +76,7 @@ export const ProductSlider: React.FC<Props> = ({ title, category }) => {
           </button>
         </div>
       </div>
-      {isError && (
-        <h2 className="error__info">
-          Error occurred while loading data from the server. Please try the
-          operation again later.
-        </h2>
-      )}
+      {isError && <ErrorMessage />}
       {isLoading ? (
         <Loader />
       ) : (

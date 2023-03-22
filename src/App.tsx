@@ -14,7 +14,6 @@ import { PhoneItemPage } from './modules/PhoneItemPage';
 import { TabletsPage } from './modules/TabletsPage';
 import { AccessoriesPage } from './modules/AccessoriesPage';
 
-
 export const App: React.FC = () => {
   return (
     <>

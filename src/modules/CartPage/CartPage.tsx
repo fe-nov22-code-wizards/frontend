@@ -11,11 +11,13 @@ import { Phone } from '../../types/Phone';
 import { FavouritesContext } from '../../components/FavouritesContext';
 import { getAllPhones } from '../../api/getAllPhones';
 import { PageNotFound } from '../PageNotFound';
+import { ErrorMessage } from '../../components/ErrorMessage';
 
 export const CartPage: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [phoneFromCart, setPhoneFromCart] = useState<Phone[]>([]);
   const [, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const { cartPhones, removeAllFromCart } = useContext(FavouritesContext);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -54,8 +56,9 @@ export const CartPage: React.FC = () => {
 
       setTotalPrice(firstTotalPrice);
       setPhoneFromCart(neededPhones);
-    } catch {
-      <PageNotFound />;
+    } catch (e) {
+      console.log(e);
+      setIsError(true);
     } finally {
       setIsLoading(false);
     }
@@ -92,6 +95,8 @@ export const CartPage: React.FC = () => {
         </div>
       </div>
       <h1 className="cart_title grid grid__item--desktop-1-3">Cart</h1>
+      {isError && <ErrorMessage />}
+
       <div className="cart_info grid">
         <div className="cart_cards grid__item--desktop-1-16 grid__item--tablet-1-12 grid__item-1-4">
           {cartPhones.length === 0 ? (

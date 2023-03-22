@@ -1,0 +1,31 @@
+.error-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 24px;
+  flex-direction: column;
+
+  &__img {
+    width: 240px;
+    height: 200px;
+  }
+
+  &__notification {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: #808080;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 48px;
+    max-width: 800px;
+    max-height: 300px;
+    overflow: auto;
+
+    &-text {
+      margin: 0;
+    }
+  }
+}
