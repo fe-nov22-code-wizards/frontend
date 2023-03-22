@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+
 import React, { useContext, useState } from 'react';
 import './PhoneItemPageCard.scss';
 import '../Grid/Grid.scss';
@@ -44,8 +45,20 @@ export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [selectedImage, setSelectedImage] = useState(images[0]);
 
+  const { phones, addFavouritePhone, removeFavouritePhone, favouritesPhones } =
+    useContext(FavouritesContext);
+
+  const foundPhoneObj = phones.find((p) => p.phoneId === id);
+  const isFavourite = favouritesPhones.some((p) => p.phoneId === id);
+
   const handleClickLiked = (): void => {
     setIsLiked(!isLiked);
+
+    if (isFavourite) {
+      foundPhoneObj?.phoneId && removeFavouritePhone(foundPhoneObj);
+    } else {
+      foundPhoneObj?.phoneId && addFavouritePhone(foundPhoneObj);
+    }
   };
 
   const styleForSelectedImage = {
@@ -129,8 +142,6 @@ export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
                   backgroundColor: colorValue,
                 };
 
-                console.log(colorAvaible);
-
                 return (
                   <Link
                     to={`/phones/${handleChangeUrlWithColor(colorAvaible)}`}
@@ -198,7 +209,7 @@ export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
                 className="card_favorite"
                 onClick={handleClickLiked}
               >
-                {isLiked ? <FavoriteYellow /> : <Favorite />}
+                {isFavourite ? <FavoriteYellow /> : <Favorite />}
               </button>
             </div>
             <div className="card_information">

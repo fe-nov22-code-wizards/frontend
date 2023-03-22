@@ -20,13 +20,25 @@ export const Footer: React.FC = () => {
           <Link
             className="navigation__link"
             to="https://github.com/fe-nov22-code-wizards/frontend"
+            target="_blank"
+            rel="noreferrer"
           >
             GitHub
           </Link>
-          <Link className="navigation__link" to="#">
+          <Link
+            className="navigation__link"
+            to="contacts"
+            target="_blank"
+            rel="noreferrer"
+          >
             Contacts
           </Link>
-          <Link className="navigation__link" to="#">
+          <Link
+            className="navigation__link"
+            to="rights"
+            target="_blank"
+            rel="noreferrer"
+          >
             Rights
           </Link>
         </nav>

@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const SideIcons: React.FC<Props> = ({ headLinkClass, myTabIndex }) => {
-  const { favouritesPhones } = useContext(FavouritesContext);
+  const { favouritesPhones, cartPhones } = useContext(FavouritesContext);
 
   return (
     <>
@@ -27,6 +27,10 @@ export const SideIcons: React.FC<Props> = ({ headLinkClass, myTabIndex }) => {
 
       <PageNavLink type={headLinkClass} to="/cart" myTabIndex={myTabIndex}>
         <img src={cart} alt="cart" className="picture-anim" />
+
+        {cartPhones.length > 0 && (
+          <span className="fav__quantity">{cartPhones.length}</span>
+        )}
       </PageNavLink>
     </>
   );
