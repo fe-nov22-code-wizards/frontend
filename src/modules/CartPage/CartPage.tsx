@@ -10,7 +10,6 @@ import { ModalCheckout } from '../../components/ModalCheckout';
 import { Phone } from '../../types/Phone';
 import { FavouritesContext } from '../../components/FavouritesContext';
 import { getAllPhones } from '../../api/getAllPhones';
-import { PageNotFound } from '../PageNotFound';
 import { ErrorMessage } from '../../components/ErrorMessage';
 
 export const CartPage: React.FC = () => {
