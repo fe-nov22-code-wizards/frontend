@@ -1,9 +1,12 @@
+/* eslint-disable quotes */
 import React, { useContext } from 'react';
 import minus from '../../images/minus.svg';
 import plus from '../../images/plus.svg';
 import { Phone } from '../../types/Phone';
 import { FavouritesContext } from '../FavouritesContext';
 import './CartProductCard.scss';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BASE_URL = 'https://api-gwis.onrender.com';
 
@@ -16,6 +19,10 @@ export const CartProductCard: React.FC<Props> = ({ phone }) => {
     useContext(FavouritesContext);
 
   const quantity = cartPhones.filter((p) => p === phone.phoneId).length;
+
+  if (quantity + 1 > 10) {
+    toast.warn("You can't add more than 10 phones of one model");
+  }
 
   const isAddBtnDisabled = quantity >= 10;
 
@@ -56,6 +63,7 @@ export const CartProductCard: React.FC<Props> = ({ phone }) => {
 
       <div className="cart_options-wrapper">
         <div className="cart_options">
+          <ToastContainer />
           <button
             className="cart_card-btn-options"
             onClick={() => {
