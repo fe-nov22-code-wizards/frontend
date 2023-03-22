@@ -118,10 +118,14 @@
     cursor: pointer;
   }
 
-  &__color-filling {
+  &_color-filling {
     border-radius: 50%;
     height: 28px;
     width: 28px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
   &_capacities-wrapper {
