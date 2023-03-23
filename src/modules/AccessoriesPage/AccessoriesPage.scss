@@ -1,6 +1,10 @@
 @import '../../_utils/mixins';
 
 .main-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
   margin: 0 16px;
 
   @include onTablet {
@@ -46,6 +50,9 @@
   }
 
   &-img {
+    max-width: 100%;
+    max-height: 100%;
+
     @include onMobile {
       width: 200px;
       height: 20px;
@@ -61,6 +68,7 @@
 
 .img-container {
   display: flex;
+  flex-grow: 1;
   justify-content: center;
-  margin-top: 200px;
+  align-items: center;
 }
