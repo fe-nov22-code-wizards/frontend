@@ -28,6 +28,8 @@ export const CartPage: React.FC = () => {
   // eslint-disable-next-line prettier/prettier
   const loadPhones = async() => {
     try {
+      setIsError(false);
+
       const { phones } = await getAllPhones(1, 71, '');
 
       const neededPhones = phones.filter((phone: Phone) =>
@@ -68,65 +70,73 @@ export const CartPage: React.FC = () => {
   const shouldShowModal = !isError && showModal;
 
   return (
-    <section className="cart">
-      <div className="cart_navigate-wrapper grid grid__item--desktop-1-2">
-        <div className="cart_navigate">
-          <Link
-            to="#"
-            onClick={() => window.history.back()}
-            className="cart_link"
-          >
-            <img src={arrowBackIcon} alt="GoBack" className="cart_back-icon" />
-          </Link>
-          <Link
-            to="#"
-            onClick={() => window.history.back()}
-            className="cart_link cart_back-title"
-          >
-            Back
-          </Link>
-        </div>
-      </div>
-      <h1 className="cart_title grid grid__item--desktop-1-3">Cart</h1>
-      {isError && <ErrorMessage />}
-
-      <div className="cart_info grid">
-        <div className="cart_cards grid__item--desktop-1-16 grid__item--tablet-1-12 grid__item-1-4">
-          {cartPhones.length === 0 ? (
-            <p>There is no items in the cart</p>
-          ) : (
-            phoneFromCart.map((cartPhone: Phone) => {
-              return (
-                <CartProductCard
-                  key={cartPhone.phoneId}
-                  phone={cartPhone}
-                  isButtonsDisabled={showModal}
+    <>
+      {isError ? (
+        <ErrorMessage />
+      ) : (
+        <section className="cart">
+          <div className="cart_navigate-wrapper grid grid__item--desktop-1-2">
+            <div className="cart_navigate">
+              <Link
+                to="#"
+                onClick={() => window.history.back()}
+                className="cart_link"
+              >
+                <img
+                  src={arrowBackIcon}
+                  alt="GoBack"
+                  className="cart_back-icon"
                 />
-              );
-            })
-          )}
-        </div>
-
-        {phoneFromCart.length !== 0 && (
-          <div className="cart_total-wrapper grid__item--desktop-17-24 grid__item--tablet-1-12 grid__item-1-4">
-            <div className="cart_total">
-              <p className="cart_total-price">${totalPrice}</p>
-              <p className="cart_total-count">
-                Total for {cartPhones.length} items
-              </p>
-              <button onClick={handleOpenModal} className="cart_total-btn">
-                Checkout
-              </button>
-              {shouldShowModal && (
-                <ModalCheckout
-                  handleCloseModal={handleCloseModal}
-                  handleClearCart={handleClearCart}
-                />
-              )}
+              </Link>
+              <Link
+                to="#"
+                onClick={() => window.history.back()}
+                className="cart_link cart_back-title"
+              >
+                Back
+              </Link>
             </div>
           </div>
-        )}
-      </div>
-    </section>
+          <h1 className="cart_title grid grid__item--desktop-1-3">Cart</h1>
+          <div className="cart_info grid">
+            <div className="cart_cards grid__item--desktop-1-16 grid__item--tablet-1-12 grid__item-1-4">
+              {cartPhones.length === 0 ? (
+                <p>There is no items in the cart</p>
+              ) : (
+                phoneFromCart.map((cartPhone: Phone) => {
+                  return (
+                    <CartProductCard
+                      key={cartPhone.phoneId}
+                      phone={cartPhone}
+                      isButtonsDisabled={showModal}
+                    />
+                  );
+                })
+              )}
+            </div>
+
+            {phoneFromCart.length !== 0 && (
+              <div className="cart_total-wrapper grid__item--desktop-17-24 grid__item--tablet-1-12 grid__item-1-4">
+                <div className="cart_total">
+                  <p className="cart_total-price">${totalPrice}</p>
+                  <p className="cart_total-count">
+                    Total for {cartPhones.length} items
+                  </p>
+                  <button onClick={handleOpenModal} className="cart_total-btn">
+                    Checkout
+                  </button>
+                  {shouldShowModal && (
+                    <ModalCheckout
+                      handleCloseModal={handleCloseModal}
+                      handleClearCart={handleClearCart}
+                    />
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+    </>
   );
 };

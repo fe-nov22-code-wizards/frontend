@@ -14,7 +14,7 @@ type Props = {
 export const ProductSlider: React.FC<Props> = ({ title, category }) => {
   const [position, setPosition] = useState(0);
   const [phones, setPhones] = useState<Phone[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   const movingCardSize = 288 * position;
@@ -25,8 +25,6 @@ export const ProductSlider: React.FC<Props> = ({ title, category }) => {
   useEffect(() => {
     async function fetchPosts() {
       try {
-        setIsLoading(true);
-
         const res = await getPhonesByCategory(category);
 
         setPhones(res);
@@ -51,7 +49,7 @@ export const ProductSlider: React.FC<Props> = ({ title, category }) => {
             onClick={() => {
               setPosition((curr) => curr - 1);
             }}
-            disabled={isFirst}
+            disabled={isFirst || isError}
           >
             &lt;
           </button>
@@ -60,7 +58,7 @@ export const ProductSlider: React.FC<Props> = ({ title, category }) => {
             onClick={() => {
               setPosition((curr) => curr + 1);
             }}
-            disabled={isLast}
+            disabled={isLast || isError}
           >
             &gt;
           </button>
