@@ -23,16 +23,16 @@ type ColorName =
   | 'gold'
   | 'yellow';
 
-type ColorValue = string;
+type ColorValue = Readonly<string>;
 
-const colorMap: Record<ColorName, ColorValue> = {
+const colorMap: Readonly<Record<ColorName, ColorValue>> = {
   midnightgreen: '#39513D',
   spacegray: '#505050',
-  rosegold: '#FFB9B9',
-  green: '#91FFD1',
-  purple: '#DF9FFF',
-  gold: '#FFE4CA',
-  yellow: '#FFDF40',
+  rosegold: '#ffb9b9',
+  green: '#91ffd1',
+  purple: '#df9fff',
+  gold: '#ffe4ca',
+  yellow: '#ffdf40',
 };
 
 const BASE_URL = 'https://api-gwis.onrender.com/';
