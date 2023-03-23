@@ -14,7 +14,9 @@ export const Footer: React.FC = () => {
     <footer className="footer">
       <div className="footer__container container">
         <div className="footer__logo logo">
-          <img onClick={handleScrollToTop} src={logo} alt="Logo" />
+          <Link to="/">
+            <img onClick={handleScrollToTop} src={logo} alt="Logo" />
+          </Link>
         </div>
         <nav className="footer__nav navigation">
           <Link
