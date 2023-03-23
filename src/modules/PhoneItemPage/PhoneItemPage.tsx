@@ -16,7 +16,7 @@ import { PageNotFound } from '../PageNotFound';
 
 export const PhoneItemPage: React.FC = () => {
   const { phoneId = '' } = useParams();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [phone, setPhone] = useState<PhoneItem | null>(null);
 
@@ -26,8 +26,6 @@ export const PhoneItemPage: React.FC = () => {
   //eslint-disable-next-line space-before-function-paren
   const loadPhone = async () => {
     try {
-      setIsLoading(true);
-
       const currentPhone = await getOne(phoneId);
 
       setPhone(currentPhone);
