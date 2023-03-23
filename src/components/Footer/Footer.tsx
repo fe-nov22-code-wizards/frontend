@@ -45,7 +45,9 @@ export const Footer: React.FC = () => {
           </Link>
         </nav>
         <div className="footer__scroll scroll">
-          <p className="scroll__text">Back to top</p>
+          <p className="scroll__text" onClick={handleScrollToTop}>
+            Back to top
+          </p>
           <button className="scroll__button button" onClick={handleScrollToTop}>
             <img src={toTop} alt="Vector" />
           </button>
