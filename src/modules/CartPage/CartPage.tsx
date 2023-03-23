@@ -14,7 +14,6 @@ import { ErrorMessage } from '../../components/ErrorMessage';
 export const CartPage: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [phoneFromCart, setPhoneFromCart] = useState<Phone[]>([]);
-  const [, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const { cartPhones, removeAllFromCart } = useContext(FavouritesContext);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -29,8 +28,6 @@ export const CartPage: React.FC = () => {
   // eslint-disable-next-line prettier/prettier
   const loadPhones = async() => {
     try {
-      setIsLoading(true);
-
       const { phones } = await getAllPhones(1, 71, '');
 
       const neededPhones = phones.filter((phone: Phone) =>
@@ -55,22 +52,20 @@ export const CartPage: React.FC = () => {
       setTotalPrice(firstTotalPrice);
       setPhoneFromCart(neededPhones);
     } catch (e) {
-      console.log(e);
       setIsError(true);
-    } finally {
-      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     loadPhones();
-    console.log('loaded');
   }, [cartPhones]);
 
   const handleClearCart = () => {
     removeAllFromCart();
     setPhoneFromCart([]);
   };
+
+  const shouldShowModal = !isError && showModal;
 
   return (
     <section className="cart">
@@ -102,13 +97,17 @@ export const CartPage: React.FC = () => {
           ) : (
             phoneFromCart.map((cartPhone: Phone) => {
               return (
-                <CartProductCard key={cartPhone.phoneId} phone={cartPhone} />
+                <CartProductCard
+                  key={cartPhone.phoneId}
+                  phone={cartPhone}
+                  isButtonsDisabled={showModal}
+                />
               );
             })
           )}
         </div>
 
-        {cartPhones.length !== 0 && (
+        {phoneFromCart.length !== 0 && (
           <div className="cart_total-wrapper grid__item--desktop-17-24 grid__item--tablet-1-12 grid__item-1-4">
             <div className="cart_total">
               <p className="cart_total-price">${totalPrice}</p>
@@ -118,7 +117,7 @@ export const CartPage: React.FC = () => {
               <button onClick={handleOpenModal} className="cart_total-btn">
                 Checkout
               </button>
-              {showModal && (
+              {shouldShowModal && (
                 <ModalCheckout
                   handleCloseModal={handleCloseModal}
                   handleClearCart={handleClearCart}
