@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
           <Link
             className="navigation__link"
             to="contacts"
-            target="_blank"
+            onClick={handleScrollToTop}
             rel="noreferrer"
           >
             Contacts
@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
           <Link
             className="navigation__link"
             to="rights"
-            target="_blank"
+            onClick={handleScrollToTop}
             rel="noreferrer"
           >
             Rights

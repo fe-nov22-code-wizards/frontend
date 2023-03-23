@@ -7,24 +7,34 @@ import { FavouritesContext } from '../FavouritesContext';
 import './CartProductCard.scss';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 const BASE_URL = 'https://api-gwis.onrender.com';
 
 type Props = {
   phone: Phone;
+  isButtonsDisabled: boolean;
 };
 
-export const CartProductCard: React.FC<Props> = ({ phone }) => {
+export const CartProductCard: React.FC<Props> = ({
+  phone,
+  isButtonsDisabled,
+}) => {
   const { cartPhones, addToCart, removeAllItemsByOneType, removeOneFromCart } =
     useContext(FavouritesContext);
 
   const quantity = cartPhones.filter((p) => p === phone.phoneId).length;
 
-  const handleWarning = () => {
+  const handleQuantityError = () => {
     toast.error("You can't add more than 10 phones of one model");
   };
 
+  const handleModalWindowOpen = () => {
+    toast.warn('Modal window is open. Please, close it to continue purchases');
+  };
+
   const isAddBtnDisabled = quantity >= 10;
+  const isMinusButtonDisabled = quantity === 1;
 
   return (
     <div className="cart_card grid__item--desktop-1-16">
@@ -32,7 +42,11 @@ export const CartProductCard: React.FC<Props> = ({ phone }) => {
         <button
           className="cart_card-btn-delete"
           onClick={() => {
-            removeAllItemsByOneType(phone.phoneId);
+            if (isButtonsDisabled) {
+              handleModalWindowOpen();
+            } else {
+              removeAllItemsByOneType(phone.phoneId);
+            }
           }}
         >
           <svg
@@ -52,12 +66,22 @@ export const CartProductCard: React.FC<Props> = ({ phone }) => {
             />
           </svg>
         </button>
-        <img
-          src={`${BASE_URL}/${phone.image}`}
-          alt="Phone photo"
-          className="cart_card-product-photo"
-        />
-        <p className="cart_card-product-title">{phone.name}</p>
+        <Link
+          to={`/phones/${phone.phoneId}`}
+          className="cart_card-product-photo-link"
+        >
+          <img
+            src={`${BASE_URL}/${phone.image}`}
+            alt="Phone photo"
+            className="cart_card-product-photo"
+          />
+        </Link>
+        <Link
+          to={`/phones/${phone.phoneId}`}
+          className="cart_card-product-title"
+        >
+          {phone.name}
+        </Link>
       </div>
 
       <div className="cart_options-wrapper">
@@ -66,8 +90,13 @@ export const CartProductCard: React.FC<Props> = ({ phone }) => {
           <button
             className="cart_card-btn-options"
             onClick={() => {
-              removeOneFromCart(phone.phoneId);
+              if (isButtonsDisabled) {
+                handleModalWindowOpen();
+              } else {
+                removeOneFromCart(phone.phoneId);
+              }
             }}
+            disabled={isMinusButtonDisabled}
           >
             <img
               src={minus}
@@ -79,13 +108,14 @@ export const CartProductCard: React.FC<Props> = ({ phone }) => {
           <button
             className="cart_card-btn-options"
             onClick={() => {
-              if (!isAddBtnDisabled) {
-                addToCart(phone.phoneId);
+              if (isButtonsDisabled) {
+                handleModalWindowOpen();
+              } else if (isAddBtnDisabled) {
+                handleQuantityError();
               } else {
-                handleWarning();
+                addToCart(phone.phoneId);
               }
             }}
-            // disabled={isAddBtnDisabled}
           >
             <img src={plus} alt="Plus an item from cart" />
           </button>

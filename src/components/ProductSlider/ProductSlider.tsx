@@ -19,18 +19,8 @@ export const ProductSlider: React.FC<Props> = ({ title, category }) => {
 
   const movingCardSize = 288 * position;
   const hidden = title === 'Brand new models';
-
   const isFirst = position === 0;
   const isLast = position === phones.length - 1;
-
-  // const {
-  //   addFavouritePhone,
-  //   removeFavouritePhone,
-  //   favouritesPhones,
-  //   addToCart,
-  //   removeFromCart,
-  //   cartPhones,
-  // } = useContext(FavouritesContext);
 
   useEffect(() => {
     async function fetchPosts() {

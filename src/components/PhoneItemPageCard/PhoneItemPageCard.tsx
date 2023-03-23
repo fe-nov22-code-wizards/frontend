@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-
 import React, { useContext, useState } from 'react';
 import './PhoneItemPageCard.scss';
 import '../Grid/Grid.scss';
@@ -45,8 +44,15 @@ export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [selectedImage, setSelectedImage] = useState(images[0]);
 
-  const { phones, addFavouritePhone, removeFavouritePhone, favouritesPhones } =
-    useContext(FavouritesContext);
+  const {
+    phones,
+    addFavouritePhone,
+    removeFavouritePhone,
+    favouritesPhones,
+    cartPhones,
+    removeAllItemsByOneType,
+    addToCart,
+  } = useContext(FavouritesContext);
 
   const foundPhoneObj = phones.find((p) => p.phoneId === id);
   const isFavourite = favouritesPhones.some((p) => p.phoneId === id);
@@ -83,14 +89,12 @@ export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
       0,
       phoneCapacity.length - 2,
     )}gb`;
-    const [mainModel, model, num, , col] = id.split('-');
-    const foundUrl = [mainModel, model, num, normalizeCapacity, col].join('-');
+    const oldValue = /(\d+gb)/;
+    const foundUrl = id.replace(oldValue, normalizeCapacity);
 
     return foundUrl;
   };
 
-  const { cartPhones, removeAllItemsByOneType, addToCart } =
-    useContext(FavouritesContext);
   const isAdded = cartPhones.some((p) => p === id);
   const handleClickAdded = (): void => {
     if (isAdded) {
@@ -144,7 +148,7 @@ export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
 
                 return (
                   <Link
-                    to={`/phones/${handleChangeUrlWithColor(colorAvaible)}`}
+                    to={`../${handleChangeUrlWithColor(colorAvaible)}`}
                     key={colorAvaible}
                     className={classNames('card_color', {
                       'selected-img': color === colorAvaible,
@@ -161,7 +165,7 @@ export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
             <div className="card_capacities-wrapper">
               {capacityAvailable.map((currentCapacity) => (
                 <Link
-                  to={`/phones/${handleChangeUrlWithCapacity(currentCapacity)}`}
+                  to={`../${handleChangeUrlWithCapacity(currentCapacity)}`}
                   key={currentCapacity}
                   className={classNames('card_capacity', {
                     'selected-capacity': currentCapacity === capacity,

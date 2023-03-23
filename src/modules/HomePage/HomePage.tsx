@@ -1,14 +1,17 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useContext } from 'react';
 import { BannerSlider } from '../../components/BannerSlider';
 import { CategoryCard } from '../../components/CategoryCard/CategoryCard';
+import { FavouritesContext } from '../../components/FavouritesContext';
 import { ProductSlider } from '../../components/ProductSlider';
 import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
+  const { phones } = useContext(FavouritesContext);
+
   return (
     <div className="main-page">
-      <h1 className="menu-title">Welcome to Nice Gadgets store!</h1>
+      <h1 className="menu-title">Nice Gadgets store!</h1>
       <BannerSlider />
 
       <ProductSlider title="Brand new models" category="new" />
@@ -21,7 +24,7 @@ export const HomePage: React.FC = () => {
           <div className="category-card grid__item--desktop-1-8 grid__item--tablet-1-4 grid__item-1-4">
             <CategoryCard
               name="Mobile phones"
-              itemsCount={71}
+              itemsCount={phones.length}
               img="https://i.ibb.co/FbqbFMy/image-phones.png"
               path="phones"
               id={1}
@@ -49,6 +52,7 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
+
       <ProductSlider title="Hot prices" category="discount" />
     </div>
   );
