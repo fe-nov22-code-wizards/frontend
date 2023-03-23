@@ -1,14 +1,20 @@
 {
   "files": {
-    "main.css": "/frontend/static/css/main.86a39411.css",
-    "main.js": "/frontend/static/js/main.bf9c6c21.js",
-    "static/media/bannerslider-tablet.svg": "/frontend/static/media/bannerslider-tablet.bbbb6f9c295f13cb0372.svg",
-    "static/media/bannerslider-desktop.svg": "/frontend/static/media/bannerslider-desktop.19e658112abfd43acf9c.svg",
-    "static/media/bannerslider-mobile.svg": "/frontend/static/media/bannerslider-mobile.88a4f1480a819a019e49.svg",
+    "main.css": "/frontend/static/css/main.61e72a1b.css",
+    "main.js": "/frontend/static/js/main.83aaf875.js",
+    "static/media/banner-promo.svg": "/frontend/static/media/banner-promo.19e658112abfd43acf9ce1973fd8efc6.svg",
     "static/media/logo.svg": "/frontend/static/media/logo.c6f2f3eda1b32d5740ad62b825eab096.svg",
+    "static/media/kashchenko.jpg": "/frontend/static/media/kashchenko.6d945c7bd1d28f5b330b.jpg",
+    "static/media/verzhanska.jpg": "/frontend/static/media/verzhanska.54df2cd7f45f11d492da.jpg",
+    "static/media/banner-phones.jpg": "/frontend/static/media/banner-phones.be6013d8af3f5257240d.jpg",
     "static/media/Mont-Regular.ttf": "/frontend/static/media/Mont-Regular.e797167c18f9897bb607.ttf",
     "static/media/Mont-SemiBold.ttf": "/frontend/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
     "static/media/Mont-Bold.ttf": "/frontend/static/media/Mont-Bold.3675b597d3ffb2b75168.ttf",
+    "static/media/inozemets.jpg": "/frontend/static/media/inozemets.7686b80d47d25f169f2d.jpg",
+    "static/media/andriushchenko.jpg": "/frontend/static/media/andriushchenko.65296f37f0969efd1b7e.jpg",
+    "static/media/broken-robot.jpg": "/frontend/static/media/broken-robot.ea0f09f85e6ffcc5c2cd.jpg",
+    "static/media/banner-tablets.jpg": "/frontend/static/media/banner-tablets.90b705a12600d477dd72.jpg",
+    "static/media/heart.gif": "/frontend/static/media/heart.2ce5008dc2c07209006c.gif",
     "static/media/slick.svg": "/frontend/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/frontend/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/frontend/static/media/slick.c94f7671dcc99dce43e2.ttf",
@@ -16,8 +22,12 @@
     "static/media/favorite-yellow.svg": "/frontend/static/media/favorite-yellow.b0714076f457af686915dae4fce48b79.svg",
     "static/media/heart.svg": "/frontend/static/media/heart.5798df4d50cb8a9d58a723cad5fbfe00.svg",
     "static/media/favorite.svg": "/frontend/static/media/favorite.6e66322b2193f42c6e8a3dccf67c4c37.svg",
+    "static/media/github.svg": "/frontend/static/media/github.dc49a960a2d3c5a49c80.svg",
     "static/media/slick.woff": "/frontend/static/media/slick.295183786cd8a1389865.woff",
     "static/media/home.svg": "/frontend/static/media/home.9a24a70540404ccecd05fd9f900ddeeb.svg",
+    "static/media/linkedIn.svg": "/frontend/static/media/linkedIn.d670df15d9858d0b68ce.svg",
+    "static/media/gmail.svg": "/frontend/static/media/gmail.2c70fa80e7595c831171.svg",
+    "static/media/telegram.svg": "/frontend/static/media/telegram.b0589b5e724dd92cc132.svg",
     "index.html": "/frontend/index.html",
     "static/media/closer.svg": "/frontend/static/media/closer.176fe32f46d4c434659ecf8f66be17e6.svg",
     "static/media/burger.svg": "/frontend/static/media/burger.3f3c3f2fcc2d0b60dfa752fd3c1cab9c.svg",
@@ -28,11 +38,11 @@
     "static/media/arrow-right.svg": "/frontend/static/media/arrow-right.e028d3889646e0b5e56cf54f47bb701a.svg",
     "static/media/bannerslider-arrow-prev.svg": "/frontend/static/media/bannerslider-arrow-prev.b18d031caaaea7e6e0c8.svg",
     "static/media/minus.svg": "/frontend/static/media/minus.4b7c4fa33c66c0b35185058bd5da5567.svg",
-    "main.86a39411.css.map": "/frontend/static/css/main.86a39411.css.map",
-    "main.bf9c6c21.js.map": "/frontend/static/js/main.bf9c6c21.js.map"
+    "main.61e72a1b.css.map": "/frontend/static/css/main.61e72a1b.css.map",
+    "main.83aaf875.js.map": "/frontend/static/js/main.83aaf875.js.map"
   },
   "entrypoints": [
-    "static/css/main.86a39411.css",
-    "static/js/main.bf9c6c21.js"
+    "static/css/main.61e72a1b.css",
+    "static/js/main.83aaf875.js"
   ]
 }
