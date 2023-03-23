@@ -8,7 +8,7 @@ import './HomePage.scss';
 export const HomePage: React.FC = () => {
   return (
     <div className="main-page">
-      <h1 className="menu-title">Welcome to Nice Gadgets store!</h1>
+      <h1 className="menu-title">Nice Gadgets store!</h1>
       <BannerSlider />
 
       <ProductSlider title="Brand new models" category="new" />
