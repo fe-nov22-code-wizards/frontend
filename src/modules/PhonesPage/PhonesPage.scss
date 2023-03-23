@@ -63,6 +63,12 @@ select {
   color: #0f0f11;
   font-family: 'Mont';
   width: 100%;
+
+  margin-bottom: 8px;
+
+  @include onTablet {
+    margin-bottom: 0;
+  }
 }
 
 option {
@@ -82,10 +88,39 @@ select option:checked {
   color: #fff;
 }
 
-.phones-cards {
-  display: grid;
-  margin: 16px auto;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fill, 272px);
-  gap: 40px 16px;
+.phones {
+  &-cards {
+    display: grid;
+    margin: 16px auto;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 272px);
+    gap: 40px 16px;
+
+    &-not_found {
+      margin: 10px 20px 30px 20px;
+      text-align: center;
+    }
+  }
+}
+
+.input_search {
+  padding: 8px;
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #0f0f11;
+  font-family: 'Mont';
+  width: 100%;
+
+  margin-bottom: 32px;
+
+  @include onTablet {
+    margin-bottom: 0;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #6b38d0;
+    box-shadow: 0 0 0 2px rgba(0, 119, 204, 0.2);
+  }
 }
