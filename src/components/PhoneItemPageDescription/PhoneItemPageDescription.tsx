@@ -67,7 +67,9 @@ export const PhoneItemPageDescription: React.FC<Props> = ({ phone }) => {
             </div>
             <div className="characteristic">
               <div className="characteristic-title">Cell</div>
-              <div className="characteristic-value">{cell.join(', ')}</div>
+              <div className="characteristic-value">
+                {cell.slice(0, 5).join(', ')}
+              </div>
             </div>
           </div>
         </div>
