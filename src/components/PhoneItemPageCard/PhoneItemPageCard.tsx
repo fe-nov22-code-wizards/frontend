@@ -43,7 +43,6 @@ export const PhoneItemPageCard: React.FC<Props> = ({ phone }) => {
   } = phone;
   const [isLiked, setIsLiked] = useState(false);
   const [selectedImage, setSelectedImage] = useState(images[0]);
-
   const {
     phones,
     addFavouritePhone,

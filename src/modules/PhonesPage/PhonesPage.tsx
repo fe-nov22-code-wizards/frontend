@@ -20,6 +20,7 @@ export const PhonesPage: React.FC = () => {
   const sort = searchParams.get('sort') || '';
   const perPage = Number(searchParams.get('perPage') || '24');
   const page = Number(searchParams.get('page') || '1');
+  const query = searchParams.get('query') || null;
 
   useEffect(() => {
     async function fetchPosts() {
@@ -39,7 +40,7 @@ export const PhonesPage: React.FC = () => {
     }
 
     fetchPosts();
-  }, [page, perPage, sort]);
+  }, [page, perPage, sort, query]);
 
   const updateSearch = (params: { [key: string]: string | null }) => {
     Object.entries(params).forEach(([key, value]) => {
@@ -64,9 +65,24 @@ export const PhonesPage: React.FC = () => {
     updateSearch({ perPage: event.target.value || null });
   };
 
+  const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    updateSearch({ query: event.target.value || null });
+  };
+
   const indexOfLastPost = page * perPage;
   const indexOfFirstPost = indexOfLastPost - perPage;
-  const currentPhones = phones.slice(indexOfFirstPost, indexOfLastPost);
+  let currentPhones = phones.slice(indexOfFirstPost, indexOfLastPost);
+  const valueForSearch = !query ? '' : query;
+
+  if (query) {
+    const noramlizedQuery = query.trim().toLowerCase();
+
+    currentPhones = phones.filter((p) => {
+      const normalizeName = p.name.toLowerCase();
+
+      return normalizeName.includes(noramlizedQuery);
+    });
+  }
 
   const paginate = (pageNumber: number) => {
     updateSearch({
@@ -152,6 +168,30 @@ export const PhonesPage: React.FC = () => {
               <option key={item}>{item}</option>
             ))}
           </select>
+        </div>
+
+        <div
+          className="
+            grid__item-1-4
+            grid__item--tablet-8-12
+            grid__item--desktop-8-24"
+        >
+          <p
+            className="
+              select__name
+              text__item"
+          >
+            Serach
+          </p>
+
+          <input
+            type="search"
+            className="input_serach"
+            onChange={(event) => {
+              onQueryChange(event);
+            }}
+            value={valueForSearch}
+          />
         </div>
       </div>
 
