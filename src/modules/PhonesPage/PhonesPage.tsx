@@ -41,26 +41,6 @@ export const PhonesPage: React.FC = () => {
     fetchPosts();
   }, [page, perPage, sort]);
 
-  // const cartString = window.localStorage.getItem('cart');
-  // const cart: Phone[] = cartString ? JSON.parse(cartString) : [];
-
-  // const [cartPhones, setCartPhones] = useState<Phone[]>(cart);
-  // const handleOnAddToCart = (phone: Phone) => {
-  //   const cartPhonesId = cartPhones.map((phoneCart) => phoneCart.phoneId);
-
-  //   if (!cartPhonesId.includes(phone.phoneId)) {
-  //     setCartPhones((previousCartPhones) => [...previousCartPhones, phone]);
-  //   } else {
-  //     setCartPhones((previousCartPhones) =>
-  //       previousCartPhones.filter(
-  //         (cartPhone: Phone) => cartPhone.phoneId !== phone.phoneId,
-  //       ),
-  //     );
-  //   }
-  // };
-
-  // window.localStorage.setItem('cart', JSON.stringify(cartPhones));
-
   const updateSearch = (params: { [key: string]: string | null }) => {
     Object.entries(params).forEach(([key, value]) => {
       if (value === null) {

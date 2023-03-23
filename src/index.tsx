@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './App';
 import './index.scss';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { FavouritesProvider } from './components/FavouritesContext';
 
 const Root = () => (
   <FavouritesProvider>
-    <Router basename="/frontend">
+    <Router>
       <App />
     </Router>
   </FavouritesProvider>
