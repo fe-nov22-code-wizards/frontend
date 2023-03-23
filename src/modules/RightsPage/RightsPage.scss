@@ -1,11 +1,21 @@
+@import '../../_utils/mixins';
+
 .gadget-store-rights {
   font-family: 'Mont', sans-serif;
-  padding: 20px;
+  padding: 20px 50px;
   font-size: 16px;
   line-height: 1.5;
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
+
+  @include onTablet {
+    padding: 20px 100px;
+  }
+
+  @include onDesktop {
+    padding: 20px 200px;
+  }
 
   &__heading {
     text-align: center;
