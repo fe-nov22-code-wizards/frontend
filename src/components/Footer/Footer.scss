@@ -1,5 +1,6 @@
 $color__link: #89939a;
 $color__active-link: #313237;
+@import '../../_utils/mixins';
 
 .footer {
   background-color: #fff;
@@ -36,7 +37,6 @@ $color__active-link: #313237;
 
   &__logo {
     flex-grow: 1;
-    cursor: pointer;
   }
 }
 
@@ -53,6 +53,14 @@ $color__active-link: #313237;
     &:hover {
       color: $color__active-link;
     }
+
+    @include onTablet {
+      padding: 20px;
+    }
+
+    @include onDesktop {
+      padding: 20px;
+    }
   }
 }
 
@@ -67,6 +75,8 @@ $color__active-link: #313237;
     font-weight: 600;
     font-size: 12px;
     color: $color__link;
+    padding: 20px;
+    padding-right: 0;
     cursor: pointer;
     &:hover {
       color: $color__active-link;
@@ -90,6 +100,15 @@ $color__active-link: #313237;
     box-shadow: 3px 4px 11px rgba(152, 153, 155, 0.4);
     border: 1px solid #313237;
     cursor: pointer;
+  }
+}
+
+.logo {
+  cursor: pointer;
+  padding: 10px;
+
+  @include onMobile {
+    padding: 10px 10px 10px 0;
   }
 }
 

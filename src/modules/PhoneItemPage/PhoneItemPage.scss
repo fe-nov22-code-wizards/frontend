@@ -47,6 +47,9 @@
   }
 
   &_link-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;

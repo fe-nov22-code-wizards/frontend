@@ -12,13 +12,16 @@ import { getOne } from '../../api/getAllPhones';
 import { PhoneItem } from '../../types/PhoneItem';
 import { Loader } from '../../components/Loader';
 import { PhoneItemPageDescription } from '../../components/PhoneItemPageDescription';
-import { ErrorMessage } from '../../components/ErrorMessage';
+import { PageNotFound } from '../PageNotFound';
 
 export const PhoneItemPage: React.FC = () => {
   const { phoneId = '' } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [phone, setPhone] = useState<PhoneItem | null>(null);
+
+  const isVisible = !isError && !isLoading;
+  const hasError = isError && !isLoading;
 
   //eslint-disable-next-line space-before-function-paren
   const loadPhone = async () => {
@@ -42,10 +45,9 @@ export const PhoneItemPage: React.FC = () => {
 
   return (
     <section className="phoneItem_section">
-      {isError && <ErrorMessage />}
-      {isLoading ? (
-        <Loader />
-      ) : (
+      {isLoading && <Loader />}
+      {hasError && <PageNotFound />}
+      {isVisible && (
         <>
           <div className="phoneItem_section-upper">
             <div className="grid">

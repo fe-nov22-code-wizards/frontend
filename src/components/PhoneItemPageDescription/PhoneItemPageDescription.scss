@@ -5,21 +5,26 @@
   flex-wrap: wrap;
 
   @include onDesktop {
-    max-width: 1260px;
+    max-width: 1196px;
     display: flex;
     flex-wrap: nowrap;
   }
 }
 
 .block {
-  padding: 10px 30px;
+  padding: 10px 15px;
   margin: 0;
+  
+  @include onTablet {
+    padding: 10px 20px;
+  }
 }
 
 .about-block {
   width: 100%;
 
   @include onDesktop {
+    padding: 10px 30px;
     width: 50%;
     margin: 0;
   }
