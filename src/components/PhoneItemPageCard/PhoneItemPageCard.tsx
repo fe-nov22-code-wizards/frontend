@@ -14,13 +14,25 @@ type Props = {
   phone: PhoneItem;
 };
 
-type ColorName = 'midnightgreen' | 'spacegray';
+type ColorName =
+  | 'midnightgreen'
+  | 'spacegray'
+  | 'rosegold'
+  | 'green'
+  | 'purple'
+  | 'gold'
+  | 'yellow';
 
-type ColorValue = string;
+type ColorValue = Readonly<string>;
 
-const colorMap: Record<ColorName, ColorValue> = {
-  midnightgreen: '#145A32',
-  spacegray: 'rgb(114, 114, 114)',
+const colorMap: Readonly<Record<ColorName, ColorValue>> = {
+  midnightgreen: '#39513D',
+  spacegray: '#505050',
+  rosegold: '#ffb9b9',
+  green: '#91ffd1',
+  purple: '#df9fff',
+  gold: '#ffe4ca',
+  yellow: '#ffdf40',
 };
 
 const BASE_URL = 'https://api-gwis.onrender.com/';
