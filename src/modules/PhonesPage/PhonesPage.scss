@@ -96,7 +96,7 @@ select option:checked {
     grid-template-columns: repeat(auto-fill, 272px);
     gap: 40px 16px;
 
-    &-not_found {
+    &__not-found {
       margin: 10px 20px 30px 20px;
       text-align: center;
     }

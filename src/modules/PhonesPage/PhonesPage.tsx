@@ -215,7 +215,7 @@ export const PhonesPage: React.FC = () => {
               nextPage={nextPage}
             />
           ) : (
-            <div className="phones-cards-not_found">No phones found</div>
+            <p className="phones-cards__not-found">No phones found</p>
           )}
         </>
       )}
