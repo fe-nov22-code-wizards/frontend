@@ -7,8 +7,12 @@
   height: 80px;
   margin: 60px auto;
 
-  @include onDesktop {
+  @include onTablet {
     margin: 120px auto;
+  }
+
+  @include onDesktop {
+    margin: 220px auto;
   }
 }
 
