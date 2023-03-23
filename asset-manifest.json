@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/frontend/static/css/main.61e72a1b.css",
-    "main.js": "/frontend/static/js/main.83aaf875.js",
+    "main.css": "/frontend/static/css/main.0a8f8e7d.css",
+    "main.js": "/frontend/static/js/main.ac947216.js",
     "static/media/banner-promo.svg": "/frontend/static/media/banner-promo.19e658112abfd43acf9ce1973fd8efc6.svg",
     "static/media/logo.svg": "/frontend/static/media/logo.c6f2f3eda1b32d5740ad62b825eab096.svg",
     "static/media/kashchenko.jpg": "/frontend/static/media/kashchenko.6d945c7bd1d28f5b330b.jpg",
@@ -38,11 +38,11 @@
     "static/media/arrow-right.svg": "/frontend/static/media/arrow-right.e028d3889646e0b5e56cf54f47bb701a.svg",
     "static/media/bannerslider-arrow-prev.svg": "/frontend/static/media/bannerslider-arrow-prev.b18d031caaaea7e6e0c8.svg",
     "static/media/minus.svg": "/frontend/static/media/minus.4b7c4fa33c66c0b35185058bd5da5567.svg",
-    "main.61e72a1b.css.map": "/frontend/static/css/main.61e72a1b.css.map",
-    "main.83aaf875.js.map": "/frontend/static/js/main.83aaf875.js.map"
+    "main.0a8f8e7d.css.map": "/frontend/static/css/main.0a8f8e7d.css.map",
+    "main.ac947216.js.map": "/frontend/static/js/main.ac947216.js.map"
   },
   "entrypoints": [
-    "static/css/main.61e72a1b.css",
-    "static/js/main.83aaf875.js"
+    "static/css/main.0a8f8e7d.css",
+    "static/js/main.ac947216.js"
   ]
 }
