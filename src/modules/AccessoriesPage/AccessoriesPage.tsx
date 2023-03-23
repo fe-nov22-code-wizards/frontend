@@ -6,7 +6,7 @@ import './AccessoriesPage.scss';
 
 export const AccessoriesPage: React.FC = () => {
   return (
-    <div className="main-page">
+    <div className="main__page">
       <div className="back-menu">
         <Link to="/" className="back-menu__item back-menu__icon" />
         <img src={arrowRight} alt="arrow-icon" className="back-menu__item" />

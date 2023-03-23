@@ -225,7 +225,6 @@
 }
 
 .fav__quantity {
-  animation: appear 0.3s linear;
   z-index: -1;
   position: absolute;
   top: 46%;
@@ -239,6 +238,9 @@
   background-color: #4219d0;
   border-radius: 50%;
   font-size: 9px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
 
   @include onMobile {
     top: 36%;
@@ -256,6 +258,15 @@
   }
 }
 
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
 @keyframes scale {
   from {
     transform: scaleX(0%);
@@ -263,15 +274,5 @@
 
   to {
     transform: scaleX(100%);
-  }
-}
-
-@keyframes appear {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
