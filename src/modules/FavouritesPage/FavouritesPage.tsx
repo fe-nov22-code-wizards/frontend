@@ -7,7 +7,15 @@ import { Phone } from '../../types/Phone';
 import './FavouritesPage.scss';
 
 export const FavouritesPage: React.FC = () => {
-  const { favouritesPhones } = useContext(FavouritesContext);
+  const { favouritesPhones, clearAllFavourites } =
+    useContext(FavouritesContext);
+
+  const handleClearAll = () => {
+    clearAllFavourites();
+  };
+
+  const hasFavouritePhones = favouritesPhones.length > 0;
+  const moreThanOne = favouritesPhones.length > 1;
 
   return (
     <div className="main-page">
@@ -19,7 +27,17 @@ export const FavouritesPage: React.FC = () => {
 
       <h1 className="menu-title">Favourites</h1>
 
-      <p className="text__item">{`${favouritesPhones.length} models`}</p>
+      <div className="models-container">
+        <p className="text__item">{`${favouritesPhones.length} ${
+          moreThanOne ? 'models' : 'model'
+        }`}</p>
+
+        {hasFavouritePhones && (
+          <button onClick={handleClearAll} className="clear-button">
+            Clear all
+          </button>
+        )}
+      </div>
 
       {favouritesPhones.length ? (
         <div className="phones-cards">

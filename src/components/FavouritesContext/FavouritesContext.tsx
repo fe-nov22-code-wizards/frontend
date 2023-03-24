@@ -8,6 +8,7 @@ type FavouritesContextType = {
   phones: Phone[];
   addFavouritePhone: (phone: Phone) => void;
   removeFavouritePhone: (phone: Phone) => void;
+  clearAllFavourites: () => void;
 
   cartPhones: string[];
   addToCart: (phoneId: string) => void;
@@ -21,6 +22,7 @@ export const FavouritesContext = createContext<FavouritesContextType>({
   phones: [],
   addFavouritePhone: () => {},
   removeFavouritePhone: () => {},
+  clearAllFavourites: () => {},
 
   cartPhones: [],
   addToCart: () => {},
@@ -86,6 +88,10 @@ export const FavouritesProvider: React.FC<Props> = ({ children }) => {
     setFavouritesPhones(newFavouritesPhones);
   };
 
+  const clearAllFavourites = () => {
+    setFavouritesPhones([]);
+  };
+
   const removeOneFromCart = (phoneId: string) => {
     const neededIndex = cartPhones.indexOf(phoneId);
     const newCartPhones = [...cartPhones];
@@ -118,6 +124,7 @@ export const FavouritesProvider: React.FC<Props> = ({ children }) => {
         removeFavouritePhone,
         favouritesPhones,
         phones,
+        clearAllFavourites,
 
         addToCart,
         removeOneFromCart,

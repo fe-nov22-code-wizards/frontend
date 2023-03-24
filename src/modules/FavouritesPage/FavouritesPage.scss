@@ -58,3 +58,26 @@
   grid-template-columns: repeat(auto-fill, 272px);
   gap: 40px 16px;
 }
+
+.models-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.clear-button {
+  padding: 1px 5px;
+  border: 1px solid #89939a;
+  border-radius: 30px;
+  font-family: "Mont", sans-serif;
+  color: #89939a;;
+  font-size: 12px;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+.clear-button:hover {
+  border: 1px solid #000;
+  color: #000;
+}
