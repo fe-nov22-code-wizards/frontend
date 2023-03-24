@@ -66,9 +66,11 @@ export const Pagination: React.FC<Props> = ({
         )}
         {startPage > 2 && (
           <li>
-            <span className="ellipse"></span>
-            <span className="ellipse"></span>
-            <span className="ellipse"></span>
+            <div className="ellipse_dots">
+              <span className="ellipse"></span>
+              <span className="ellipse"></span>
+              <span className="ellipse"></span>
+            </div>
           </li>
         )}
         {pageNumber.slice(startPage - 1, endPage).map((number) => (

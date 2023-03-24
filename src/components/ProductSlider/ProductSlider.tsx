@@ -20,7 +20,7 @@ export const ProductSlider: React.FC<Props> = ({ title, category }) => {
   const movingCardSize = 288 * position;
   const hidden = title === 'Brand new models';
   const isFirst = position === 0;
-  const isLast = position === phones.length - 1;
+  const isLast = position === phones.length - 4 || phones.length <= 4;
 
   useEffect(() => {
     async function fetchPosts() {

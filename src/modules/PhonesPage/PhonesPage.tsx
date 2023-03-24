@@ -42,6 +42,7 @@ export const PhonesPage: React.FC = () => {
     async function fetchPosts() {
       try {
         setIsError(false);
+        setIsLoading(true);
 
         const res = await getAllPhones(page, perPage, sort);
 
