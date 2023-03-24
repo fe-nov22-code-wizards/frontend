@@ -8,7 +8,7 @@ import { Phone } from '../../types/Phone';
 import { Loader } from '../../components/Loader';
 import { Pagination } from '../../components/Pagination';
 import { getAllPhones } from '../../api/getAllPhones';
-import { ErrorMessage } from '../../components/ErrorMessage';
+import { PageNotFound } from '../PageNotFound';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -98,7 +98,7 @@ export const PhonesPage: React.FC = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {hasError && <ErrorMessage />}
+      {hasError && <PageNotFound />}
       {isVisible && (
         <div className="main-page">
           <div className="back-menu">
