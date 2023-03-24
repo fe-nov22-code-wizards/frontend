@@ -8,7 +8,6 @@ import { Phone } from '../../types/Phone';
 import { Loader } from '../../components/Loader';
 import { Pagination } from '../../components/Pagination';
 import { getAllPhones } from '../../api/getAllPhones';
-import { ErrorMessage } from '../../components/ErrorMessage';
 import { PageNotFound } from '../PageNotFound';
 
 export const PhonesPage: React.FC = () => {
