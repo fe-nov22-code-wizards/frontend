@@ -61,6 +61,7 @@ export const PhonesPage: React.FC = () => {
 
   const onSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     updateSearch({ sort: event.target.value || null });
+    updateSearch({ page: null });
   };
 
   const onPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
