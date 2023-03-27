@@ -12,7 +12,6 @@ Our web application is hosted and deployed on Render.com, a reliable cloud platf
 - TypeScript
 - Fetch, API
 - HTML
-- CSS modules
 - SASS (SCSS)
 
 # Demo Link
